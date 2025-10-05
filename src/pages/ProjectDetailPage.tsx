@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, Calendar, Users, Target } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
@@ -7,7 +8,50 @@ interface ProjectDetailPageProps {
   onNavigateHome: () => void;
 }
 
+// Local images for Colombo Kings project
+const colomboKingsImages = [
+  new URL('../images/logo-concept-colombo-kings/imgi_27_888ef0130936549.618ac232ec5e6.jpg', import.meta.url).href,
+  new URL('../images/logo-concept-colombo-kings/imgi_101_5b49e8130936549.618ac232ee087.jpg', import.meta.url).href,
+  new URL('../images/logo-concept-colombo-kings/imgi_103_7da652130936549.618ac232ed54e.jpg', import.meta.url).href,
+  new URL('../images/logo-concept-colombo-kings/imgi_106_736774130936549.618ac232ecf6f.jpg', import.meta.url).href,
+  new URL('../images/logo-concept-colombo-kings/imgi_109_f12e79130936549.618ac232edae3.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
+  'colombo-kings-logo-concept': {
+    title: 'Logo Redesign Concept for Colombo Kings',
+    subtitle: 'Branding Concept for LPL Franchise',
+    role: 'Graphic Designer • Lanka Premier League, Colombo Kings',
+    year: 'Apr 2021',
+    duration: 'Concept Project',
+    team: 'Solo',
+    description: 'A conceptual logo redesign for Colombo Kings, a franchise Twenty20 cricket team based in Colombo, Sri Lanka, competing in the Lanka Premier League. The focus was to create a distinctive team identity while maintaining brand recognition within the sports context.',
+    heroImage: colomboKingsImages[0],
+    impact: [
+      { metric: '✓', label: 'Developed conceptual logo redesign' },
+      { metric: '✓', label: 'Created distinctive team identity' },
+      { metric: '✓', label: 'Maintained brand recognition in sports context' },
+    ],
+    responsibilities: [
+      'Explored multiple concept directions for the Colombo Kings identity',
+      'Crafted a primary mark, supporting lockups, and usage exploration',
+      'Prepared presentation-ready mockups for real-world sports applications'
+    ],
+    technologies: ['Figma', 'Illustrator', 'Photoshop'],
+    process: [
+      { phase: 'Discovery', description: 'Researched franchise history, values, and visual references from T20 cricket branding.' },
+      { phase: 'Sketch & Concepts', description: 'Developed multiple logo directions balancing modern aggression with heritage.' },
+      { phase: 'Refinement', description: 'Selected direction refined with geometry, proportion, and color tuning.' },
+      { phase: 'Applications', description: 'Showcased usage across jerseys, merch, and social media graphics.' },
+    ],
+    keyFeatures: [
+      'Bold primary mark with strong presence at small sizes',
+      'Versatile lockups for horizontal and stacked formats',
+      'Color system aligned with team identity and broadcast needs',
+      'Grid-based construction for consistency across applications'
+    ],
+    images: colomboKingsImages,
+  },
   coveragex: {
     title: 'CoverageX.com',
     subtitle: 'Enterprise Insurance Platform Redesign',
@@ -431,6 +475,47 @@ export default function ProjectDetailPage({ projectId, onNavigateHome }: Project
           </motion.div>
         </div>
       </section>
+
+      {/* Creative Grid Gallery - Colombo Kings */}
+      {project.images && (
+        <section className="px-6 py-24 bg-[#1a1a1a]">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-12"
+            >
+              <h2 className="text-4xl md:text-5xl">Gallery</h2>
+              <div className="grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-[200px] md:auto-rows-[260px]">
+                {project.images.map((src: string, i: number) => {
+                  const layout = [
+                    'md:col-span-3 md:row-span-2',
+                    'md:col-span-3 md:row-span-1',
+                    'md:col-span-2 md:row-span-1',
+                    'md:col-span-2 md:row-span-1',
+                    'md:col-span-2 md:row-span-2',
+                  ][i % 5];
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: i * 0.05 }}
+                      className={`relative overflow-hidden rounded-3xl border border-white/10 group ${layout}`}
+                    >
+                      <ImageWithFallback src={src} alt={`${project.title} ${i + 1}`} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Hero Image */}
       <section className="px-6 pb-24">

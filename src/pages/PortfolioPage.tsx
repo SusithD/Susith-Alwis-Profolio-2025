@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, Sparkles, Code, Palette, Layers } from 'lucide-react';
 import { useState } from 'react';
@@ -11,8 +12,22 @@ interface PortfolioPageProps {
 
 export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProps) {
   const [activeFilter, setActiveFilter] = useState('all');
-
+  const ckCover = new URL('../images/logo-concept-colombo-kings/imgi_27_888ef0130936549.618ac232ec5e6.jpg', import.meta.url).href;
   const projects = [
+    {
+      id: 'colombo-kings-logo-concept',
+      title: 'Logo Redesign Concept for Colombo Kings',
+      role: 'Graphic Designer',
+      description: 'A conceptual logo redesign for Colombo Kings, a franchise Twenty20 cricket team in the Lanka Premier League. Apr 2021.',
+      category: 'design',
+      tags: ['Branding', 'Logo Design', 'Sports Identity'],
+      accentColor: '#DC2626',
+      gradient: 'from-red-500/20 to-orange-500/20',
+      initials: 'CK',
+      featured: false,
+      size: 'medium',
+      image: ckCover
+    },
     {
       id: 'coveragex',
       title: 'CoverageX.com',
