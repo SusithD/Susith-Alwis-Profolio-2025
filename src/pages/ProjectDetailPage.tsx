@@ -124,6 +124,18 @@ const gyroctionImages = [
   new URL('../images/logo-gyroction/d54305145776937.62a44786bc5e3.jpg', import.meta.url).href,
 ];
 
+// Local images for Nike landing page UI concept - ALL 8 IMAGES
+const nikeLandingPageImages = [
+  new URL('../images/landing-page-ui-nike/418257146284501.62ad89bede8da.jpg', import.meta.url).href,
+  new URL('../images/landing-page-ui-nike/634e8f146284501.62ad89bede331.jpg', import.meta.url).href,
+  new URL('../images/landing-page-ui-nike/774495146284501.62ad89bedd651.jpg', import.meta.url).href,
+  new URL('../images/landing-page-ui-nike/7b9e16146284501.62ad89bedf47e.jpg', import.meta.url).href,
+  new URL('../images/landing-page-ui-nike/cb6646146284501.62ad89bedf94b.jpg', import.meta.url).href,
+  new URL('../images/landing-page-ui-nike/cf990d146284501.62ad89bedefb8.jpg', import.meta.url).href,
+  new URL('../images/landing-page-ui-nike/fb0aed146284501.62ad89beddd76.jpg', import.meta.url).href,
+  new URL('../images/landing-page-ui-nike/fcee58146284501.62ad89bedc891.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -417,6 +429,42 @@ const projectData: Record<string, any> = {
       'Consistent geometry ensuring clarity at small sizes',
     ],
     images: gyroctionImages,
+  },
+  'landing-page-ui-nike': {
+    title: 'Nike Shoes Landing Page Concept',
+    subtitle: 'High-Impact E-commerce Landing UI',
+    role: 'UI/UX Designer',
+    year: '2022',
+    duration: 'Concept Project',
+    team: 'Solo',
+    description: 'A landing page UI design concept for Nike shoes featuring bold hero visuals, strong typography, and conversion-focused CTAs. The layout emphasizes product storytelling, benefits, and rapid exploration through clear information hierarchy and motion-driven interactions.',
+    heroImage: nikeLandingPageImages[0],
+    behanceLink: 'https://www.behance.net/gallery/146284501/Landing-Page-Ui-Design',
+    impact: [
+      { metric: '✓', label: 'Crafted high-conversion landing flow' },
+      { metric: '✓', label: 'Showcased bold brand storytelling' },
+      { metric: '✓', label: 'Optimized visual hierarchy and CTAs' },
+    ],
+    responsibilities: [
+      'Defined information architecture and content hierarchy',
+      'Designed hero, product highlights, benefits, and CTA sections',
+      'Established responsive grid and spacing system',
+      'Prepared presentation-ready screens and scroll mockups'
+    ],
+    technologies: ['Figma', 'Prototyping', 'UI Design', 'Responsive Grid'],
+    process: [
+      { phase: 'Research & Benchmarks', description: 'Analyzed e-commerce landing conventions and Nike brand cues.' },
+      { phase: 'Wireframing', description: 'Outlined structure for hero, benefits, product gallery, and CTAs.' },
+      { phase: 'Visual Design', description: 'Applied brand-forward visuals, typography scale, and motion principles.' },
+      { phase: 'Presentation', description: 'Compiled high-fidelity screens and interaction previews.' },
+    ],
+    keyFeatures: [
+      'Hero with bold product showcase and primary CTA',
+      'Benefit-led sections with strong iconography and copy',
+      'Modular content blocks for quick A/B testing',
+      'Responsive grid for desktop and mobile breakpoints'
+    ],
+    images: nikeLandingPageImages,
   },
   coveragex: {
     title: 'CoverageX.com',
