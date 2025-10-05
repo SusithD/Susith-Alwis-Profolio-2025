@@ -60,13 +60,6 @@ export default function About() {
                 ✦
               </motion.div>
             </motion.div>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="h-px w-32 bg-[#F4C542] origin-left"
-            />
           </div>
           
           <div className="grid lg:grid-cols-2 gap-12 items-start">
