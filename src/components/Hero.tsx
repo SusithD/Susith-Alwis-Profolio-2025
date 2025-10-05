@@ -50,7 +50,7 @@ export default function Hero() {
             className="absolute top-[5%] md:top-[12%] left-0 md:left-[3%] lg:left-[5%] max-w-[260px] lg:max-w-[300px] z-20 hidden md:block"
           >
             <p className="text-sm lg:text-base text-white/70 leading-relaxed">
-              Designing user-focused interfaces and building production-ready front-ends with creativity and precision.
+              This is a Test Description
             </p>
           </motion.div>
 
