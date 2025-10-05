@@ -12,7 +12,7 @@ export default function Hero() {
   // Main content transforms - smooth fade and scale
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.95, 0.9]);
-  const blur = useTransform(scrollYProgress, [0, 0.5, 1], [0, 2, 8]);
+  // const blur = useTransform(scrollYProgress, [0, 0.5, 1], [0, 2, 8]);
   
   // Parallax effects for different layers
   const yHero = useTransform(scrollYProgress, [0, 1], [0, 300]);
@@ -85,7 +85,7 @@ export default function Hero() {
                 className="mb-4 md:mb-6"
               >
                 <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/50 tracking-wide">
-                  Hello, I'm
+                  Hello, I&#39;m
                 </span>
               </motion.div>
 
