@@ -8,6 +8,22 @@ interface ProjectDetailPageProps {
   onNavigateHome: () => void;
 }
 
+// Local images for The qexle rebranding project
+const qexleRebrandingImages = [
+  new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_11_0c0704137769287.6210f64481ae6.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_12_87b868137769287.6210f6447fded.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_13_93bd4e137769287.6210f6447b635.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_14_c5541a137769287.6210f64484f12.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_15_7e91bd137769287.6210f6447c432.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_16_ebe685137769287.6210f6447ec1c.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_17_765024137769287.6210f64483f83.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_18_cd4485137769287.6210f64485744.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_19_21a411137769287.6210f64483056.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_20_0a96f3137769287.6210f64479eac.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_21_858cb8137769287.6210f64483826.jpg', import.meta.url).href,
+];
+
 // Local images for Bistro Coffee Shop project
 const bistroCoffeeShopImages = [
   new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href,
@@ -38,6 +54,45 @@ const kandyTuskersImages = [
 ];
 
 const projectData: Record<string, any> = {
+  'qexle-rebranding': {
+    title: 'Rebranding Logo of The qexle',
+    subtitle: 'Brand Identity Redesign',
+    role: 'Graphic Designer • The qexle',
+    year: 'Feb 2022',
+    duration: 'Rebranding Project',
+    team: 'Solo',
+    description: 'A rebranding project for The qexle team, incorporating minimalistic design principles and strategic color choices to enhance brand recognition. The project focused on creating a modern, distinctive identity that would stand out in the competitive digital landscape while maintaining professionalism and approachability.',
+    heroImage: qexleRebrandingImages[0],
+    behanceLink: 'https://www.behance.net/gallery/137769287/The-qexle-logo-rebranding',
+    impact: [
+      { metric: '✓', label: 'Incorporated letter Q as significant icon' },
+      { metric: '✓', label: 'Used saturated blue color for visual distinction' },
+      { metric: '✓', label: 'Applied minimalistic construction for modern appeal' },
+      { metric: '✓', label: 'Optimized design for various publication platforms' },
+    ],
+    responsibilities: [
+      'Analyzed existing brand identity and market positioning',
+      'Developed minimalistic design concepts emphasizing the letter Q',
+      'Selected strategic color palette featuring saturated blue tones',
+      'Created comprehensive brand guidelines for various platforms',
+      'Designed logo variations for different application contexts'
+    ],
+    technologies: ['Adobe Illustrator', 'Adobe Photoshop', 'Figma'],
+    process: [
+      { phase: 'Brand Analysis', description: 'Evaluated current brand perception and identified opportunities for improvement in the digital marketplace.' },
+      { phase: 'Concept Development', description: 'Explored minimalistic approaches focusing on the distinctive Q letterform as a central branding element.' },
+      { phase: 'Color Strategy', description: 'Implemented saturated blue palette to create visual distinction and professional appeal.' },
+      { phase: 'Platform Optimization', description: 'Adapted the design for optimal performance across various publication and digital platforms.' },
+    ],
+    keyFeatures: [
+      'Minimalistic design approach for contemporary appeal',
+      'Strategic use of saturated blue for brand recognition',
+      'Q-centric icon design for memorable brand association',
+      'Scalable logo system optimized for digital platforms',
+      'Professional aesthetic suitable for business applications'
+    ],
+    images: qexleRebrandingImages,
+  },
   'bistro-coffee-shop': {
     title: 'Logo Design for Bistro Coffee Shop',
     subtitle: 'Brand Identity Design',
@@ -562,6 +617,29 @@ export default function ProjectDetailPage({ projectId, onNavigateHome }: Project
                 <p className="text-xl">Lead</p>
               </div>
             </div>
+
+            {/* Behance Link in Hero Section */}
+            {project.behanceLink && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="pt-8"
+              >
+                <a
+                  href={project.behanceLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group"
+                >
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
+                  </svg>
+                  View on Behance
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </a>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </section>

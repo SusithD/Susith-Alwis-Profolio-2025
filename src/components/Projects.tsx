@@ -16,6 +16,17 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
 
   const projects = [
     {
+      id: 'qexle-rebranding',
+      title: 'The qexle Rebranding',
+      role: 'Graphic Designer',
+      description: 'A rebranding project for The qexle team, incorporating minimalistic design principles and strategic color choices to enhance brand recognition.',
+      tags: ['Rebranding', 'Logo Design', 'Brand Identity', 'Minimalistic Design'],
+      accentColor: '#1E40AF',
+      gradient: 'from-blue-600/20 to-blue-400/20',
+      initials: 'TQ',
+      image: new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href
+    },
+    {
       id: 'bistro-coffee-shop',
       title: 'Bistro Coffee Shop',
       role: 'Graphic Designer',

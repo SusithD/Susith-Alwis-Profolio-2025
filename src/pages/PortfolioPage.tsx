@@ -15,8 +15,23 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const ckCover = new URL('../images/logo-concept-colombo-kings/imgi_27_888ef0130936549.618ac232ec5e6.jpg', import.meta.url).href;
   const ktCover = new URL('../images/logo-concept-kandy-tuskers/imgi_30_ee4330130369959.617ede0e2b955.jpg', import.meta.url).href;
   const bistroCover = new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href;
+  const qexleCover = new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href;
   
   const projects = [
+    {
+      id: 'qexle-rebranding',
+      title: 'Rebranding Logo of The qexle',
+      role: 'Graphic Designer',
+      description: 'A rebranding project for The qexle team, incorporating minimalistic design principles and strategic color choices to enhance brand recognition. Feb 2022.',
+      category: 'design',
+      tags: ['Rebranding', 'Logo Design', 'Brand Identity', 'Minimalistic Design'],
+      accentColor: '#1E40AF',
+      gradient: 'from-blue-600/20 to-blue-400/20',
+      initials: 'TQ',
+      featured: true,
+      size: 'large',
+      image: qexleCover
+    },
     {
       id: 'bistro-coffee-shop',
       title: 'Logo Design for Bistro Coffee Shop',
