@@ -10,6 +10,7 @@ permissions:
   issues: write
   pull-requests: write
   actions: read
+  deployments: write
 
 # Prevent concurrent dev deployments
 concurrency:
@@ -115,6 +116,36 @@ jobs:
     if: always() && ((needs.wait-for-ci.result == 'success' || needs.wait-for-ci.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.check-comment.outputs.should-deploy == 'true'))
 
     steps:
+      - name: Create GitHub Deployment
+        id: create-deployment
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const ref = '${{ needs.check-comment.outputs.pr-head-sha || github.sha }}';
+            const environment = 'development';
+            
+            const { data: deployment } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: ref,
+              environment: environment,
+              description: 'Deploy to dev environment',
+              auto_merge: false,
+              required_contexts: []
+            });
+            
+            core.setOutput('deployment-id', deployment.id);
+            
+            // Create deployment status - in progress
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.id,
+              state: 'in_progress',
+              description: 'Deployment started'
+            });
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -198,3 +229,32 @@ jobs:
             - Status: Failed
             - Logs: [View workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`
             })
+
+      - name: Update deployment status - Success
+        if: always() && success()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: '${{ steps.create-deployment.outputs.deployment-id }}',
+              state: 'success',
+              description: 'Deployment completed successfully',
+              environment_url: 'http://susith-portfolio-dev.s3-website-us-east-1.amazonaws.com'
+            });
+
+      - name: Update deployment status - Failure
+        if: always() && failure()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: '${{ steps.create-deployment.outputs.deployment-id }}',
+              state: 'failure',
+              description: 'Deployment failed'
+            });
