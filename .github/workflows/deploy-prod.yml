@@ -1,0 +1,61 @@
+name: Deploy to S3 (production)
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      confirm_production:
+        description: 'Type "DEPLOY" to confirm production deployment'
+        required: true
+        default: ''
+
+jobs:
+  deploy-production:
+    name: Build and deploy to production S3
+    runs-on: ubuntu-latest
+    
+    # Only run if it's a release OR manual dispatch with confirmation
+    if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.confirm_production == 'DEPLOY')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Sync `dist` to production S3
+        run: |
+          aws s3 sync dist s3://${{ secrets.S3_BUCKET_PROD_NAME }} --delete --no-progress
+          # Set cache control headers
+          aws s3 cp dist/index.html s3://${{ secrets.S3_BUCKET_PROD_NAME }}/index.html --cache-control "no-cache, no-store, must-revalidate"
+          
+
+      - name: Deployment summary
+        run: |
+          echo "🚀 Production deployment completed!"
+          echo "📦 Bucket: ${{ secrets.S3_BUCKET_PROD_NAME }}"
+          echo "🌐 Triggered by: ${{ github.event_name }}"
+          if [ "${{ github.event_name }}" = "release" ]; then
+            echo "🏷️  Release: ${{ github.event.release.tag_name }}"
+          fi
