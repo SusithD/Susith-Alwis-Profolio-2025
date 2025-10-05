@@ -150,15 +150,21 @@ export default function Hero() {
         {/* Subtle grid pattern */}
         <motion.div 
           style={{ 
-            opacity: useTransform(scrollYProgress, [0, 0.5], [0.015, 0.005]),
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
-            `,
-            backgroundSize: '80px 80px'
+            opacity: useTransform(scrollYProgress, [0, 0.5], [0.02, 0.005])
           }}
           className="absolute inset-0"
-        />
+        >
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: '80px 80px'
+            }}
+          />
+        </motion.div>
 
         {/* Gradient orbs */}
         <motion.div
