@@ -1,22 +1,77 @@
 name: Deploy to Vercel
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      confirm_deployment:
+        description: 'Type "DEPLOY" to confirm Vercel deployment'
+        required: true
+        default: ''
+      commit_sha:
+        description: 'Commit SHA to deploy (leave empty for latest)'
+        required: false
+        default: ''
+      deployment_type:
+        description: 'Deployment type'
+        type: choice
+        required: true
+        default: 'preview'
+        options:
+          - 'preview'
+          - 'production'
+
+# Prevent concurrent Vercel deployments
+concurrency:
+  group: deploy-vercel-${{ inputs.deployment_type }}
+  cancel-in-progress: false
 
 jobs:
-  deploy:
-    name: Deploy to Vercel
+  validate-inputs:
+    name: Validate deployment inputs
     runs-on: ubuntu-latest
+    
+    steps:
+      - name: Validate confirmation
+        run: |
+          if [ "${{ github.event.inputs.confirm_deployment }}" != "DEPLOY" ]; then
+            echo "❌ Deployment not confirmed. You must type 'DEPLOY' to proceed."
+            exit 1
+          fi
+          echo "✅ Deployment confirmed"
+
+      - name: Validate commit SHA
+        if: github.event.inputs.commit_sha != ''
+        run: |
+          echo "🔍 Validating commit SHA: ${{ github.event.inputs.commit_sha }}"
+          if [[ ! "${{ github.event.inputs.commit_sha }}" =~ ^[a-f0-9]{7,40}$ ]]; then
+            echo "❌ Invalid commit SHA format"
+            exit 1
+          fi
+          echo "✅ Commit SHA format is valid"
+
+  deploy:
+    name: Deploy to Vercel (${{ github.event.inputs.deployment_type }})
+    runs-on: ubuntu-latest
+    needs: [validate-inputs]
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.commit_sha || github.sha }}
 
-      - name: Use Node.js
+      - name: Display deployment info
+        run: |
+          echo "🚀 Starting Vercel deployment"
+          echo "📋 Deployment type: ${{ github.event.inputs.deployment_type }}"
+          echo "🔗 Commit SHA: ${{ github.event.inputs.commit_sha || github.sha }}"
+          echo "👤 Triggered by: ${{ github.actor }}"
+          
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -24,17 +79,45 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Set deployment arguments
+        id: deployment-args
+        run: |
+          if [ "${{ github.event.inputs.deployment_type }}" = "production" ]; then
+            echo "args=--prod" >> $GITHUB_OUTPUT
+            echo "🎯 Deploying to production"
+          else
+            echo "args=" >> $GITHUB_OUTPUT
+            echo "🎯 Deploying to preview"
+          fi
+
       - name: Deploy to Vercel
+        id: vercel-deploy
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-args: '--prod'
+          vercel-args: ${{ steps.deployment-args.outputs.args }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          working-directory: ./
 
-      - name: Deployment info
-        if: always()
+      - name: Deployment summary
         run: |
-          echo "Vercel deploy step finished. Check the Action logs and Vercel dashboard for details."
+          echo "🚀 Vercel deployment completed!"
+          echo "📋 Type: ${{ github.event.inputs.deployment_type }}"
+          echo "🔗 Commit: ${{ github.event.inputs.commit_sha || github.sha }}"
+          echo "👤 Deployed by: ${{ github.actor }}"
+          if [ -n "${{ steps.vercel-deploy.outputs.preview-url }}" ]; then
+            echo "🌐 Preview URL: ${{ steps.vercel-deploy.outputs.preview-url }}"
+          fi
+
+      - name: Deployment success notification
+        if: success()
+        run: |
+          echo "✅ Vercel deployment successful!"
+          echo "🔍 Check your Vercel dashboard for deployment details."
+          
+      - name: Deployment failure notification  
+        if: failure()
+        run: |
+          echo "❌ Vercel deployment failed!"
+          echo "🔍 Check the Action logs and Vercel dashboard for details."
