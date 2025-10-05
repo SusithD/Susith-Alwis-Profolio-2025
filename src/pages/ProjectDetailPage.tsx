@@ -8,7 +8,7 @@ interface ProjectDetailPageProps {
   onNavigateHome: () => void;
 }
 
-// Local images for The qexle rebranding project
+// Local images for The qexle rebranding project - ALL 27 IMAGES
 const qexleRebrandingImages = [
   new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href,
   new URL('../images/the-qexle-branding/imgi_11_0c0704137769287.6210f64481ae6.jpg', import.meta.url).href,
@@ -22,6 +22,21 @@ const qexleRebrandingImages = [
   new URL('../images/the-qexle-branding/imgi_19_21a411137769287.6210f64483056.jpg', import.meta.url).href,
   new URL('../images/the-qexle-branding/imgi_20_0a96f3137769287.6210f64479eac.jpg', import.meta.url).href,
   new URL('../images/the-qexle-branding/imgi_21_858cb8137769287.6210f64483826.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_22_1fbdc8137769287.6210f6447cb85.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_23_759264137769287.6210f6447db5f.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_24_bf749e137769287.6210f6447bc40.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_25_aec3ab137769287.6210f644795fc.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_26_4b81ad137769287.6210f644847dd.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_27_9cba49137769287.6210f6447e472.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_28_31dbb1137769287.6210f644828bb.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_29_695ecd137769287.6210f6447d3ff.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_30_abb68b137769287.6210f6447a74d.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_31_a09634137769287.6210f64485f5c.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_32_1faf4d137769287.6210f6447f7c9.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_33_d20b05137769287.6210f6447f1d9.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_34_e20e4a137769287.6210f64486665.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_35_fa5a19137769287.6210f64482292.jpg', import.meta.url).href,
+  new URL('../images/the-qexle-branding/imgi_36_76e7cf137769287.6210f644805e0.jpg', import.meta.url).href,
 ];
 
 // Local images for Bistro Coffee Shop project
