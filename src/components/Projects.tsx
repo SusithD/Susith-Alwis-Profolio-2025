@@ -136,9 +136,9 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
             </div>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
-                <h2 className="text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1]">
-                  Featured<br />Projects
-                </h2>
+                <p className="text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1]">
+                  Featured Projects
+                </p>
               </div>
               
               {/* Navigation Arrows - Desktop */}
