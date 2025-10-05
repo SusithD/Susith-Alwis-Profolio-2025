@@ -21,6 +21,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const kozhaCover = new URL('../images/logo-kozha-leather/imgi_16_d9e0ed144036805.6285223fef20c.jpg', import.meta.url).href;
   const gyroctionCover = new URL('../images/logo-gyroction/efe0a7145776937.62a44786baedf.jpg', import.meta.url).href;
   const nikeCover = new URL('../images/landing-page-ui-nike/418257146284501.62ad89bede8da.jpg', import.meta.url).href;
+  const wildlifeCover = new URL('../images/landing-page-wildlife/054fd3146507535.62b1c5409580e.jpg', import.meta.url).href;
   
   const projects = [
     {
@@ -92,6 +93,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: nikeCover
+    },
+    {
+      id: 'landing-page-wildlife',
+      title: 'Endemic Animals in Sri Lanka – Landing Page',
+      role: 'UI/UX Designer',
+      description: 'Interactive landing page concept highlighting Sri Lanka\'s endemic wildlife with immersive visuals and educational content. Jun–Sep 2024.',
+      category: 'web',
+      tags: ['Landing Page', 'UI/UX', 'Academic Project', 'Visual Design'],
+      accentColor: '#16A34A',
+      gradient: 'from-green-600/20 to-emerald-500/20',
+      initials: 'WL',
+      featured: true,
+      size: 'large',
+      image: wildlifeCover
     },
     {
       id: 'qexle-rebranding',

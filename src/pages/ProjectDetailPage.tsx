@@ -136,6 +136,16 @@ const nikeLandingPageImages = [
   new URL('../images/landing-page-ui-nike/fcee58146284501.62ad89bedc891.jpg', import.meta.url).href,
 ];
 
+// Local images for Wildlife landing page concept - ALL 6 IMAGES
+const wildlifeLandingPageImages = [
+  new URL('../images/landing-page-wildlife/054fd3146507535.62b1c5409580e.jpg', import.meta.url).href,
+  new URL('../images/landing-page-wildlife/1dc3ed146507535.62b1c54095e50.jpg', import.meta.url).href,
+  new URL('../images/landing-page-wildlife/5793b6146507535.62b1c54096652.jpg', import.meta.url).href,
+  new URL('../images/landing-page-wildlife/ef68f7146507535.62b1c54096b87.jpg', import.meta.url).href,
+  new URL('../images/landing-page-wildlife/1a0d28146507535.62b1c54097347.jpg', import.meta.url).href,
+  new URL('../images/landing-page-wildlife/bb5eb7146507535.62b1c5409789a.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -465,6 +475,43 @@ const projectData: Record<string, any> = {
       'Responsive grid for desktop and mobile breakpoints'
     ],
     images: nikeLandingPageImages,
+  },
+  'landing-page-wildlife': {
+    title: 'Endemic Animals in Sri Lanka – Landing Page',
+    subtitle: 'Interactive Biodiversity Education Interface',
+    role: 'UI/UX Designer • Academic Project',
+    year: 'Jun 2024 - Sep 2024',
+    duration: '3 months',
+    team: 'Solo',
+    description: 'An interactive web interface concept showcasing the rich biodiversity of Sri Lanka, focusing on endemic species like the Sri Lankan Leopard. The design blends immersive visuals with informative content to create an engaging learning experience.',
+    heroImage: wildlifeLandingPageImages[0],
+    behanceLink: 'https://www.behance.net/gallery/146507535/Wildlife-landing-page-design',
+    impact: [
+      { metric: '✓', label: 'Designed split-layout for balanced text and imagery' },
+      { metric: '✓', label: 'Implemented minimal navigation for focus' },
+      { metric: '✓', label: 'Highlighted endemic wildlife with rich photography' },
+      { metric: '✓', label: 'Added scroll indicators and micro-interactions' },
+    ],
+    responsibilities: [
+      'Defined IA and split-layout system for readability',
+      'Crafted typographic hierarchy and color palette inspired by nature',
+      'Designed scroll cues and micro-interactions for guidance',
+      'Prepared responsive frames for tablet and desktop views'
+    ],
+    technologies: ['UI/UX Design', 'Figma', 'Wireframing', 'Prototyping', 'Visual Design'],
+    process: [
+      { phase: 'Research', description: 'Reviewed conservation content and education UI patterns.' },
+      { phase: 'Wireframing', description: 'Explored split layouts, card modules, and content blocks.' },
+      { phase: 'Visual Design', description: 'Applied photography-led hero and nature-inspired accents.' },
+      { phase: 'Prototype', description: 'Defined scroll behavior, micro-interactions, and section transitions.' },
+    ],
+    keyFeatures: [
+      'Split layout combining narrative and visuals',
+      'Minimal navigation for distraction-free reading',
+      'Photography-forward storytelling for endemic species',
+      'Scroll indicators and micro-interactions to guide users'
+    ],
+    images: wildlifeLandingPageImages,
   },
   coveragex: {
     title: 'CoverageX.com',
