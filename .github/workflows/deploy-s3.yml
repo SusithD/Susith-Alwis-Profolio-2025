@@ -5,10 +5,40 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Prevent concurrent dev deployments
+concurrency:
+  group: deploy-dev-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  deploy:
-    name: Build and deploy to S3
+  # Wait for CI to complete before deploying
+  wait-for-ci:
+    name: Wait for CI completion
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    
+    steps:
+      - name: Wait for CI workflow
+        uses: fountainhead/action-wait-for-check@v1.2.0
+        id: wait-for-ci
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: "Lint, build and test"
+          ref: ${{ github.sha }}
+          timeoutSeconds: 600
+          intervalSeconds: 10
+
+      - name: CI Status Check
+        if: steps.wait-for-ci.outputs.conclusion != 'success'
+        run: |
+          echo "❌ CI failed - cancelling deployment"
+          exit 1
+
+  deploy:
+    name: Build and deploy to dev S3
+    runs-on: ubuntu-latest
+    needs: [wait-for-ci]
+    if: always() && (needs.wait-for-ci.result == 'success' || github.event_name == 'workflow_dispatch')
 
     steps:
       - name: Checkout repository
@@ -38,3 +68,10 @@ jobs:
           aws s3 sync dist s3://${{ secrets.S3_BUCKET_NAME }} --delete --no-progress
           # Make index.html cache short-lived and other assets long-lived
           aws s3 cp dist/index.html s3://${{ secrets.S3_BUCKET_NAME }}/index.html --cache-control "no-cache, no-store, must-revalidate"
+
+      - name: Dev deployment summary
+        run: |
+          echo "🚀 Dev deployment completed!"
+          echo "🌐 URL: http://susith-portfolio-dev.s3-website-us-east-1.amazonaws.com"
+          echo "📦 Bucket: ${{ secrets.S3_BUCKET_NAME }}"
+          echo "🔗 Commit: ${{ github.sha }}"

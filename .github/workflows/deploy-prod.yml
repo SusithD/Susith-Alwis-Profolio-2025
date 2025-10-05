@@ -9,14 +9,57 @@ on:
         description: 'Type "DEPLOY" to confirm production deployment'
         required: true
         default: ''
+      skip_dev_check:
+        description: 'Skip dev deployment verification (not recommended)'
+        type: boolean
+        default: false
+
+# Prevent concurrent production deployments
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
 
 jobs:
+  # Verify dev deployment exists and is recent
+  verify-dev-deployment:
+    name: Verify dev deployment
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.confirm_production == 'DEPLOY' && !inputs.skip_dev_check)
+    
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Check dev deployment exists
+        run: |
+          echo "🔍 Verifying dev deployment..."
+          if aws s3api head-object --bucket "${{ secrets.S3_BUCKET_NAME }}" --key "index.html" > /dev/null 2>&1; then
+            echo "✅ Dev deployment found"
+            # Get last modified date
+            LAST_MODIFIED=$(aws s3api head-object --bucket "${{ secrets.S3_BUCKET_NAME }}" --key "index.html" --query 'LastModified' --output text)
+            echo "📅 Dev last updated: $LAST_MODIFIED"
+            
+            # Check if deployment is recent (within last 7 days)
+            if [ $(date -d "$LAST_MODIFIED" +%s) -gt $(date -d "7 days ago" +%s) ]; then
+              echo "✅ Dev deployment is recent"
+            else
+              echo "⚠️ Dev deployment is older than 7 days - consider updating dev first"
+            fi
+          else
+            echo "❌ No dev deployment found"
+            echo "Please deploy to dev environment first"
+            exit 1
+          fi
+
   deploy-production:
     name: Build and deploy to production S3
     runs-on: ubuntu-latest
-    
-    # Only run if it's a release OR manual dispatch with confirmation
-    if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.confirm_production == 'DEPLOY')
+    needs: [verify-dev-deployment]
+    if: always() && (needs.verify-dev-deployment.result == 'success' || inputs.skip_dev_check)
 
     steps:
       - name: Checkout repository
@@ -48,11 +91,19 @@ jobs:
           aws s3 cp dist/index.html s3://${{ secrets.S3_BUCKET_PROD_NAME }}/index.html --cache-control "no-cache, no-store, must-revalidate"
           
 
-      - name: Deployment summary
+      - name: Production deployment summary
         run: |
           echo "🚀 Production deployment completed!"
+          echo "🌐 URL: http://susith-portfolio-prod.s3-website-us-east-1.amazonaws.com"
           echo "📦 Bucket: ${{ secrets.S3_BUCKET_PROD_NAME }}"
+          echo "🔗 Commit: ${{ github.sha }}"
           echo "🌐 Triggered by: ${{ github.event_name }}"
           if [ "${{ github.event_name }}" = "release" ]; then
             echo "🏷️  Release: ${{ github.event.release.tag_name }}"
           fi
+
+      - name: Notify deployment success
+        if: success()
+        run: |
+          echo "✅ Production deployment successful!"
+          echo "Please verify the site is working correctly."
