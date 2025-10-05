@@ -23,7 +23,7 @@ jobs:
         id: wait-for-ci
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: "Lint, build and test"
+          checkName: "Build project"
           ref: ${{ github.sha }}
           timeoutSeconds: 600
           intervalSeconds: 10
