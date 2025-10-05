@@ -7,8 +7,6 @@ Figma design:
 ## Features
 
 - Built with Vite + React
-- Uses Radix UI primitives and several modern UI helper libraries
-- Component-driven structure under `src/components` and `src/components/ui`
 
 ## Quick start
 
@@ -35,6 +33,33 @@ npm run dev
 npm run build
 ```
 
+
+## Linting and Yarn
+
+You requested ESLint and switching to Yarn. Changes added:
+
+- ESLint config files: `.eslintrc.cjs` and `.eslintignore`
+- `lint` and `lint:fix` scripts in `package.json`
+- The CI workflow now uses Yarn and runs `yarn lint` before build.
+
+Local steps to switch to Yarn and run the linter:
+
+```bash
+# install yarn (if not available):
+corepack enable
+corepack prepare yarn@stable --activate
+
+# generate yarn.lock and install dependencies:
+yarn install
+
+# run the linter
+yarn lint
+
+# optionally auto-fix problems
+yarn lint:fix
+```
+
+If you'd like, I can also add a `yarn.lock` (I generally prefer the lockfile to be created locally and committed by you so it reflects your environment). If you want me to create and commit one now, say so and I'll generate it.
 4. Preview the production build locally
 
 ```bash
