@@ -84,6 +84,15 @@ const kandyTuskersImages = [
   new URL('../images/logo-concept-kandy-tuskers/imgi_118_af2e1c130369959.617ede0e2c259.jpg', import.meta.url).href,
 ];
 
+// Local images for NOIR Interior Design project - ALL 5 IMAGES
+const noirInteriorDesignImages = [
+  new URL('../images/logo-noir/imgi_29_471143143551429.627c7892a22b1.jpg', import.meta.url).href,
+  new URL('../images/logo-noir/imgi_30_e6405e143551429.627c7892a2808.jpg', import.meta.url).href,
+  new URL('../images/logo-noir/imgi_31_e16818143551429.627c7892a1c0c.jpg', import.meta.url).href,
+  new URL('../images/logo-noir/imgi_32_e0b78f143551429.627c7892a0d31.jpg', import.meta.url).href,
+  new URL('../images/logo-noir/imgi_111_a122cf143551429.627c7892a1546.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -265,6 +274,44 @@ const projectData: Record<string, any> = {
       'Geometry grid ensuring consistency'
     ],
     images: kandyTuskersImages,
+  },
+  'noir-interior-design': {
+    title: 'Logo Design for NOIR Interior Design Company',
+    subtitle: 'Professional Virtual Identity Design',
+    role: 'Graphic Designer • NOIR Interior Design Company',
+    year: 'Feb 2022',
+    duration: 'Brand Identity Project',
+    team: 'Solo',
+    description: 'Creation of a professional virtual identity for NOIR, an Interior Design Company, through distinctive logo design. The project focused on developing a sophisticated brand identity that reflects the elegance and professionalism of the interior design industry while establishing strong brand recognition in the competitive market.',
+    heroImage: noirInteriorDesignImages[0],
+    behanceLink: 'https://www.behance.net/gallery/143551429/Logo-design-for-NOIR-Interior-Design-Company',
+    impact: [
+      { metric: '✓', label: 'Developed professional virtual identity' },
+      { metric: '✓', label: 'Created distinctive logo design' },
+      { metric: '✓', label: 'Established brand recognition' },
+    ],
+    responsibilities: [
+      'Researched interior design industry branding trends and market positioning',
+      'Developed multiple logo concepts emphasizing sophistication and professionalism',
+      'Created comprehensive visual identity system for interior design company',
+      'Designed brand applications showcasing elegance and modern aesthetic',
+      'Established consistent brand guidelines for professional presentation'
+    ],
+    technologies: ['Adobe Illustrator', 'Adobe Photoshop', 'Figma'],
+    process: [
+      { phase: 'Research & Discovery', description: 'Analyzed interior design industry landscape and studied successful brand identities in the sector.' },
+      { phase: 'Concept Development', description: 'Explored visual concepts that authentically represent sophistication, elegance, and professional expertise.' },
+      { phase: 'Visual Identity Creation', description: 'Developed comprehensive brand system with refined color palette and elegant typography.' },
+      { phase: 'Brand Applications', description: 'Created diverse applications demonstrating brand versatility across various interior design contexts.' },
+    ],
+    keyFeatures: [
+      'Sophisticated color palette reflecting elegance and professionalism',
+      'Typography selection balancing modern appeal with timeless quality',
+      'Visual elements inspired by interior design and architectural principles',
+      'Scalable logo system maintaining professional aesthetic across applications',
+      'Cohesive brand identity suitable for high-end interior design marketing'
+    ],
+    images: noirInteriorDesignImages,
   },
   coveragex: {
     title: 'CoverageX.com',

@@ -17,6 +17,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const bistroCover = new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href;
   const qexleCover = new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href;
   const organicCover = new URL('../images/logo-organic-beltline/imgi_42_ed9ac1143551981.627c7bfc9b51c.jpg', import.meta.url).href;
+  const noirCover = new URL('../images/logo-noir/imgi_29_471143143551429.627c7892a22b1.jpg', import.meta.url).href;
   
   const projects = [
     {
@@ -32,6 +33,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: organicCover
+    },
+    {
+      id: 'noir-interior-design',
+      title: 'Logo Design for NOIR Interior Design Company',
+      role: 'Graphic Designer',
+      description: 'Creation of a professional virtual identity for NOIR, an Interior Design Company, through distinctive logo design. Feb 2022.',
+      category: 'design',
+      tags: ['Brand Identity', 'Logo Design', 'Interior Design', 'Professional Branding'],
+      accentColor: '#000000',
+      gradient: 'from-gray-900/20 to-gray-700/20',
+      initials: 'NR',
+      featured: true,
+      size: 'large',
+      image: noirCover
     },
     {
       id: 'qexle-rebranding',
