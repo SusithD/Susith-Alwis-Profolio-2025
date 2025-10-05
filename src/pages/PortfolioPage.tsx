@@ -22,6 +22,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const gyroctionCover = new URL('../images/logo-gyroction/efe0a7145776937.62a44786baedf.jpg', import.meta.url).href;
   const nikeCover = new URL('../images/landing-page-ui-nike/418257146284501.62ad89bede8da.jpg', import.meta.url).href;
   const wildlifeCover = new URL('../images/landing-page-wildlife/054fd3146507535.62b1c5409580e.jpg', import.meta.url).href;
+  const foodieHutCover = new URL('../images/foodiehut-ui-design-and-development/ee7e75210104439.670bb1a9a3865.png', import.meta.url).href;
   
   const projects = [
     {
@@ -107,6 +108,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: wildlifeCover
+    },
+    {
+      id: 'foodiehut',
+      title: 'FoodieHut - Android Application',
+      role: 'UI Designer & Backend Developer',
+      description: 'Android app connecting users to exclusive promotions, online ordering, and branch navigation. Aug–Sep 2024.',
+      category: 'mobile',
+      tags: ['Android', 'UI/UX', 'Figma', 'Academic Project'],
+      accentColor: '#F97316',
+      gradient: 'from-orange-500/20 to-amber-400/20',
+      initials: 'FH',
+      featured: true,
+      size: 'large',
+      image: foodieHutCover
     },
     {
       id: 'qexle-rebranding',

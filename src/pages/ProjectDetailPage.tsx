@@ -146,6 +146,18 @@ const wildlifeLandingPageImages = [
   new URL('../images/landing-page-wildlife/bb5eb7146507535.62b1c5409789a.jpg', import.meta.url).href,
 ];
 
+// Local images for FoodieHut mobile application - ALL 8 IMAGES
+const foodieHutImages = [
+  new URL('../images/foodiehut-ui-design-and-development/ee7e75210104439.670bb1a9a3865.png', import.meta.url).href,
+  new URL('../images/foodiehut-ui-design-and-development/45dce0210104439.670bb1a9a30c9.png', import.meta.url).href,
+  new URL('../images/foodiehut-ui-design-and-development/66cd6d210104439.670bb1a9a190e.png', import.meta.url).href,
+  new URL('../images/foodiehut-ui-design-and-development/97fec5210104439.670bb1a9a20c6.png', import.meta.url).href,
+  new URL('../images/foodiehut-ui-design-and-development/9fed93210104439.670bb1a9a3db5.png', import.meta.url).href,
+  new URL('../images/foodiehut-ui-design-and-development/9a8fb6210104439.670bb1a9a4539.png', import.meta.url).href,
+  new URL('../images/foodiehut-ui-design-and-development/232675210104439.670bb1a9a28e7.png', import.meta.url).href,
+  new URL('../images/foodiehut-ui-design-and-development/b55526210104439.670bb1a9a4c61.png', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -512,6 +524,44 @@ const projectData: Record<string, any> = {
       'Scroll indicators and micro-interactions to guide users'
     ],
     images: wildlifeLandingPageImages,
+  },
+  foodiehut: {
+    title: 'FoodieHut - Android Application',
+    subtitle: 'Mobile App for Promotions, Ordering, and Navigation',
+    role: 'UI Designer & Backend Developer • Academic Project',
+    year: 'Aug 2024 - Sep 2024',
+    duration: '2 months',
+    team: 'Solo',
+    description: 'An Android mobile application connecting food enthusiasts with exclusive promotions from a food store chain, enabling online ordering and branch navigation with live location support.',
+    heroImage: foodieHutImages[0],
+    behanceLink: 'https://www.behance.net/gallery/210104439/FoodieHut-Mobile-Application-UIUX-Design',
+    githubLink: 'https://github.com/SusithD/foodiehut',
+    impact: [
+      { metric: '✓', label: 'Created modern, intuitive UI for quick ordering' },
+      { metric: '✓', label: 'Implemented live location tracking for branches' },
+      { metric: '✓', label: 'Added streamlined online ordering flows' },
+      { metric: '✓', label: 'Integrated automated email notifications' },
+    ],
+    responsibilities: [
+      'Designed mobile UI in Figma with consistent spacing and components',
+      'Built ordering and promotions flows with clear navigation',
+      'Added live location support for branch navigation',
+      'Implemented automated email notifications for order updates'
+    ],
+    technologies: ['Android Development', 'UI/UX Design', 'Figma'],
+    process: [
+      { phase: 'Research', description: 'Studied food app patterns and defined key user journeys.' },
+      { phase: 'Wireframes', description: 'Outlined screens for browse, promotions, cart, and branches.' },
+      { phase: 'Visual Design', description: 'Created components and visual hierarchy for readability.' },
+      { phase: 'Implementation', description: 'Built flows and integrated notifications and location features.' },
+    ],
+    keyFeatures: [
+      'Exclusive promotions and deals',
+      'Online ordering with simplified checkout',
+      'Branch navigation with live location support',
+      'Automated email notifications for order status'
+    ],
+    images: foodieHutImages,
   },
   coveragex: {
     title: 'CoverageX.com',
@@ -934,26 +984,42 @@ export default function ProjectDetailPage({ projectId, onNavigateHome }: Project
               </div>
             </div>
 
-            {/* Behance Link in Hero Section */}
-            {project.behanceLink && (
+            {/* External Links in Hero Section */}
+            {(project.behanceLink || project.githubLink) && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="pt-8"
+                className="pt-8 flex flex-wrap gap-4"
               >
-                <a
-                  href={project.behanceLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group"
-                >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
-                  </svg>
-                  View on Behance
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </a>
+                {project.behanceLink && (
+                  <a
+                    href={project.behanceLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group"
+                  >
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
+                    </svg>
+                    View on Behance
+                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </a>
+                )}
+                {project.githubLink && (
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group border border-white/10"
+                  >
+                    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
+                      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.012c0 4.424 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.907-.62.069-.607.069-.607 1.003.07 1.53 1.031 1.53 1.031.892 1.53 2.341 1.087 2.91.832.091-.647.35-1.087.636-1.337-2.22-.253-4.555-1.112-4.555-4.945 0-1.092.39-1.987 1.03-2.688-.103-.253-.447-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.56 9.56 0 0 1 12 6.844c.852.004 1.71.115 2.51.337 1.909-1.296 2.748-1.026 2.748-1.026.546 1.378.202 2.397.1 2.65.64.701 1.028 1.596 1.028 2.688 0 3.842-2.339 4.69-4.566 4.939.36.31.68.92.68 1.852 0 1.336-.012 2.415-.012 2.744 0 .268.18.579.688.48A10.013 10.013 0 0 0 22 12.012C22 6.484 17.523 2 12 2Z" clipRule="evenodd" />
+                    </svg>
+                    View on GitHub
+                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </a>
+                )}
               </motion.div>
             )}
           </motion.div>
