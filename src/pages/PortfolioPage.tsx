@@ -14,7 +14,23 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const [activeFilter, setActiveFilter] = useState('all');
   const ckCover = new URL('../images/logo-concept-colombo-kings/imgi_27_888ef0130936549.618ac232ec5e6.jpg', import.meta.url).href;
   const ktCover = new URL('../images/logo-concept-kandy-tuskers/imgi_30_ee4330130369959.617ede0e2b955.jpg', import.meta.url).href;
+  const bistroCover = new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href;
+  
   const projects = [
+    {
+      id: 'bistro-coffee-shop',
+      title: 'Logo Design for Bistro Coffee Shop',
+      role: 'Graphic Designer',
+      description: 'Brand identity design for Bistro Coffee Shop in Anuradhapura, creating a logo that captures the welcoming and cozy atmosphere. Jan 2022.',
+      category: 'design',
+      tags: ['Brand Identity', 'Logo Design', 'Graphic Design', 'Branding'],
+      accentColor: '#8B4513',
+      gradient: 'from-[#8B4513]/20 to-orange-500/20',
+      initials: 'BC',
+      featured: true,
+      size: 'large',
+      image: bistroCover
+    },
     {
       id: 'kandy-tuskers-logo-concept',
       title: 'Logo Redesign Concept for Kandy Tuskers',

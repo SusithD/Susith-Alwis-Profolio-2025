@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll } from 'motion/react';
 import { ArrowUpRight, ChevronLeft, ChevronRight, FolderOpen } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
@@ -15,6 +15,17 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   const projects = [
+    {
+      id: 'bistro-coffee-shop',
+      title: 'Bistro Coffee Shop',
+      role: 'Graphic Designer',
+      description: 'Brand identity design for Bistro Coffee Shop in Anuradhapura, creating a logo that captures the welcoming and cozy atmosphere of the establishment.',
+      tags: ['Brand Identity', 'Logo Design', 'Graphic Design', 'Branding'],
+      accentColor: '#8B4513',
+      gradient: 'from-[#8B4513]/20 to-orange-500/20',
+      initials: 'BC',
+      image: new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href
+    },
     {
       id: 'coveragex',
       title: 'CoverageX.com',
@@ -61,7 +72,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
     }
   ];
 
-  const { scrollYProgress } = useScroll({
+  useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });

@@ -8,6 +8,17 @@ interface ProjectDetailPageProps {
   onNavigateHome: () => void;
 }
 
+// Local images for Bistro Coffee Shop project
+const bistroCoffeeShopImages = [
+  new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href,
+  new URL('../images/logo-bistro-coffee-shop/imgi_31_504abc135068517.61e10c014cb8a.jpg', import.meta.url).href,
+  new URL('../images/logo-bistro-coffee-shop/imgi_114_8a5c65135068517.61e10c014e6c2.jpg', import.meta.url).href,
+  new URL('../images/logo-bistro-coffee-shop/imgi_117_c78179135068517.61e10c014e128.jpg', import.meta.url).href,
+  new URL('../images/logo-bistro-coffee-shop/imgi_119_59d557135068517.61e10c014d367.jpg', import.meta.url).href,
+  new URL('../images/logo-bistro-coffee-shop/imgi_121_0a7897135068517.61e10c014d93e.jpg', import.meta.url).href,
+  new URL('../images/logo-bistro-coffee-shop/imgi_123_d0846a135068517.61e10c014c459.jpg', import.meta.url).href,
+];
+
 // Local images for Colombo Kings project
 const colomboKingsImages = [
   new URL('../images/logo-concept-colombo-kings/imgi_27_888ef0130936549.618ac232ec5e6.jpg', import.meta.url).href,
@@ -27,6 +38,42 @@ const kandyTuskersImages = [
 ];
 
 const projectData: Record<string, any> = {
+  'bistro-coffee-shop': {
+    title: 'Logo Design for Bistro Coffee Shop',
+    subtitle: 'Brand Identity Design',
+    role: 'Graphic Designer • Bistro Coffee Shop',
+    year: 'Jan 2022',
+    duration: 'Brand Identity Project',
+    team: 'Solo',
+    description: 'Brand identity design for Bistro Coffee Shop in Anuradhapura, creating a logo that captures the welcoming and cozy atmosphere of the establishment. The project focused on developing a distinctive brand identity that reflects the warmth and comfort associated with a local coffee shop experience.',
+    heroImage: bistroCoffeeShopImages[0],
+    behanceLink: 'https://www.behance.net/gallery/135068517/Logo-Design-for-Bistro-Coffee-shop',
+    impact: [
+      { metric: '✓', label: 'Created welcoming and cozy brand identity' },
+      { metric: '✓', label: 'Developed distinctive logo design' },
+      { metric: '✓', label: 'Established brand recognition in local market' },
+    ],
+    responsibilities: [
+      'Researched coffee shop branding trends and local market preferences',
+      'Developed multiple logo concepts that reflect the cozy atmosphere',
+      'Created comprehensive brand identity including color palette and typography',
+      'Designed various logo applications and mockups for real-world usage'
+    ],
+    technologies: ['Adobe Illustrator', 'Adobe Photoshop', 'Figma'],
+    process: [
+      { phase: 'Discovery', description: 'Analyzed the coffee shop industry, target audience, and brand positioning in Anuradhapura market.' },
+      { phase: 'Concept Development', description: 'Sketched multiple logo directions focusing on warmth, comfort, and local appeal.' },
+      { phase: 'Design Refinement', description: 'Refined selected concepts with attention to typography, iconography, and color harmony.' },
+      { phase: 'Brand Applications', description: 'Created comprehensive brand guidelines and mockups showing logo usage across touchpoints.' },
+    ],
+    keyFeatures: [
+      'Warm and inviting color palette reflecting coffee culture',
+      'Typography that balances modern appeal with approachable personality',
+      'Versatile logo system working across print and digital applications',
+      'Scalable design maintaining clarity at various sizes'
+    ],
+    images: bistroCoffeeShopImages,
+  },
   'colombo-kings-logo-concept': {
     title: 'Logo Redesign Concept for Colombo Kings',
     subtitle: 'Branding Concept for LPL Franchise',
@@ -531,26 +578,39 @@ export default function ProjectDetailPage({ projectId, onNavigateHome }: Project
               className="space-y-12"
             >
               <h2 className="text-4xl md:text-5xl">Gallery</h2>
-              <div className="grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-[200px] md:auto-rows-[260px]">
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
                 {project.images.map((src: string, i: number) => {
-                  const layout = [
-                    'md:col-span-3 md:row-span-2',
-                    'md:col-span-3 md:row-span-1',
-                    'md:col-span-2 md:row-span-1',
-                    'md:col-span-2 md:row-span-1',
-                    'md:col-span-2 md:row-span-2',
-                  ][i % 5];
+                  // Create a creative masonry-style layout for better image distribution
+                  const layouts = [
+                    'col-span-2 md:col-span-2 lg:col-span-3 aspect-[4/3]', // Large featured
+                    'col-span-1 md:col-span-1 lg:col-span-2 aspect-square', // Medium square
+                    'col-span-1 md:col-span-1 lg:col-span-1 aspect-square', // Small square
+                    'col-span-2 md:col-span-2 lg:col-span-2 aspect-[3/2]', // Medium wide
+                    'col-span-1 md:col-span-1 lg:col-span-2 aspect-[4/3]', // Medium portrait
+                    'col-span-1 md:col-span-1 lg:col-span-2 aspect-square', // Medium square
+                    'col-span-2 md:col-span-2 lg:col-span-3 aspect-video', // Wide banner
+                  ];
+                  const layout = layouts[i % layouts.length];
+                  
                   return (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, scale: 0.95 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: i * 0.05 }}
-                      className={`relative overflow-hidden rounded-3xl border border-white/10 group ${layout}`}
+                      transition={{ duration: 0.4, delay: i * 0.08 }}
+                      className={`relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 group cursor-pointer ${layout}`}
+                      whileHover={{ scale: 1.02, y: -4 }}
                     >
-                      <ImageWithFallback src={src} alt={`${project.title} ${i + 1}`} className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ImageWithFallback 
+                        src={src} 
+                        alt={`${project.title} design ${i + 1}`} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                      <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-white text-sm font-medium">View Details</span>
+                      </div>
                     </motion.div>
                   );
                 })}
@@ -790,6 +850,17 @@ export default function ProjectDetailPage({ projectId, onNavigateHome }: Project
               Let's create something amazing together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {project.behanceLink && (
+                <a
+                  href={project.behanceLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#1877f2] text-white px-8 py-4 rounded-full hover:bg-[#1877f2]/90 transition-all flex items-center gap-2 justify-center"
+                >
+                  View on Behance
+                  <ArrowUpRight className="w-5 h-5" />
+                </a>
+              )}
               <button
                 onClick={onNavigateHome}
                 className="bg-[#1a1a1a] text-white px-8 py-4 rounded-full hover:bg-[#1a1a1a]/90 transition-all flex items-center gap-2 justify-center"
