@@ -99,7 +99,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
     <section 
       id="projects" 
       ref={containerRef}
-      className="min-h-screen bg-[#1a1a1a] text-white py-24 relative overflow-hidden"
+      className="min-h-screen bg-[#1a1a1a] text-white px-6 py-24 relative overflow-hidden"
     >
       {/* Decorative section labels */}
       <div className="absolute top-8 left-8 text-white/20 text-sm hidden md:block z-20">3/5</div>
@@ -115,7 +115,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
 
       <div className="relative z-10">
         {/* Header */}
-        <div className="px-6 md:px-12 mb-16 max-w-7xl">
+        <div className="mb-16 max-w-7xl w-full mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -191,7 +191,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
 
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide px-6 md:px-12 py-8"
+            className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide py-8"
             style={{
               scrollSnapType: 'x mandatory',
               WebkitOverflowScrolling: 'touch'
