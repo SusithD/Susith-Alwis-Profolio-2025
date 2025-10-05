@@ -5,6 +5,12 @@ on:
   issue_comment:
     types: [created]
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  actions: read
+
 # Prevent concurrent dev deployments
 concurrency:
   group: deploy-dev-${{ github.event.issue.number || github.ref }}
@@ -27,6 +33,7 @@ jobs:
         id: check
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const comment = context.payload.comment.body.trim();
             
@@ -68,6 +75,7 @@ jobs:
         if: steps.check.outputs.should-deploy == 'true'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.rest.issues.createComment({
               issue_number: ${{ steps.check.outputs.pr-number }},
@@ -149,6 +157,7 @@ jobs:
         if: always() && success() && needs.check-comment.outputs.should-deploy == 'true'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const prNumber = ${{ needs.check-comment.outputs.pr-number }};
             const commitSha = '${{ needs.check-comment.outputs.pr-head-sha }}';
@@ -171,6 +180,7 @@ jobs:
         if: always() && failure() && needs.check-comment.outputs.should-deploy == 'true'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const prNumber = ${{ needs.check-comment.outputs.pr-number }};
             const commitSha = '${{ needs.check-comment.outputs.pr-head-sha }}';
