@@ -35,26 +35,48 @@ jobs:
           exit 1
 
   deploy:
-    name: Build and deploy to dev S3
+    name: Deploy to dev S3 (using CI artifact)
     runs-on: ubuntu-latest
     needs: [wait-for-ci]
     if: always() && (needs.wait-for-ci.result == 'success' || github.event_name == 'workflow_dispatch')
 
     steps:
-      - name: Checkout repository
+      - name: Download build artifact from CI
+        if: github.event_name == 'push'
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-${{ github.sha }}
+          path: dist
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Fallback: build if manual trigger (no CI artifact available)
+      - name: Checkout repository (fallback for manual trigger)
+        if: github.event_name == 'workflow_dispatch'
         uses: actions/checkout@v4
 
-      - name: Use Node.js 20
+      - name: Use Node.js 20 (fallback for manual trigger)
+        if: github.event_name == 'workflow_dispatch'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install dependencies (fallback for manual trigger)
+        if: github.event_name == 'workflow_dispatch'
         run: npm ci
 
-      - name: Build
+      - name: Build (fallback for manual trigger)
+        if: github.event_name == 'workflow_dispatch'
         run: npm run build
+
+      - name: Verify dist folder exists
+        run: |
+          if [ ! -d "dist" ] || [ -z "$(ls -A dist)" ]; then
+            echo "❌ No dist folder found or it's empty"
+            exit 1
+          fi
+          echo "✅ Build artifacts found:"
+          ls -la dist/
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2

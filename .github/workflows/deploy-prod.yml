@@ -55,27 +55,79 @@ jobs:
             exit 1
           fi
 
-  deploy-production:
-    name: Build and deploy to production S3
+  # Get CI artifact for production deployment
+  get-build-artifact:
+    name: Get latest CI build artifact
     runs-on: ubuntu-latest
     needs: [verify-dev-deployment]
     if: always() && (needs.verify-dev-deployment.result == 'success' || inputs.skip_dev_check)
+    
+    steps:
+      - name: Get latest successful CI run
+        id: get-ci-run
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: runs } = await github.rest.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'ci.yml',
+              status: 'success',
+              per_page: 1,
+              branch: 'main'
+            });
+            
+            if (runs.total_count === 0) {
+              core.setFailed('No successful CI runs found on main branch');
+              return;
+            }
+            
+            const latestRun = runs.workflow_runs[0];
+            console.log(`Found CI run: ${latestRun.id} from ${latestRun.head_sha}`);
+            core.setOutput('run-id', latestRun.id);
+            core.setOutput('commit-sha', latestRun.head_sha);
+
+      - name: Download build artifact from CI
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-${{ steps.get-ci-run.outputs.commit-sha }}
+          path: dist
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ steps.get-ci-run.outputs.run-id }}
+
+      - name: Verify build artifact
+        run: |
+          if [ ! -d "dist" ] || [ -z "$(ls -A dist)" ]; then
+            echo "❌ No build artifact found"
+            exit 1
+          fi
+          echo "✅ Production build artifact verified:"
+          echo "📁 Files in dist:"
+          ls -la dist/
+          echo "🔗 Built from commit: ${{ steps.get-ci-run.outputs.commit-sha }}"
+
+      - name: Upload verified artifact for deployment
+        uses: actions/upload-artifact@v4
+        with:
+          name: prod-deploy-${{ github.run_id }}
+          path: dist
+          retention-days: 1
+
+    outputs:
+      commit-sha: ${{ steps.get-ci-run.outputs.commit-sha }}
+
+  deploy-production:
+    name: Deploy to production S3 (using CI artifact)
+    runs-on: ubuntu-latest
+    needs: [verify-dev-deployment, get-build-artifact]
+    if: always() && needs.get-build-artifact.result == 'success'
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
+      - name: Download production artifact
+        uses: actions/download-artifact@v4
         with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
+          name: prod-deploy-${{ github.run_id }}
+          path: dist
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -96,8 +148,8 @@ jobs:
           echo "🚀 Production deployment completed!"
           echo "🌐 URL: http://susith-portfolio-prod.s3-website-us-east-1.amazonaws.com"
           echo "📦 Bucket: ${{ secrets.S3_BUCKET_PROD_NAME }}"
-          echo "🔗 Commit: ${{ github.sha }}"
-          echo "🌐 Triggered by: ${{ github.event_name }}"
+          echo "🔗 Built from commit: ${{ needs.get-build-artifact.outputs.commit-sha }}"
+          echo "🚀 Deployed by: ${{ github.event_name }}"
           if [ "${{ github.event_name }}" = "release" ]; then
             echo "🏷️  Release: ${{ github.event.release.tag_name }}"
           fi

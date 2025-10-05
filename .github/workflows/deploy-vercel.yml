@@ -67,16 +67,39 @@ jobs:
           echo "🔗 Commit SHA: ${{ github.event.inputs.commit_sha || github.sha }}"
           echo "👤 Triggered by: ${{ github.actor }}"
           
-      - name: Use Node.js 20
+      - name: Try to get CI artifact (if available)
+        id: try-artifact
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-${{ github.event.inputs.commit_sha || github.sha }}
+          path: dist
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check if artifact was downloaded
+        id: artifact-check
+        run: |
+          if [ -d "dist" ] && [ -n "$(ls -A dist)" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+            echo "✅ Using CI build artifact"
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  No CI artifact found, will build from source"
+          fi
+
+      - name: Use Node.js 20 (fallback build)
+        if: steps.artifact-check.outputs.found != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install dependencies (fallback build)
+        if: steps.artifact-check.outputs.found != 'true'
         run: npm ci
 
-      - name: Build
+      - name: Build (fallback build)
+        if: steps.artifact-check.outputs.found != 'true'
         run: npm run build
 
       - name: Set deployment arguments
@@ -106,6 +129,11 @@ jobs:
           echo "📋 Type: ${{ github.event.inputs.deployment_type }}"
           echo "🔗 Commit: ${{ github.event.inputs.commit_sha || github.sha }}"
           echo "👤 Deployed by: ${{ github.actor }}"
+          if [ "${{ steps.artifact-check.outputs.found }}" = "true" ]; then
+            echo "⚡ Build: Used CI artifact (fast deployment)"
+          else
+            echo "🔨 Build: Built from source (fallback)"
+          fi
           if [ -n "${{ steps.vercel-deploy.outputs.preview-url }}" ]; then
             echo "🌐 Preview URL: ${{ steps.vercel-deploy.outputs.preview-url }}"
           fi
