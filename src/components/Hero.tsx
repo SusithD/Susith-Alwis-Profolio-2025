@@ -28,7 +28,7 @@ export default function Hero() {
     <section 
       ref={ref} 
       id="hero" 
-      className="min-h-screen bg-[#1a1a1a] text-white flex items-center justify-center px-4 md:px-8 lg:px-12 pt-20 pb-12 relative overflow-hidden"
+      className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-4 md:px-8 lg:px-12 pt-20 pb-12 relative overflow-hidden"
     >
       {/* Main content container */}
       <motion.div 
