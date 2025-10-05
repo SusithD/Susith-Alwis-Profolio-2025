@@ -13,7 +13,22 @@ interface PortfolioPageProps {
 export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProps) {
   const [activeFilter, setActiveFilter] = useState('all');
   const ckCover = new URL('../images/logo-concept-colombo-kings/imgi_27_888ef0130936549.618ac232ec5e6.jpg', import.meta.url).href;
+  const ktCover = new URL('../images/logo-concept-kandy-tuskers/imgi_30_ee4330130369959.617ede0e2b955.jpg', import.meta.url).href;
   const projects = [
+    {
+      id: 'kandy-tuskers-logo-concept',
+      title: 'Logo Redesign Concept for Kandy Tuskers',
+      role: 'Graphic Designer',
+      description: 'A conceptual logo redesign for Kandy Tuskers, a Sri Lankan franchise professional T20 cricket team in the LPL. Apr–May 2021.',
+      category: 'design',
+      tags: ['Branding', 'Logo Design', 'Sports Identity'],
+      accentColor: '#F59E0B',
+      gradient: 'from-amber-500/20 to-yellow-500/20',
+      initials: 'KT',
+      featured: false,
+      size: 'medium',
+      image: ktCover
+    },
     {
       id: 'colombo-kings-logo-concept',
       title: 'Logo Redesign Concept for Colombo Kings',

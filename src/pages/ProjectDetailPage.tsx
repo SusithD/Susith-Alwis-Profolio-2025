@@ -17,6 +17,15 @@ const colomboKingsImages = [
   new URL('../images/logo-concept-colombo-kings/imgi_109_f12e79130936549.618ac232edae3.jpg', import.meta.url).href,
 ];
 
+const kandyTuskersImages = [
+  new URL('../images/logo-concept-kandy-tuskers/imgi_30_ee4330130369959.617ede0e2b955.jpg', import.meta.url).href,
+  new URL('../images/logo-concept-kandy-tuskers/imgi_106_4e0064130369959.617ede0e2db05.jpg', import.meta.url).href,
+  new URL('../images/logo-concept-kandy-tuskers/imgi_110_389ef9130369959.617ede0e2cd2c.jpg', import.meta.url).href,
+  new URL('../images/logo-concept-kandy-tuskers/imgi_113_251543130369959.617ede0e2c7c5.jpg', import.meta.url).href,
+  new URL('../images/logo-concept-kandy-tuskers/imgi_116_4837d4130369959.617ede0e2d513.jpg', import.meta.url).href,
+  new URL('../images/logo-concept-kandy-tuskers/imgi_118_af2e1c130369959.617ede0e2c259.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'colombo-kings-logo-concept': {
     title: 'Logo Redesign Concept for Colombo Kings',
@@ -51,6 +60,40 @@ const projectData: Record<string, any> = {
       'Grid-based construction for consistency across applications'
     ],
     images: colomboKingsImages,
+  },
+  'kandy-tuskers-logo-concept': {
+    title: 'Logo Redesign Concept for Kandy Tuskers',
+    subtitle: 'Branding Concept for LPL Franchise',
+    role: 'Graphic Designer • Lanka Premier League, Kandy Tuskers',
+    year: 'Apr–May 2021',
+    duration: 'Concept Project',
+    team: 'Solo',
+    description: 'A conceptual logo redesign for Kandy Tuskers, a Sri Lankan franchise professional Twenty20 cricket team competing in the Lanka Premier League. Focused on creating a distinctive team identity while maintaining brand recognition.',
+    heroImage: kandyTuskersImages[0],
+    impact: [
+      { metric: '✓', label: 'Developed conceptual logo redesign' },
+      { metric: '✓', label: 'Created distinctive team identity' },
+      { metric: '✓', label: 'Maintained brand recognition in sports context' },
+    ],
+    responsibilities: [
+      'Explored multiple identity directions and motifs',
+      'Constructed primary mark and supporting lockups',
+      'Built presentation mockups for sports applications'
+    ],
+    technologies: ['Figma', 'Illustrator', 'Photoshop'],
+    process: [
+      { phase: 'Discovery', description: 'Studied LPL branding landscape and Kandy cultural motifs.' },
+      { phase: 'Concepts', description: 'Sketched and digitized multiple tusker-inspired marks.' },
+      { phase: 'Refinement', description: 'Iterated geometry, spacing, and color tuning.' },
+      { phase: 'Applications', description: 'Explored usage in kits, social posts, and merchandise.' },
+    ],
+    keyFeatures: [
+      'Iconic tusker mark with strong silhouette',
+      'Flexible horizontal and stacked lockups',
+      'Broadcast-safe contrast and color palette',
+      'Geometry grid ensuring consistency'
+    ],
+    images: kandyTuskersImages,
   },
   coveragex: {
     title: 'CoverageX.com',
