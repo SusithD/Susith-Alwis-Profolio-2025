@@ -184,10 +184,10 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
         </div>
 
         {/* Horizontal Scrolling Container */}
-        <div className="relative">
-          {/* Gradient overlays for scroll hint - reduced width to not cover cards */}
-          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/50 to-transparent z-10 pointer-events-none" />
-          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#1a1a1a] via-[#1a1a1a]/50 to-transparent z-10 pointer-events-none" />
+        <div className="relative max-w-7xl w-full mx-auto">
+          {/* Gradient overlays for scroll hint - place behind cards */}
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/50 to-transparent z-0 pointer-events-none" />
+          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#1a1a1a] via-[#1a1a1a]/50 to-transparent z-0 pointer-events-none" />
 
           <div
             ref={scrollContainerRef}
