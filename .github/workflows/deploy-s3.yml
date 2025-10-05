@@ -1,21 +1,87 @@
 name: Deploy to S3 (dev)
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
+  issue_comment:
+    types: [created]
 
 # Prevent concurrent dev deployments
 concurrency:
-  group: deploy-dev-${{ github.ref }}
+  group: deploy-dev-${{ github.event.issue.number || github.ref }}
   cancel-in-progress: false
 
 jobs:
-  # Wait for CI to complete before deploying
+  # Check if comment is deploy command
+  check-comment:
+    name: Check deploy command
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issue_comment'
+    outputs:
+      should-deploy: ${{ steps.check.outputs.should-deploy }}
+      pr-number: ${{ steps.check.outputs.pr-number }}
+      pr-head-sha: ${{ steps.check.outputs.pr-head-sha }}
+      pr-head-ref: ${{ steps.check.outputs.pr-head-ref }}
+    
+    steps:
+      - name: Check comment and PR status
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = context.payload.comment.body.trim();
+            
+            // Check if comment is the deploy command
+            if (comment !== '/deploy dev') {
+              console.log('Comment is not a deploy command');
+              core.setOutput('should-deploy', 'false');
+              return;
+            }
+            
+            // Check if comment is on a PR
+            if (!context.payload.issue.pull_request) {
+              console.log('Comment is not on a pull request');
+              core.setOutput('should-deploy', 'false');
+              return;
+            }
+            
+            // Get PR details
+            const prNumber = context.payload.issue.number;
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber
+            });
+            
+            // Check if PR is open
+            if (pr.state !== 'open') {
+              console.log('Pull request is not open');
+              core.setOutput('should-deploy', 'false');
+              return;
+            }
+            
+            core.setOutput('should-deploy', 'true');
+            core.setOutput('pr-number', prNumber);
+            core.setOutput('pr-head-sha', pr.head.sha);
+            core.setOutput('pr-head-ref', pr.head.ref);
+
+      - name: Add deployment started comment
+        if: steps.check.outputs.should-deploy == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: ${{ steps.check.outputs.pr-number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Deployment to dev environment started. Please wait...'
+            })
+
+  # Wait for CI to complete before deploying (skip for manual dispatch)
   wait-for-ci:
     name: Wait for CI completion
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    needs: [check-comment]
+    if: always() && needs.check-comment.outputs.should-deploy == 'true'
     
     steps:
       - name: Wait for CI workflow
@@ -24,25 +90,28 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: "Build project"
-          ref: ${{ github.sha }}
+          ref: ${{ needs.check-comment.outputs.pr-head-sha }}
           timeoutSeconds: 600
           intervalSeconds: 10
 
       - name: CI Status Check
         if: steps.wait-for-ci.outputs.conclusion != 'success'
         run: |
-          echo "❌ CI failed - cancelling deployment"
+          echo "CI failed - cancelling deployment"
           exit 1
 
   deploy:
     name: Build and deploy to dev S3
     runs-on: ubuntu-latest
-    needs: [wait-for-ci]
-    if: always() && (needs.wait-for-ci.result == 'success' || github.event_name == 'workflow_dispatch')
+    needs: [check-comment, wait-for-ci]
+    if: always() && ((needs.wait-for-ci.result == 'success' || needs.wait-for-ci.result == 'skipped') && (github.event_name == 'workflow_dispatch' || needs.check-comment.outputs.should-deploy == 'true'))
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.check-comment.outputs.pr-head-sha || github.sha }}
+          fetch-depth: 0
 
       - name: Use Node.js 20
         uses: actions/setup-node@v4
@@ -71,7 +140,51 @@ jobs:
 
       - name: Dev deployment summary
         run: |
-          echo "🚀 Dev deployment completed!"
-          echo "🌐 URL: http://susith-portfolio-dev.s3-website-us-east-1.amazonaws.com"
-          echo "📦 Bucket: ${{ secrets.S3_BUCKET_NAME }}"
-          echo "🔗 Commit: ${{ github.sha }}"
+          echo "Dev deployment completed!"
+          echo "URL: http://susith-portfolio-dev.s3-website-us-east-1.amazonaws.com"
+          echo "Bucket: ${{ secrets.S3_BUCKET_NAME }}"
+          echo "Commit: ${{ github.sha }}"
+
+      - name: Add success comment to PR
+        if: always() && success() && needs.check-comment.outputs.should-deploy == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = ${{ needs.check-comment.outputs.pr-number }};
+            const commitSha = '${{ needs.check-comment.outputs.pr-head-sha }}';
+            const shortSha = commitSha.substring(0, 7);
+            
+            github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Deployment to dev environment completed successfully.
+              
+            Details:
+            - Branch: ${{ needs.check-comment.outputs.pr-head-ref }}
+            - Commit: ${shortSha}
+            - URL: http://susith-portfolio-dev.s3-website-us-east-1.amazonaws.com
+            - Status: Success`
+            })
+
+      - name: Add failure comment to PR
+        if: always() && failure() && needs.check-comment.outputs.should-deploy == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = ${{ needs.check-comment.outputs.pr-number }};
+            const commitSha = '${{ needs.check-comment.outputs.pr-head-sha }}';
+            const shortSha = commitSha.substring(0, 7);
+            
+            github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Deployment to dev environment failed.
+              
+            Details:
+            - Branch: ${{ needs.check-comment.outputs.pr-head-ref }}
+            - Commit: ${shortSha}
+            - Status: Failed
+            - Logs: [View workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`
+            })
