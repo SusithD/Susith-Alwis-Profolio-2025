@@ -60,6 +60,8 @@ yarn lint:fix
 ```
 
 If you'd like, I can also add a `yarn.lock` (I generally prefer the lockfile to be created locally and committed by you so it reflects your environment). If you want me to create and commit one now, say so and I'll generate it.
+
+Note: this project was tested with Yarn 4 (berry). Using Corepack as shown above will ensure you get a compatible Yarn. If you prefer Yarn Classic (v1) or Yarn v3, let me know and I can adapt the repo and CI accordingly.
 4. Preview the production build locally
 
 ```bash
