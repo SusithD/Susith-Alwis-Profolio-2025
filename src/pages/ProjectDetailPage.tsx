@@ -93,6 +93,21 @@ const noirInteriorDesignImages = [
   new URL('../images/logo-noir/imgi_111_a122cf143551429.627c7892a1546.jpg', import.meta.url).href,
 ];
 
+// Local images for Kozha Leather Collections project - ALL 11 IMAGES
+const kozhaLeatherImages = [
+  new URL('../images/logo-kozha-leather/imgi_16_d9e0ed144036805.6285223fef20c.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_17_60e7f6144036805.6285223fedde8.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_35_9d9e81144036805.6285223fecf2c.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_36_12edc4144036805.6285223ff0cd1.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_37_1f6657144036805.6285223fee455.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_38_798756144036805.6285223fed600.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_39_27e0b9144036805.6285223feec01.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_40_693fa7144036805.6285223ff03cf.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_41_604a3e144036805.6285223fefc84.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_42_5e8366144036805.6285223ff13d5.jpg', import.meta.url).href,
+  new URL('../images/logo-kozha-leather/imgi_45_54a327144036805.6285223ff1eee.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -312,6 +327,44 @@ const projectData: Record<string, any> = {
       'Cohesive brand identity suitable for high-end interior design marketing'
     ],
     images: noirInteriorDesignImages,
+  },
+  'kozha-leather-collections': {
+    title: 'Logo Design for Kozha Leather Collections',
+    subtitle: 'Professional Brand Identity for Leather Goods',
+    role: 'Graphic Designer • The qexle, Kozha Leather Collections',
+    year: 'Mar 2022',
+    duration: 'Brand Identity Project',
+    team: 'Solo',
+    description: 'Development of a professional brand identity for Kozha Leather Collections through strategic logo design, conveying quality and craftsmanship. The project emphasized creating a distinctive visual identity that reflects the premium nature of leather goods while establishing strong brand recognition in the competitive leather accessories market.',
+    heroImage: kozhaLeatherImages[0],
+    behanceLink: 'https://www.behance.net/gallery/144036805/Logo-Design-For-Kozha-Leather-Collections',
+    impact: [
+      { metric: '✓', label: 'Created professional brand identity' },
+      { metric: '✓', label: 'Designed strategic logo elements' },
+      { metric: '✓', label: 'Conveyed quality and craftsmanship through design' },
+    ],
+    responsibilities: [
+      'Researched leather goods industry and premium brand positioning strategies',
+      'Developed multiple logo concepts emphasizing quality and craftsmanship',
+      'Created comprehensive visual identity system for leather collections brand',
+      'Designed brand applications showcasing premium quality and artisanal appeal',
+      'Established consistent brand guidelines for luxury product presentation'
+    ],
+    technologies: ['Adobe Illustrator', 'Adobe Photoshop', 'Figma'],
+    process: [
+      { phase: 'Research & Discovery', description: 'Analyzed leather goods market and studied successful premium brand identities in the luxury accessories sector.' },
+      { phase: 'Concept Development', description: 'Explored visual concepts that authentically represent craftsmanship, quality, and timeless elegance.' },
+      { phase: 'Visual Identity Creation', description: 'Developed comprehensive brand system with refined color palette emphasizing premium leather aesthetics.' },
+      { phase: 'Brand Applications', description: 'Created diverse applications demonstrating brand versatility across various leather product contexts.' },
+    ],
+    keyFeatures: [
+      'Premium color palette reflecting leather craftsmanship and quality',
+      'Typography selection balancing traditional craftsmanship with modern appeal',
+      'Visual elements inspired by leather textures and artisanal techniques',
+      'Scalable logo system maintaining premium aesthetic across applications',
+      'Cohesive brand identity suitable for luxury leather goods marketing'
+    ],
+    images: kozhaLeatherImages,
   },
   coveragex: {
     title: 'CoverageX.com',

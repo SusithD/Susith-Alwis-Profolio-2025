@@ -18,6 +18,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const qexleCover = new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href;
   const organicCover = new URL('../images/logo-organic-beltline/imgi_42_ed9ac1143551981.627c7bfc9b51c.jpg', import.meta.url).href;
   const noirCover = new URL('../images/logo-noir/imgi_29_471143143551429.627c7892a22b1.jpg', import.meta.url).href;
+  const kozhaCover = new URL('../images/logo-kozha-leather/imgi_16_d9e0ed144036805.6285223fef20c.jpg', import.meta.url).href;
   
   const projects = [
     {
@@ -47,6 +48,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: noirCover
+    },
+    {
+      id: 'kozha-leather-collections',
+      title: 'Logo Design for Kozha Leather Collections',
+      role: 'Graphic Designer',
+      description: 'Development of a professional brand identity for Kozha Leather Collections through strategic logo design, conveying quality and craftsmanship. Mar 2022.',
+      category: 'design',
+      tags: ['Brand Identity', 'Logo Design', 'Leather Goods', 'Craftsmanship'],
+      accentColor: '#8B4513',
+      gradient: 'from-amber-700/20 to-yellow-600/20',
+      initials: 'KL',
+      featured: true,
+      size: 'large',
+      image: kozhaCover
     },
     {
       id: 'qexle-rebranding',
