@@ -16,8 +16,23 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const ktCover = new URL('../images/logo-concept-kandy-tuskers/imgi_30_ee4330130369959.617ede0e2b955.jpg', import.meta.url).href;
   const bistroCover = new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href;
   const qexleCover = new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href;
+  const organicCover = new URL('../images/logo-organic-beltline/imgi_42_ed9ac1143551981.627c7bfc9b51c.jpg', import.meta.url).href;
   
   const projects = [
+    {
+      id: 'organic-beltline',
+      title: 'Logo Design for Organic Beltline',
+      role: 'Graphic Designer',
+      description: 'Brand identity design for Organic Beltline, focusing on representing the company\'s organic values through visual elements. Feb 2022.',
+      category: 'design',
+      tags: ['Brand Identity', 'Logo Design', 'Organic Design', 'Visual Identity'],
+      accentColor: '#22C55E',
+      gradient: 'from-green-500/20 to-emerald-500/20',
+      initials: 'OB',
+      featured: true,
+      size: 'large',
+      image: organicCover
+    },
     {
       id: 'qexle-rebranding',
       title: 'Rebranding Logo of The qexle',

@@ -8,6 +8,22 @@ interface ProjectDetailPageProps {
   onNavigateHome: () => void;
 }
 
+// Local images for Organic Beltline project - ALL 12 IMAGES
+const organicBeltlineImages = [
+  new URL('../images/logo-organic-beltline/imgi_42_ed9ac1143551981.627c7bfc9b51c.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_43_dd6645143551981.627c7bfc9bcb7.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_44_23c42a143551981.627c7bfc9cd28.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_45_b8e476143551981.627c7bfc9e79e.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_46_b3f42b143551981.627c7bfc9b0c0.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_124_8b80b1143551981.627c7bfc9c2c2.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_126_f3f563143551981.627c7bfc9ffc7.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_128_963580143551981.627c7bfc9de36.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_130_5f7972143551981.627c7bfc9f098.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_132_f74906143551981.627c7bfc9f7b5.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_134_58924e143551981.627c7bfc9ac0a.jpg', import.meta.url).href,
+  new URL('../images/logo-organic-beltline/imgi_136_176b7b143551981.627c7bfc9d63d.jpg', import.meta.url).href,
+];
+
 // Local images for The qexle rebranding project - ALL 27 IMAGES
 const qexleRebrandingImages = [
   new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href,
@@ -69,6 +85,44 @@ const kandyTuskersImages = [
 ];
 
 const projectData: Record<string, any> = {
+  'organic-beltline': {
+    title: 'Logo Design for Organic Beltline',
+    subtitle: 'Organic Brand Identity Design',
+    role: 'Graphic Designer • Organic Beltline',
+    year: 'Feb 2022',
+    duration: 'Brand Identity Project',
+    team: 'Solo',
+    description: 'Brand identity design for Organic Beltline, focusing on representing the company\'s organic values through visual elements. The project emphasized creating a natural, sustainable visual identity that would resonate with environmentally conscious consumers while maintaining professional appeal and market competitiveness.',
+    heroImage: organicBeltlineImages[0],
+    behanceLink: 'https://www.behance.net/gallery/143551981/Logo-design-for-Organic-Beltline',
+    impact: [
+      { metric: '✓', label: 'Created brand identity reflecting organic values' },
+      { metric: '✓', label: 'Developed visual elements for brand recognition' },
+      { metric: '✓', label: 'Established cohesive brand presence' },
+    ],
+    responsibilities: [
+      'Researched organic industry trends and sustainable design principles',
+      'Developed multiple logo concepts emphasizing natural and organic themes',
+      'Created comprehensive visual identity system reflecting environmental values',
+      'Designed brand applications showcasing organic and sustainable messaging',
+      'Established consistent brand guidelines for various marketing materials'
+    ],
+    technologies: ['Adobe Illustrator', 'Adobe Photoshop', 'Figma'],
+    process: [
+      { phase: 'Research & Discovery', description: 'Analyzed organic industry landscape and consumer preferences for sustainable brands.' },
+      { phase: 'Concept Development', description: 'Explored visual concepts that authentically represent organic values and natural elements.' },
+      { phase: 'Visual Identity Creation', description: 'Developed comprehensive brand system with organic-inspired color palette and typography.' },
+      { phase: 'Brand Applications', description: 'Created diverse applications demonstrating brand versatility across various organic product contexts.' },
+    ],
+    keyFeatures: [
+      'Natural color palette reflecting organic and sustainable values',
+      'Typography selection balancing organic appeal with professional readability',
+      'Visual elements inspired by nature and environmental consciousness',
+      'Scalable logo system maintaining organic aesthetic across applications',
+      'Cohesive brand identity suitable for organic product marketing'
+    ],
+    images: organicBeltlineImages,
+  },
   'qexle-rebranding': {
     title: 'Rebranding Logo of The qexle',
     subtitle: 'Brand Identity Redesign',

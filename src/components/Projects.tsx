@@ -16,6 +16,17 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
 
   const projects = [
     {
+      id: 'organic-beltline',
+      title: 'Organic Beltline',
+      role: 'Graphic Designer',
+      description: 'Brand identity design for Organic Beltline, focusing on representing the company\'s organic values through visual elements.',
+      tags: ['Brand Identity', 'Logo Design', 'Organic Design', 'Visual Identity'],
+      accentColor: '#22C55E',
+      gradient: 'from-green-500/20 to-emerald-500/20',
+      initials: 'OB',
+      image: new URL('../images/logo-organic-beltline/imgi_42_ed9ac1143551981.627c7bfc9b51c.jpg', import.meta.url).href
+    },
+    {
       id: 'qexle-rebranding',
       title: 'The qexle Rebranding',
       role: 'Graphic Designer',
