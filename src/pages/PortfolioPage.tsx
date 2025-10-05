@@ -19,6 +19,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const organicCover = new URL('../images/logo-organic-beltline/imgi_42_ed9ac1143551981.627c7bfc9b51c.jpg', import.meta.url).href;
   const noirCover = new URL('../images/logo-noir/imgi_29_471143143551429.627c7892a22b1.jpg', import.meta.url).href;
   const kozhaCover = new URL('../images/logo-kozha-leather/imgi_16_d9e0ed144036805.6285223fef20c.jpg', import.meta.url).href;
+  const gyroctionCover = new URL('../images/logo-gyroction/efe0a7145776937.62a44786baedf.jpg', import.meta.url).href;
   
   const projects = [
     {
@@ -62,6 +63,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: kozhaCover
+    },
+    {
+      id: 'gyroction',
+      title: 'Logo Design for Gyroction',
+      role: 'Graphic Designer',
+      description: "Brand identity design for Gyroction, creating a distinctive and memorable logo that represents the company's values and services. Jun 2022.",
+      category: 'design',
+      tags: ['Brand Identity', 'Logo Design', 'Corporate Identity'],
+      accentColor: '#2563EB',
+      gradient: 'from-blue-600/20 to-cyan-500/20',
+      initials: 'GY',
+      featured: true,
+      size: 'large',
+      image: gyroctionCover
     },
     {
       id: 'qexle-rebranding',

@@ -108,6 +108,22 @@ const kozhaLeatherImages = [
   new URL('../images/logo-kozha-leather/imgi_45_54a327144036805.6285223ff1eee.jpg', import.meta.url).href,
 ];
 
+// Local images for Gyroction project - ALL 12 IMAGES
+const gyroctionImages = [
+  new URL('../images/logo-gyroction/efe0a7145776937.62a44786baedf.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/01897f145776937.62a44786bd827.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/1b64ce145776937.62a44786ba144.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/2700b8145776937.62a44786bce93.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/271f5a145776937.62a44786b823c.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/307854145776937.62a44786ba6bd.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/629390145776937.62a44786b8bab.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/645ac2145776937.62a44786b98ab.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/771a8a145776937.62a44786b91ad.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/97fec5145776937.62a44786bb599.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/b600db145776937.62a44786bbd4a.jpg', import.meta.url).href,
+  new URL('../images/logo-gyroction/d54305145776937.62a44786bc5e3.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -365,6 +381,42 @@ const projectData: Record<string, any> = {
       'Cohesive brand identity suitable for luxury leather goods marketing'
     ],
     images: kozhaLeatherImages,
+  },
+  'gyroction': {
+    title: 'Logo Design for Gyroction',
+    subtitle: 'Distinctive Corporate Brand Identity',
+    role: 'Graphic Designer • The qexle, Gyroction',
+    year: 'Jun 2022',
+    duration: 'Brand Identity Project',
+    team: 'Solo',
+    description: "Brand identity design for Gyroction, creating a distinctive and memorable logo that represents the company's values and services. The focus was on crafting a modern, recognizable mark aligned with Gyroction's mission and positioning.",
+    heroImage: gyroctionImages[0],
+    behanceLink: 'https://www.behance.net/gallery/145776937/Logo-Design-for-Gyroction',
+    impact: [
+      { metric: '✓', label: 'Developed distinctive brand identity' },
+      { metric: '✓', label: 'Created memorable logo design' },
+      { metric: '✓', label: 'Ensured alignment with company values' },
+    ],
+    responsibilities: [
+      'Researched market context and brand positioning requirements',
+      'Explored multiple logo directions emphasizing memorability',
+      'Established a scalable identity system across touchpoints',
+      'Prepared presentation-ready applications and mockups',
+    ],
+    technologies: ['Adobe Illustrator', 'Adobe Photoshop', 'Figma'],
+    process: [
+      { phase: 'Research & Discovery', description: 'Defined brand attributes and visual benchmarks aligned to company values.' },
+      { phase: 'Concept Development', description: 'Iterated on symbol, wordmark, and geometry for distinctiveness and clarity.' },
+      { phase: 'Refinement', description: 'Polished proportions, spacing, and color/monochrome variants.' },
+      { phase: 'Applications', description: 'Showcased usage across stationery, web, and social collateral.' },
+    ],
+    keyFeatures: [
+      'Memorable symbol and clear wordmark',
+      'Modern, scalable identity system',
+      'Color and monochrome variants for flexibility',
+      'Consistent geometry ensuring clarity at small sizes',
+    ],
+    images: gyroctionImages,
   },
   coveragex: {
     title: 'CoverageX.com',
