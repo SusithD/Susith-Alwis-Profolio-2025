@@ -102,63 +102,6 @@ export default function Contact() {
               </motion.a>
             </motion.div>
           </div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            viewport={{ once: true }}
-            className="border-t border-white/10 pt-12"
-          >
-            <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-              <div className="space-y-2 text-center md:text-left">
-                <p className="text-white/60">Susith Deshan Alwis</p>
-                <p className="text-white/40 text-sm">
-                  UI/UX Designer & Software Engineer
-                </p>
-              </div>
-              
-              <div className="flex gap-6">
-                <motion.a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all"
-                  aria-label="GitHub"
-                >
-                  <Github className="w-5 h-5" />
-                </motion.a>
-                <motion.a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </motion.a>
-                <motion.a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="w-5 h-5" />
-                </motion.a>
-              </div>
-              
-              <div className="text-white/40 text-sm">
-                © 2025 All rights reserved
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
