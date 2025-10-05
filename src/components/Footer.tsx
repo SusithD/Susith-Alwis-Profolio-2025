@@ -82,7 +82,7 @@ export default function Footer() {
                     className="group relative inline-block"
                   >
                     <span className="relative">
-                      HELLO@SUSITHDESHAN.COM
+                      IAMSUSITHALWIS@GMAIL.COM
                       <motion.span
                         className="absolute bottom-0 left-0 w-full h-1 bg-[#F4C542]"
                         initial={{ scaleX: 0, originX: 0 }}
@@ -146,10 +146,6 @@ export default function Footer() {
           >
             <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
               <p>© {currentYear} All rights reserved.</p>
-              <p className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#F4C542] rounded-full animate-pulse" />
-                Made in Sri Lanka
-              </p>
             </div>
             
             <div className="flex gap-6">
