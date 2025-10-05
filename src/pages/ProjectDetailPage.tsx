@@ -158,6 +158,12 @@ const foodieHutImages = [
   new URL('../images/foodiehut-ui-design-and-development/b55526210104439.670bb1a9a4c61.png', import.meta.url).href,
 ];
 
+// Local images for Sri Lankan Currency Note Recognition - ALL 2 IMAGES
+const currencyRecognitionImages = [
+  new URL('../images/fake-money-detector/383462735-8d2e6543-69c2-4b94-94d2-563a3cc1a2cd.png', import.meta.url).href,
+  new URL('../images/fake-money-detector/383462778-684bc66a-5c2f-4f2a-8002-ba390ff9ff81.png', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -562,6 +568,43 @@ const projectData: Record<string, any> = {
       'Automated email notifications for order status'
     ],
     images: foodieHutImages,
+  },
+  'currency-note-recognition': {
+    title: 'Sri Lankan Currency Note Recognition System',
+    subtitle: 'AI-driven Authentication and Feature Education',
+    role: 'Developer • Academic Project',
+    year: 'Nov 2024',
+    duration: '1 month',
+    team: 'Solo',
+    description: 'A Flask-based application that authenticates Sri Lankan currency using digital image processing and machine learning. The system verifies authenticity and explains security elements using CV and deep learning, tailored to local notes and their cultural markers.',
+    heroImage: currencyRecognitionImages[0],
+    githubLink: 'https://github.com/SusithD/Fake-Money-Detector',
+    impact: [
+      { metric: '✓', label: 'Implemented robust counterfeit detection system' },
+      { metric: '✓', label: 'Created educational interface for security features' },
+      { metric: '✓', label: 'Added advanced image processing capabilities' },
+      { metric: '✓', label: 'Integrated YOLO for symbol detection and OCR' },
+    ],
+    responsibilities: [
+      'Built Flask backend integrating ML inference endpoints',
+      'Implemented OpenCV preprocessing and feature extraction',
+      'Trained/Integrated YOLO for symbol detection on notes',
+      'Added OCR and descriptive UI for security elements',
+    ],
+    technologies: ['Machine Learning', 'Deep Learning', 'Flask', 'Python', 'OpenCV', 'TensorFlow', 'PyTorch'],
+    process: [
+      { phase: 'Dataset & Preprocess', description: 'Collected note imagery and applied normalization, augmentation, and ROI extraction.' },
+      { phase: 'Modeling', description: 'Trained and integrated YOLO for symbol detection; evaluated OCR pipelines.' },
+      { phase: 'API & UI', description: 'Exposed inference via Flask and built an interface to present results and education.' },
+      { phase: 'Validation', description: 'Benchmarked accuracy and validated against diverse note images and conditions.' },
+    ],
+    keyFeatures: [
+      'Real-time authentication feedback',
+      'Security feature detection (watermarks, UV, micro-text)',
+      'Educational descriptions for cultural/security markers',
+      'Detection and classification with YOLO and OCR',
+    ],
+    images: currencyRecognitionImages,
   },
   coveragex: {
     title: 'CoverageX.com',
