@@ -228,6 +228,20 @@ const sgsenseLogoImages = [
   new URL('../images/logo-design-sgsense/5155b4199290833.664f071a6d2e5.jpg', import.meta.url).href,
 ];
 
+// Local images for SGSENSE Web Application - ALL 10 IMAGES
+const sgsenseWebImages = [
+  new URL('../images/website-uiux-design-sgsense/60ee3d199392491.66508adb8cf3a.png', import.meta.url).href,
+  new URL('../images/website-uiux-design-sgsense/9e510f199392491.66508adb8990d.png', import.meta.url).href,
+  new URL('../images/website-uiux-design-sgsense/c6b4a3199392491.66508adb8a320.png', import.meta.url).href,
+  new URL('../images/website-uiux-design-sgsense/240b2f199392491.66508adb8b79a.png', import.meta.url).href,
+  new URL('../images/website-uiux-design-sgsense/b06451199392491.66508adb8778b.png', import.meta.url).href,
+  new URL('../images/website-uiux-design-sgsense/66464d199392491.66508adb8c538.png', import.meta.url).href,
+  new URL('../images/website-uiux-design-sgsense/b7d7c7199392491.66508adb8d8fb.png', import.meta.url).href,
+  new URL('../images/website-uiux-design-sgsense/8fb51d199392491.66508adb8e326.png', import.meta.url).href,
+  new URL('../images/website-uiux-design-sgsense/26d5cc199392491.66508adb8edab.png', import.meta.url).href,
+  new URL('../images/website-uiux-design-sgsense/eb3149199392491.66508adb8ff04.png', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -855,6 +869,44 @@ const projectData: Record<string, any> = {
       'Multi-industry adaptability across agriculture, medical, automotive, and aerospace'
     ],
     images: sgsenseLogoImages,
+  },
+  'sgsense-web-application': {
+    title: 'SGSENSE Web Application',
+    subtitle: 'Enhanced User Experience for Precision Measurement Solutions',
+    role: 'Web Designer and Developer',
+    year: 'Jan 2024 - Dec 2024',
+    duration: '12 months',
+    team: 'Collaborative',
+    description: 'A collaborative project aimed at enhancing user experience and operational efficiency for SGSENSE, an Australian leader in Force and Torque Measurement solutions. The project focused on creating a comprehensive digital platform with improved navigation, product catalog, and user engagement.',
+    heroImage: sgsenseWebImages[0],
+    behanceLink: 'https://www.behance.net/gallery/199392491/SGSENSE-Web-Application-Design-Development',
+    liveWebsite: 'https://sgsensetech.com/',
+    impact: [
+      { metric: '✓', label: 'Enhanced user experience through user-friendly interface' },
+      { metric: '✓', label: 'Implemented comprehensive product catalog with filtering' },
+      { metric: '✓', label: 'Added detailed product specifications and related items' },
+      { metric: '✓', label: 'Integrated company information and contact options' },
+    ],
+    responsibilities: [
+      'Conducted user experience research and interface design',
+      'Developed comprehensive product catalog with advanced filtering',
+      'Implemented detailed product specification displays',
+      'Integrated company information and streamlined contact systems',
+    ],
+    technologies: ['Web Development', 'UI/UX Design', 'Figma', 'Wireframing', 'Prototyping'],
+    process: [
+      { phase: 'Research & Analysis', description: 'Analyzed user needs and operational requirements for precision measurement industry.' },
+      { phase: 'Design & Wireframing', description: 'Created comprehensive wireframes and prototypes focusing on user experience.' },
+      { phase: 'Development & Implementation', description: 'Built responsive web application with advanced product catalog and filtering.' },
+      { phase: 'Testing & Optimization', description: 'Conducted user testing and optimized for enhanced operational efficiency.' },
+    ],
+    keyFeatures: [
+      'User-friendly interface optimized for technical product browsing',
+      'Comprehensive product catalog with advanced filtering capabilities',
+      'Detailed product specifications with related item suggestions',
+      'Integrated company information and streamlined contact systems'
+    ],
+    images: sgsenseWebImages,
   },
   coveragex: {
     title: 'CoverageX.com',

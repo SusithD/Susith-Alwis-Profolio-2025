@@ -29,6 +29,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const autowaseCover = new URL('../images/logo-design-autoways/f54fe9149861095.62ef6fce07e79.jpg', import.meta.url).href;
   const prestigeCover = new URL('../images/logo-design-prestige/7e7546184602991.6554de545c4c8.jpg', import.meta.url).href;
   const sgsenseCover = new URL('../images/logo-design-sgsense/9faefb199290833.664f071a6bb10.png', import.meta.url).href;
+  const sgsenseWebCover = new URL('../images/website-uiux-design-sgsense/60ee3d199392491.66508adb8cf3a.png', import.meta.url).href;
   
   const projects = [
     {
@@ -212,6 +213,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: sgsenseCover
+    },
+    {
+      id: 'sgsense-web-application',
+      title: 'SGSENSE Web Application',
+      role: 'Web Designer and Developer',
+      description: 'Collaborative project enhancing user experience and operational efficiency for Australian Force and Torque Measurement leader. Jan–Dec 2024.',
+      category: 'web',
+      tags: ['Web Development', 'UI/UX Design', 'Figma', 'Wireframing', 'Prototyping'],
+      accentColor: '#059669',
+      gradient: 'from-emerald-600/20 to-teal-500/20',
+      initials: 'SW',
+      featured: true,
+      size: 'large',
+      image: sgsenseWebCover
     },
     {
       id: 'qexle-rebranding',
