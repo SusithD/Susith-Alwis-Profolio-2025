@@ -203,6 +203,20 @@ const autowaseLogoImages = [
   new URL('../images/logo-design-autoways/f84366149861095.62ef6fce07636.jpg', import.meta.url).href,
 ];
 
+// Local images for Prestige Clothing Logo Design - ALL 10 IMAGES
+const prestigeLogoImages = [
+  new URL('../images/logo-design-prestige/7e7546184602991.6554de545c4c8.jpg', import.meta.url).href,
+  new URL('../images/logo-design-prestige/120a69184602991.6554de545e74a.jpg', import.meta.url).href,
+  new URL('../images/logo-design-prestige/51dd06184602991.6554de545837a.jpg', import.meta.url).href,
+  new URL('../images/logo-design-prestige/aa9888184602991.6554de54565dc.jpg', import.meta.url).href,
+  new URL('../images/logo-design-prestige/c20471184602991.6554de54573c6.jpg', import.meta.url).href,
+  new URL('../images/logo-design-prestige/6ed130184602991.6554de5459067.jpg', import.meta.url).href,
+  new URL('../images/logo-design-prestige/9e5bb9184602991.6554de545a185.jpg', import.meta.url).href,
+  new URL('../images/logo-design-prestige/9d827f184602991.6554de545b0f3.jpg', import.meta.url).href,
+  new URL('../images/logo-design-prestige/fec6de184602991.6554de545d1ff.jpg', import.meta.url).href,
+  new URL('../images/logo-design-prestige/439eef184602991.6554de546008e.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -756,6 +770,43 @@ const projectData: Record<string, any> = {
       'Comprehensive brand guidelines for consistent usage'
     ],
     images: autowaseLogoImages,
+  },
+  'prestige-logo-design': {
+    title: 'Logo Design for Prestige Clothing',
+    subtitle: 'Elegant Brand Identity for Premium Fashion',
+    role: 'Graphic Designer • The Qexle, Prestige Clothing',
+    year: 'Aug 2023',
+    duration: 'Brand Identity Project',
+    team: 'Solo',
+    description: 'A complete brand identity project for Prestige Clothing, focused on blending elegance and sophistication to reflect the brand’s premium fashion essence. From logo creation to cohesive branding elements, the design embodies luxury and timeless style, capturing the true spirit of prestige.',
+    heroImage: prestigeLogoImages[0],
+    behanceLink: 'https://www.behance.net/gallery/184602991/Logo-Design-for-Prestige',
+    impact: [
+      { metric: '✓', label: 'Designed elegant and modern logo representing refined fashion' },
+      { metric: '✓', label: 'Developed cohesive brand identity across digital and print media' },
+      { metric: '✓', label: 'Enhanced brand perception through sophisticated visual elements' },
+      { metric: '✓', label: 'Delivered presentation-ready mockups and brand assets' },
+    ],
+    responsibilities: [
+      'Researched luxury fashion market and premium brand positioning',
+      'Developed elegant logo concepts emphasizing sophistication and timeless style',
+      'Created comprehensive brand applications for fashion industry contexts',
+      'Prepared sophisticated mockups and brand presentation materials',
+    ],
+    technologies: ['Graphic Design', 'Branding', 'Figma', 'Mockup Design'],
+    process: [
+      { phase: 'Research & Discovery', description: 'Analyzed luxury fashion market and studied premium brand identities in the sector.' },
+      { phase: 'Concept Development', description: 'Explored visual concepts that embody elegance, sophistication, and timeless fashion appeal.' },
+      { phase: 'Visual Identity Creation', description: 'Developed refined brand system with sophisticated color palette and elegant typography.' },
+      { phase: 'Brand Applications', description: 'Created diverse mockups showcasing brand elegance across fashion industry touchpoints.' },
+    ],
+    keyFeatures: [
+      'Elegant logo design reflecting premium fashion and sophistication',
+      'Sophisticated color palette embodying luxury and timeless style',
+      'Comprehensive brand applications for fashion industry contexts',
+      'Presentation-ready mockups demonstrating brand elegance'
+    ],
+    images: prestigeLogoImages,
   },
   coveragex: {
     title: 'CoverageX.com',

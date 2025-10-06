@@ -27,6 +27,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const mentalHealthCover = new URL('../images/mental-health-project-development/391236591-ad36b207-9ccc-4b81-adcc-bfa1f0d206b2.png', import.meta.url).href;
   const qexleWebsiteCover = new URL('../images/the-qexle-website-design-and-development/00c0ad210641019.67152a68b52a2.png', import.meta.url).href;
   const autowaseCover = new URL('../images/logo-design-autoways/f54fe9149861095.62ef6fce07e79.jpg', import.meta.url).href;
+  const prestigeCover = new URL('../images/logo-design-prestige/7e7546184602991.6554de545c4c8.jpg', import.meta.url).href;
   
   const projects = [
     {
@@ -182,6 +183,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: autowaseCover
+    },
+    {
+      id: 'prestige-logo-design',
+      title: 'Logo Design for Prestige Clothing',
+      role: 'Graphic Designer',
+      description: 'Complete brand identity blending elegance and sophistication for premium fashion, capturing luxury and timeless style. Aug 2023.',
+      category: 'design',
+      tags: ['Graphic Design', 'Branding', 'Figma', 'Mockup Design'],
+      accentColor: '#7C2D12',
+      gradient: 'from-amber-800/20 to-yellow-600/20',
+      initials: 'PC',
+      featured: true,
+      size: 'large',
+      image: prestigeCover
     },
     {
       id: 'qexle-rebranding',
