@@ -24,6 +24,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const wildlifeCover = new URL('../images/landing-page-wildlife/054fd3146507535.62b1c5409580e.jpg', import.meta.url).href;
   const foodieHutCover = new URL('../images/foodiehut-ui-design-and-development/ee7e75210104439.670bb1a9a3865.png', import.meta.url).href;
   const currencyCover = new URL('../images/fake-money-detector/383462735-8d2e6543-69c2-4b94-94d2-563a3cc1a2cd.png', import.meta.url).href;
+  const mentalHealthCover = new URL('../images/mental-health-project-development/391236591-ad36b207-9ccc-4b81-adcc-bfa1f0d206b2.png', import.meta.url).href;
   
   const projects = [
     {
@@ -137,6 +138,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: currencyCover
+    },
+    {
+      id: 'mental-health-platform',
+      title: 'Mental Health App',
+      role: 'Developer',
+      description: 'Secure platform for mental well-being with activity tracking, assessments, and professional communication. Nov 2024.',
+      category: 'web',
+      tags: ['Node.js', 'REST APIs', 'JWT', 'React'],
+      accentColor: '#7C3AED',
+      gradient: 'from-violet-600/20 to-fuchsia-500/20',
+      initials: 'MH',
+      featured: true,
+      size: 'large',
+      image: mentalHealthCover
     },
     {
       id: 'qexle-rebranding',

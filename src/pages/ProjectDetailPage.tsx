@@ -164,6 +164,19 @@ const currencyRecognitionImages = [
   new URL('../images/fake-money-detector/383462778-684bc66a-5c2f-4f2a-8002-ba390ff9ff81.png', import.meta.url).href,
 ];
 
+// Local images for Mental Health Platform - ALL 9 IMAGES
+const mentalHealthImages = [
+  new URL('../images/mental-health-project-development/391236591-ad36b207-9ccc-4b81-adcc-bfa1f0d206b2.png', import.meta.url).href,
+  new URL('../images/mental-health-project-development/391236565-4e95f8d5-6601-408d-82e2-af1f17ce5efd.png', import.meta.url).href,
+  new URL('../images/mental-health-project-development/391236578-a72cd6b7-cb46-4bb8-b5bc-81f6b1879fb1.png', import.meta.url).href,
+  new URL('../images/mental-health-project-development/391236586-30a40c30-a850-427d-bf83-2e51cebf1bc9.png', import.meta.url).href,
+  new URL('../images/mental-health-project-development/391236590-5f9c66aa-ff50-4dfb-8a1a-aad7296608e6.png', import.meta.url).href,
+  new URL('../images/mental-health-project-development/391236593-5e3dbd3e-a9c4-418d-89ec-d4248681b496.png', import.meta.url).href,
+  new URL('../images/mental-health-project-development/391236602-bc1376a4-db66-4ca5-b8d3-66ee5684faf0.png', import.meta.url).href,
+  new URL('../images/mental-health-project-development/391236607-7500b8f4-d1c2-4514-bc29-4ffe66898bb4.png', import.meta.url).href,
+  new URL('../images/mental-health-project-development/391236611-bd9e2483-320e-48bb-a11f-95535303e87a.png', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -605,6 +618,43 @@ const projectData: Record<string, any> = {
       'Detection and classification with YOLO and OCR',
     ],
     images: currencyRecognitionImages,
+  },
+  'mental-health-platform': {
+    title: 'Mental Health App',
+    subtitle: 'Secure Platform for Well-being and Professional Support',
+    role: 'Developer • Academic Project',
+    year: 'Nov 2024',
+    duration: '1 month',
+    team: 'Solo',
+    description: 'A secure, private platform designed to provide accessible mental well-being support with personalized resources, therapist communication, self-help tools, activity tracking, and assessments. Built with a modern web stack and secure authentication.',
+    heroImage: mentalHealthImages[0],
+    githubLink: 'https://github.com/SusithD/folder-mental-health-platform',
+    impact: [
+      { metric: '✓', label: 'Implemented encrypted journaling for private tracking' },
+      { metric: '✓', label: 'Added tailored self-help exercises' },
+      { metric: '✓', label: 'Created secure therapist communication system' },
+      { metric: '✓', label: 'Integrated guided mindfulness meditations' },
+    ],
+    responsibilities: [
+      'Designed and implemented JWT-based auth with Google sign-in',
+      'Built activity logging and visualization dashboards',
+      'Developed scheduling and communication with professionals',
+      'Integrated self-help modules and mindfulness content',
+    ],
+    technologies: ['Node.js', 'REST APIs', 'JWT', 'React.js', 'HTML/CSS/JavaScript'],
+    process: [
+      { phase: 'Research', description: 'Defined goals for privacy, accessibility, and supportive UX.' },
+      { phase: 'Architecture', description: 'Planned secure auth, data models, and API endpoints.' },
+      { phase: 'Implementation', description: 'Developed features for tracking, analytics, and professional support.' },
+      { phase: 'Validation', description: 'Tested flows and refined UX for clarity and trust.' },
+    ],
+    keyFeatures: [
+      'JWT-based authentication with optional Google sign-in',
+      'Encrypted journaling and private tracking',
+      'Activity analytics and reporting',
+      'Therapist communication and appointments'
+    ],
+    images: mentalHealthImages,
   },
   coveragex: {
     title: 'CoverageX.com',
