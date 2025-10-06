@@ -177,6 +177,18 @@ const mentalHealthImages = [
   new URL('../images/mental-health-project-development/391236611-bd9e2483-320e-48bb-a11f-95535303e87a.png', import.meta.url).href,
 ];
 
+// Local images for The qexle Website Development - ALL 8 IMAGES
+const qexleWebsiteImages = [
+  new URL('../images/the-qexle-website-design-and-development/00c0ad210641019.67152a68b52a2.png', import.meta.url).href,
+  new URL('../images/the-qexle-website-design-and-development/170d4e210641019.67152a68b7580.png', import.meta.url).href,
+  new URL('../images/the-qexle-website-design-and-development/2beb1b210641019.67152a68b6de5.png', import.meta.url).href,
+  new URL('../images/the-qexle-website-design-and-development/3846e4210641019.67152a68b57e9.png', import.meta.url).href,
+  new URL('../images/the-qexle-website-design-and-development/407cc3210641019.67152a68b656d.png', import.meta.url).href,
+  new URL('../images/the-qexle-website-design-and-development/9b9876210641019.67152a68b5ccb.png', import.meta.url).href,
+  new URL('../images/the-qexle-website-design-and-development/a68a1a210641019.67152a68b69b5.png', import.meta.url).href,
+  new URL('../images/the-qexle-website-design-and-development/da38e5210641019.67152a68b4960.png', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -656,6 +668,44 @@ const projectData: Record<string, any> = {
     ],
     images: mentalHealthImages,
   },
+  'qexle-website-development': {
+    title: 'The qexle Website Development',
+    subtitle: 'Professional Services Showcase with Performance Optimization',
+    role: 'Web Developer • Professional Work',
+    year: 'Jul 2024 - Dec 2024',
+    duration: '6 months',
+    team: 'Solo',
+    description: 'A user-centric website designed to showcase branding, digital marketing, and web development services with optimized performance and SEO integration. Built with attention to detail and deep understanding of client needs from wireframing to deployment.',
+    heroImage: qexleWebsiteImages[0],
+    behanceLink: 'https://www.behance.net/gallery/210641019/The-qexle-Website-Development',
+    liveWebsite: 'theqexle.com',
+    impact: [
+      { metric: '✓', label: 'Created custom visual design reflecting brand values' },
+      { metric: '✓', label: 'Implemented seamless navigation and well-organized structure' },
+      { metric: '✓', label: 'Optimized performance across all devices' },
+      { metric: '✓', label: 'Integrated SEO for improved search visibility' },
+    ],
+    responsibilities: [
+      'Executed complete project from wireframing to deployment',
+      'Developed custom WordPress theme aligned with brand identity',
+      'Implemented responsive design for optimal device compatibility',
+      'Integrated SEO best practices and performance optimizations',
+    ],
+    technologies: ['WordPress', 'Web Development', 'Project Management', 'UI/UX', 'SEO'],
+    process: [
+      { phase: 'Discovery & Planning', description: 'Analyzed client needs and defined project scope with detailed wireframing.' },
+      { phase: 'Design & Development', description: 'Created custom visual design and developed WordPress implementation.' },
+      { phase: 'Optimization', description: 'Applied performance enhancements and SEO integration for search visibility.' },
+      { phase: 'Deployment & Testing', description: 'Launched website with cross-device testing and final optimizations.' },
+    ],
+    keyFeatures: [
+      'Custom WordPress theme development',
+      'Responsive design for all device types',
+      'SEO optimization and performance tuning',
+      'Professional service showcase with clear navigation'
+    ],
+    images: qexleWebsiteImages,
+  },
   coveragex: {
     title: 'CoverageX.com',
     subtitle: 'Enterprise Insurance Platform Redesign',
@@ -1078,13 +1128,27 @@ export default function ProjectDetailPage({ projectId, onNavigateHome }: Project
             </div>
 
             {/* External Links in Hero Section */}
-            {(project.behanceLink || project.githubLink) && (
+            {(project.behanceLink || project.githubLink || project.liveWebsite) && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="pt-8 flex flex-wrap gap-4"
               >
+                {project.liveWebsite && (
+                  <a
+                    href={project.liveWebsite.startsWith('http') ? project.liveWebsite : `https://${project.liveWebsite}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0 9c-1.657 0-3-4.03-3-9s1.343-9 3-9m0 18c1.657 0 3-4.03 3-9s-1.343-9-3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                    View Live Site
+                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </a>
+                )}
                 {project.behanceLink && (
                   <a
                     href={project.behanceLink}

@@ -25,6 +25,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const foodieHutCover = new URL('../images/foodiehut-ui-design-and-development/ee7e75210104439.670bb1a9a3865.png', import.meta.url).href;
   const currencyCover = new URL('../images/fake-money-detector/383462735-8d2e6543-69c2-4b94-94d2-563a3cc1a2cd.png', import.meta.url).href;
   const mentalHealthCover = new URL('../images/mental-health-project-development/391236591-ad36b207-9ccc-4b81-adcc-bfa1f0d206b2.png', import.meta.url).href;
+  const qexleWebsiteCover = new URL('../images/the-qexle-website-design-and-development/00c0ad210641019.67152a68b52a2.png', import.meta.url).href;
   
   const projects = [
     {
@@ -152,6 +153,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: mentalHealthCover
+    },
+    {
+      id: 'qexle-website-development',
+      title: 'The qexle Website Development',
+      role: 'Web Developer',
+      description: 'User-centric website showcasing branding, digital marketing, and web development services with optimized performance and SEO. Jul–Dec 2024.',
+      category: 'web',
+      tags: ['WordPress', 'Web Development', 'UI/UX', 'SEO'],
+      accentColor: '#1E40AF',
+      gradient: 'from-blue-600/20 to-indigo-500/20',
+      initials: 'QW',
+      featured: true,
+      size: 'large',
+      image: qexleWebsiteCover
     },
     {
       id: 'qexle-rebranding',
