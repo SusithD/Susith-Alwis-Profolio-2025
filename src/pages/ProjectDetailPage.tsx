@@ -217,6 +217,17 @@ const prestigeLogoImages = [
   new URL('../images/logo-design-prestige/439eef184602991.6554de546008e.jpg', import.meta.url).href,
 ];
 
+// Local images for SGSENSE Logo Design - ALL 7 IMAGES
+const sgsenseLogoImages = [
+  new URL('../images/logo-design-sgsense/9faefb199290833.664f071a6bb10.png', import.meta.url).href,
+  new URL('../images/logo-design-sgsense/98ae6b199290833.664f071a69bc3.png', import.meta.url).href,
+  new URL('../images/logo-design-sgsense/c6263a199290833.664f071a6a93d.png', import.meta.url).href,
+  new URL('../images/logo-design-sgsense/2f8a6d199290833.664f071a6b21c.png', import.meta.url).href,
+  new URL('../images/logo-design-sgsense/3bc41e199290833.664f071a6cab6.png', import.meta.url).href,
+  new URL('../images/logo-design-sgsense/dba6cb199290833.664f071a6c27e.jpg', import.meta.url).href,
+  new URL('../images/logo-design-sgsense/5155b4199290833.664f071a6d2e5.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -807,6 +818,43 @@ const projectData: Record<string, any> = {
       'Presentation-ready mockups demonstrating brand elegance'
     ],
     images: prestigeLogoImages,
+  },
+  'sgsense-logo-design': {
+    title: 'SGSENSE Branding & Logo Design',
+    subtitle: 'Precision Measurement Technology Brand Identity',
+    role: 'Graphic Designer • The Qexle, SGSENSE',
+    year: 'Dec 2023',
+    duration: 'Brand Identity Project',
+    team: 'Solo',
+    description: 'Comprehensive branding and logo design project for SGSENSE, a leading Australian company specializing in precision force and torque measurement solutions. The new identity emphasizes innovation, reliability, and technological excellence across multiple industries including agriculture, medical, industrial, automotive, and aerospace.',
+    heroImage: sgsenseLogoImages[0],
+    behanceLink: 'https://www.behance.net/gallery/199290833/Logo-Design-for-SGSENSE',
+    impact: [
+      { metric: '✓', label: 'Designed distinctive and modern logo reflecting precision and reliability' },
+      { metric: '✓', label: 'Developed cohesive brand identity and visual language' },
+      { metric: '✓', label: 'Created professional mockups across digital and print applications' },
+      { metric: '✓', label: 'Enhanced brand recognition through consistent design elements' },
+    ],
+    responsibilities: [
+      'Researched precision measurement industry and technological positioning',
+      'Developed modern logo concepts emphasizing innovation and reliability',
+      'Created comprehensive brand applications for technical industry contexts',
+      'Prepared professional mockups and brand presentation materials',
+    ],
+    technologies: ['Graphic Design', 'Branding', 'Adobe Illustrator', 'Adobe Photoshop', 'Figma', 'Mockup Design'],
+    process: [
+      { phase: 'Research & Discovery', description: 'Analyzed precision measurement market and studied technological brand identities across industries.' },
+      { phase: 'Concept Development', description: 'Explored visual concepts that represent precision, innovation, and technological excellence.' },
+      { phase: 'Visual Identity Creation', description: 'Developed comprehensive brand system with modern color palette and technical typography.' },
+      { phase: 'Brand Applications', description: 'Created diverse mockups showcasing brand professionalism across industrial touchpoints.' },
+    ],
+    keyFeatures: [
+      'Modern logo design reflecting precision measurement technology',
+      'Professional color palette emphasizing innovation and reliability',
+      'Comprehensive brand applications for technical industry contexts',
+      'Multi-industry adaptability across agriculture, medical, automotive, and aerospace'
+    ],
+    images: sgsenseLogoImages,
   },
   coveragex: {
     title: 'CoverageX.com',

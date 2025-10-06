@@ -28,6 +28,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const qexleWebsiteCover = new URL('../images/the-qexle-website-design-and-development/00c0ad210641019.67152a68b52a2.png', import.meta.url).href;
   const autowaseCover = new URL('../images/logo-design-autoways/f54fe9149861095.62ef6fce07e79.jpg', import.meta.url).href;
   const prestigeCover = new URL('../images/logo-design-prestige/7e7546184602991.6554de545c4c8.jpg', import.meta.url).href;
+  const sgsenseCover = new URL('../images/logo-design-sgsense/9faefb199290833.664f071a6bb10.png', import.meta.url).href;
   
   const projects = [
     {
@@ -197,6 +198,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: prestigeCover
+    },
+    {
+      id: 'sgsense-logo-design',
+      title: 'SGSENSE Branding & Logo Design',
+      role: 'Graphic Designer',
+      description: 'Comprehensive branding for Australian precision measurement company emphasizing innovation, reliability, and technological excellence. Dec 2023.',
+      category: 'design',
+      tags: ['Graphic Design', 'Branding', 'Adobe Illustrator', 'Adobe Photoshop', 'Figma'],
+      accentColor: '#0F172A',
+      gradient: 'from-slate-800/20 to-gray-600/20',
+      initials: 'SG',
+      featured: true,
+      size: 'large',
+      image: sgsenseCover
     },
     {
       id: 'qexle-rebranding',
