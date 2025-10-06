@@ -262,6 +262,19 @@ const greentipsImages = [
   new URL('../images/mobile-uiux-design-greentips/fefq.png.webp', import.meta.url).href,
 ];
 
+// Local images for Tech Startup Landing Page - ALL 9 IMAGES
+const techStartupImages = [
+  new URL('../images/the-company-website-design-and-development/2bd054231259117.6886296544c63.png', import.meta.url).href,
+  new URL('../images/the-company-website-design-and-development/08bd77231259117.688629654514d.png', import.meta.url).href,
+  new URL('../images/the-company-website-design-and-development/11b778231259117.688629654383b.png', import.meta.url).href,
+  new URL('../images/the-company-website-design-and-development/4de09e231259117.6886296542bd4.png', import.meta.url).href,
+  new URL('../images/the-company-website-design-and-development/70da12231259117.68862965444bd.png', import.meta.url).href,
+  new URL('../images/the-company-website-design-and-development/8633ac231259117.6886296543156.png', import.meta.url).href,
+  new URL('../images/the-company-website-design-and-development/86fc3f231259117.6886296543da0.png', import.meta.url).href,
+  new URL('../images/the-company-website-design-and-development/a9171e231259117.68862965420e7.png', import.meta.url).href,
+  new URL('../images/the-company-website-design-and-development/e2bb8d231259117.6886296542695.png', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -966,6 +979,45 @@ const projectData: Record<string, any> = {
       'Offline functionality with seamless synchronization when connectivity returns'
     ],
     images: greentipsImages,
+  },
+  'tech-startup-landing-page': {
+    title: 'Tech Startup Landing Page',
+    subtitle: 'Modern Responsive Landing Page with Conversion Focus',
+    role: 'UI/UX Designer & Front-End Developer • Personal Project',
+    year: 'May 2024',
+    duration: 'Personal Project',
+    team: 'Solo',
+    description: 'A fully responsive tech startup landing page designed in Figma and developed using Nuxt.js (Vue 3) and Tailwind CSS v4. This personal project was created to explore modern UI/UX principles, responsive design techniques, and efficient front-end development workflows.',
+    heroImage: techStartupImages[0],
+    behanceLink: 'https://www.behance.net/gallery/231259117/Tech-Company-Landing-Page-Design',
+    githubLink: 'https://github.com/SusithD/Tech-Company-Website',
+    liveWebsite: 'tech-company-website-five.vercel.app',
+    impact: [
+      { metric: '✓', label: 'Designed clean, modern, and conversion-focused landing page in Figma' },
+      { metric: '✓', label: 'Developed fully responsive interface using Nuxt.js (Vue 3) and Tailwind CSS v4' },
+      { metric: '✓', label: 'Optimized performance and accessibility for all devices' },
+      { metric: '✓', label: 'Deployed live version on Vercel for seamless hosting and preview' },
+    ],
+    responsibilities: [
+      'Designed modern UI/UX with focus on conversion optimization',
+      'Developed responsive front-end using modern Vue.js framework',
+      'Implemented performance optimizations and accessibility standards',
+      'Deployed and configured hosting on Vercel platform',
+    ],
+    technologies: ['Figma', 'UI/UX Design', 'Nuxt.js (Vue 3)', 'Tailwind CSS v4', 'Responsive Design', 'Vercel'],
+    process: [
+      { phase: 'Design & Research', description: 'Explored modern UI/UX principles and analyzed successful tech startup landing pages.' },
+      { phase: 'Prototyping', description: 'Created high-fidelity designs in Figma with focus on conversion and user experience.' },
+      { phase: 'Development', description: 'Built responsive interface using Nuxt.js (Vue 3) and Tailwind CSS v4 for optimal performance.' },
+      { phase: 'Deployment & Optimization', description: 'Deployed on Vercel with performance and accessibility optimizations.' },
+    ],
+    keyFeatures: [
+      'Clean, modern design with conversion-focused layout',
+      'Fully responsive interface optimized for all device types',
+      'Performance-optimized development using modern frameworks',
+      'Seamless deployment and hosting on Vercel platform'
+    ],
+    images: techStartupImages,
   },
   coveragex: {
     title: 'CoverageX.com',

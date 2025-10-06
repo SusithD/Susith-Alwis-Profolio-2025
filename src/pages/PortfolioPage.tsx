@@ -31,6 +31,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const sgsenseCover = new URL('../images/logo-design-sgsense/9faefb199290833.664f071a6bb10.png', import.meta.url).href;
   const sgsenseWebCover = new URL('../images/website-uiux-design-sgsense/60ee3d199392491.66508adb8cf3a.png', import.meta.url).href;
   const greentipsCover = new URL('../images/mobile-uiux-design-greentips/1.png', import.meta.url).href;
+  const techStartupCover = new URL('../images/the-company-website-design-and-development/2bd054231259117.6886296544c63.png', import.meta.url).href;
   
   const projects = [
     {
@@ -242,6 +243,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: greentipsCover
+    },
+    {
+      id: 'tech-startup-landing-page',
+      title: 'Tech Startup Landing Page',
+      role: 'UI/UX Designer & Front-End Developer',
+      description: 'Fully responsive tech startup landing page designed in Figma and developed using Nuxt.js (Vue 3) and Tailwind CSS v4. May 2024.',
+      category: 'web',
+      tags: ['Figma', 'UI/UX Design', 'Nuxt.js (Vue 3)', 'Tailwind CSS v4', 'Responsive Design', 'Vercel'],
+      accentColor: '#3B82F6',
+      gradient: 'from-blue-500/20 to-cyan-400/20',
+      initials: 'TS',
+      featured: true,
+      size: 'large',
+      image: techStartupCover
     },
     {
       id: 'qexle-rebranding',
