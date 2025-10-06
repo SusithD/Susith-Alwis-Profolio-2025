@@ -242,6 +242,26 @@ const sgsenseWebImages = [
   new URL('../images/website-uiux-design-sgsense/eb3149199392491.66508adb8ff04.png', import.meta.url).href,
 ];
 
+// Local images for Greentips Plantation Management - ALL 15 IMAGES (excluding .DS_Store)
+const greentipsImages = [
+  new URL('../images/mobile-uiux-design-greentips/1.png', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/16_768d1b212189209.6730fb811ebb6.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/2.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/3.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/4.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/5.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/6.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/7.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/8.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/9.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/adada.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/adfada.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/adfadf.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/adfdafadf.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/dafadfaf.png.webp', import.meta.url).href,
+  new URL('../images/mobile-uiux-design-greentips/fefq.png.webp', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -907,6 +927,45 @@ const projectData: Record<string, any> = {
       'Integrated company information and streamlined contact systems'
     ],
     images: sgsenseWebImages,
+  },
+  'greentips-plantation-management': {
+    title: 'Plantation Field Management System Mobile Application',
+    subtitle: 'Streamlined Operations for Large-Scale Agricultural Management',
+    role: 'UI/UX Designer & Developer • Academic Project',
+    year: 'Oct 2024 – Present',
+    duration: 'Ongoing',
+    team: 'Solo',
+    description: 'A mobile application developed to streamline operations for Greentips Plantation, managing over 250 acres of coconut and intercrop plantations. The system automates data collection, task tracking, and communication, enabling real-time management for field workers, supervisors, and executives.',
+    heroImage: greentipsImages[0],
+    behanceLink: 'https://www.behance.net/gallery/212189209/Greentips-Plantation-Management-System-UIUX-Design',
+    githubLink: 'https://github.com/SusithD/Greentips',
+    impact: [
+      { metric: '✓', label: 'Led end-to-end design process from wireframing to high-fidelity prototyping' },
+      { metric: '✓', label: 'Designed with high-contrast colors and simplified layouts for outdoor usability' },
+      { metric: '✓', label: 'Developed mobile application using Java and Kotlin in Android Studio' },
+      { metric: '✓', label: 'Integrated Firebase for authentication, data storage, and real-time synchronization' },
+      { metric: '✓', label: 'Implemented offline functionality and seamless user experience across devices' },
+    ],
+    responsibilities: [
+      'Conducted comprehensive UX research for agricultural field operations',
+      'Designed intuitive interfaces optimized for outdoor mobile usage',
+      'Developed native Android application with robust offline capabilities',
+      'Integrated Firebase backend for real-time data synchronization and authentication',
+    ],
+    technologies: ['Figma', 'Prototyping', 'Wireframing', 'UX/UI Design', 'Java', 'Kotlin', 'Android Studio', 'Firebase'],
+    process: [
+      { phase: 'Research & Discovery', description: 'Analyzed plantation operations and user needs for field workers, supervisors, and executives.' },
+      { phase: 'Design & Prototyping', description: 'Created wireframes and high-fidelity prototypes optimized for outdoor mobile usage.' },
+      { phase: 'Development & Integration', description: 'Built native Android app with Firebase integration for real-time data management.' },
+      { phase: 'Testing & Optimization', description: 'Implemented offline functionality and conducted field testing for usability optimization.' },
+    ],
+    keyFeatures: [
+      'High-contrast design optimized for outdoor visibility and usability',
+      'Automated data collection and task tracking for 250+ acre operations',
+      'Real-time communication between field workers, supervisors, and executives',
+      'Offline functionality with seamless synchronization when connectivity returns'
+    ],
+    images: greentipsImages,
   },
   coveragex: {
     title: 'CoverageX.com',

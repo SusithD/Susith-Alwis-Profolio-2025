@@ -30,6 +30,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const prestigeCover = new URL('../images/logo-design-prestige/7e7546184602991.6554de545c4c8.jpg', import.meta.url).href;
   const sgsenseCover = new URL('../images/logo-design-sgsense/9faefb199290833.664f071a6bb10.png', import.meta.url).href;
   const sgsenseWebCover = new URL('../images/website-uiux-design-sgsense/60ee3d199392491.66508adb8cf3a.png', import.meta.url).href;
+  const greentipsCover = new URL('../images/mobile-uiux-design-greentips/1.png', import.meta.url).href;
   
   const projects = [
     {
@@ -227,6 +228,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: sgsenseWebCover
+    },
+    {
+      id: 'greentips-plantation-management',
+      title: 'Plantation Field Management System Mobile Application',
+      role: 'UI/UX Designer & Developer',
+      description: 'Mobile app streamlining operations for 250+ acre plantation with automated data collection, task tracking, and real-time management. Oct 2024–Present.',
+      category: 'mobile',
+      tags: ['Figma', 'Prototyping', 'UX/UI Design', 'Java', 'Kotlin', 'Android Studio', 'Firebase'],
+      accentColor: '#16A34A',
+      gradient: 'from-green-600/20 to-lime-500/20',
+      initials: 'GT',
+      featured: true,
+      size: 'large',
+      image: greentipsCover
     },
     {
       id: 'qexle-rebranding',
