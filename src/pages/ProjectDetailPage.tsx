@@ -189,6 +189,20 @@ const qexleWebsiteImages = [
   new URL('../images/the-qexle-website-design-and-development/da38e5210641019.67152a68b4960.png', import.meta.url).href,
 ];
 
+// Local images for Autowase Logo Design - ALL 10 IMAGES
+const autowaseLogoImages = [
+  new URL('../images/logo-design-autoways/f54fe9149861095.62ef6fce07e79.jpg', import.meta.url).href,
+  new URL('../images/logo-design-autoways/837f63149861095.62ef6fce08669.jpg', import.meta.url).href,
+  new URL('../images/logo-design-autoways/95a50e149861095.62ef6fce08e79.jpg', import.meta.url).href,
+  new URL('../images/logo-design-autoways/ed1212149861095.62ef6fce0964f.jpg', import.meta.url).href,
+  new URL('../images/logo-design-autoways/eec69b149861095.62ef6fce0a5f7.jpg', import.meta.url).href,
+  new URL('../images/logo-design-autoways/28eb6a149861095.62ef6fce0bd56.jpg', import.meta.url).href,
+  new URL('../images/logo-design-autoways/f3db7d149861095.62ef6fce0b597.jpg', import.meta.url).href,
+  new URL('../images/logo-design-autoways/9e320b149861095.62ef6fce0c54b.jpg', import.meta.url).href,
+  new URL('../images/logo-design-autoways/b2b9e1149861095.62ef6fce0cd32.jpg', import.meta.url).href,
+  new URL('../images/logo-design-autoways/f84366149861095.62ef6fce07636.jpg', import.meta.url).href,
+];
+
 const projectData: Record<string, any> = {
   'organic-beltline': {
     title: 'Logo Design for Organic Beltline',
@@ -705,6 +719,43 @@ const projectData: Record<string, any> = {
       'Professional service showcase with clear navigation'
     ],
     images: qexleWebsiteImages,
+  },
+  'autowase-logo-design': {
+    title: 'Logo Design for Autowase Pvt Ltd',
+    subtitle: 'Comprehensive Brand Identity and Visual System',
+    role: 'Graphic Designer • The Qexle, Autowase Pvt Ltd',
+    year: 'Mar 2023',
+    duration: 'Brand Identity Project',
+    team: 'Solo',
+    description: 'Comprehensive branding project for Autowase Pvt Ltd, developing a distinctive visual identity and logo that reflect the company’s innovation and professionalism. The project included full brand mockups across digital devices and stationery materials to ensure consistent brand presence.',
+    heroImage: autowaseLogoImages[0],
+    behanceLink: 'https://www.behance.net/gallery/149861095/Logo-Design-Autowase-Pvt-Ltd',
+    impact: [
+      { metric: '✓', label: 'Designed modern and recognizable logo representing brand vision' },
+      { metric: '✓', label: 'Created complete branding assets including stationery and digital mockups' },
+      { metric: '✓', label: 'Ensured cohesive visual identity across all platforms' },
+      { metric: '✓', label: 'Delivered brand presentation and usage guidelines' },
+    ],
+    responsibilities: [
+      'Researched automotive industry trends and brand positioning',
+      'Developed multiple logo concepts emphasizing innovation and professionalism',
+      'Created comprehensive brand mockups for digital and print applications',
+      'Prepared brand guidelines and presentation materials for client delivery',
+    ],
+    technologies: ['Graphic Design', 'Figma', 'Branding', 'Mockup Design'],
+    process: [
+      { phase: 'Research & Discovery', description: 'Analyzed automotive market and studied successful brand identities in the sector.' },
+      { phase: 'Concept Development', description: 'Explored visual concepts that represent innovation, reliability, and professionalism.' },
+      { phase: 'Visual Identity Creation', description: 'Developed comprehensive brand system with refined color palette and typography.' },
+      { phase: 'Brand Applications', description: 'Created diverse mockups demonstrating brand versatility across digital and print media.' },
+    ],
+    keyFeatures: [
+      'Modern logo design reflecting innovation and professionalism',
+      'Complete stationery suite with consistent brand application',
+      'Digital device mockups showcasing brand adaptability',
+      'Comprehensive brand guidelines for consistent usage'
+    ],
+    images: autowaseLogoImages,
   },
   coveragex: {
     title: 'CoverageX.com',

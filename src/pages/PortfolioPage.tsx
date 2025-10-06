@@ -26,6 +26,7 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
   const currencyCover = new URL('../images/fake-money-detector/383462735-8d2e6543-69c2-4b94-94d2-563a3cc1a2cd.png', import.meta.url).href;
   const mentalHealthCover = new URL('../images/mental-health-project-development/391236591-ad36b207-9ccc-4b81-adcc-bfa1f0d206b2.png', import.meta.url).href;
   const qexleWebsiteCover = new URL('../images/the-qexle-website-design-and-development/00c0ad210641019.67152a68b52a2.png', import.meta.url).href;
+  const autowaseCover = new URL('../images/logo-design-autoways/f54fe9149861095.62ef6fce07e79.jpg', import.meta.url).href;
   
   const projects = [
     {
@@ -167,6 +168,20 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
       featured: true,
       size: 'large',
       image: qexleWebsiteCover
+    },
+    {
+      id: 'autowase-logo-design',
+      title: 'Logo Design for Autowase Pvt Ltd',
+      role: 'Graphic Designer',
+      description: 'Comprehensive branding project developing distinctive visual identity with full brand mockups across digital and stationery materials. Mar 2023.',
+      category: 'design',
+      tags: ['Graphic Design', 'Figma', 'Branding', 'Mockup Design'],
+      accentColor: '#DC2626',
+      gradient: 'from-red-600/20 to-orange-500/20',
+      initials: 'AW',
+      featured: true,
+      size: 'large',
+      image: autowaseCover
     },
     {
       id: 'qexle-rebranding',
