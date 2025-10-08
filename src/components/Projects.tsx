@@ -1,6 +1,6 @@
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll } from 'motion/react';
 import { ArrowUpRight, ChevronLeft, ChevronRight, FolderOpen } from 'lucide-react';
-import { useRef, useState, useEffect } from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface ProjectsProps {
@@ -14,85 +14,114 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const projects = [
+  // Development and UI/UX projects only - matching portfolio page order
+  const allProjects = [
+    // Web Development Projects (Priority 1)
     {
-      id: 'organic-beltline',
-      title: 'Organic Beltline',
-      role: 'Graphic Designer',
-      description: 'Brand identity design for Organic Beltline, focusing on representing the company\'s organic values through visual elements.',
-      tags: ['Brand Identity', 'Logo Design', 'Organic Design', 'Visual Identity'],
-      accentColor: '#22C55E',
-      gradient: 'from-green-500/20 to-emerald-500/20',
-      initials: 'OB',
-      image: new URL('../images/logo-organic-beltline/imgi_42_ed9ac1143551981.627c7bfc9b51c.jpg', import.meta.url).href
+      id: 'sgsense-web-application',
+      title: 'SGSENSE Web Application',
+      role: 'Web Designer and Developer',
+      description: 'Enhanced user experience for SGSENSE, an Australian leader in Force and Torque Measurement solutions. Created comprehensive digital platform with improved navigation and product catalog.',
+      tags: ['Web Development', 'UI/UX', 'Product Catalog', 'Performance'],
+      accentColor: '#3B82F6',
+      gradient: 'from-blue-500/20 to-cyan-500/20',
+      initials: 'SG',
+      image: new URL('../images/website-uiux-design-sgsense/eb3149199392491.66508adb8ff04.png', import.meta.url).href,
+      category: 'web',
+      featured: true
     },
     {
-      id: 'qexle-rebranding',
-      title: 'The qexle Rebranding',
-      role: 'Graphic Designer',
-      description: 'A rebranding project for The qexle team, incorporating minimalistic design principles and strategic color choices to enhance brand recognition.',
-      tags: ['Rebranding', 'Logo Design', 'Brand Identity', 'Minimalistic Design'],
+      id: 'tech-startup-landing-page',
+      title: 'Tech Startup Landing Page',
+      role: 'UI/UX Designer & Front-End Developer',
+      description: 'Fully responsive tech startup landing page designed in Figma and developed using Nuxt.js (Vue 3) and Tailwind CSS v4. Explores modern UI/UX principles and responsive design.',
+      tags: ['Nuxt.js (Vue 3)', 'Tailwind CSS v4', 'Responsive Design', 'Figma'],
+      accentColor: '#3B82F6',
+      gradient: 'from-blue-500/20 to-cyan-400/20',
+      initials: 'TS',
+      image: new URL('../images/the-company-website-design-and-development/70da12231259117.68862965444bd.png', import.meta.url).href,
+      category: 'web',
+      featured: true
+    },
+    {
+      id: 'the-qexle-website-development',
+      title: 'The qexle Website Development',
+      role: 'Web Developer',
+      description: 'User-centric website showcasing branding, digital marketing, and web development services with optimized performance and SEO integration.',
+      tags: ['WordPress', 'Web Development', 'SEO', 'Performance'],
       accentColor: '#1E40AF',
       gradient: 'from-blue-600/20 to-blue-400/20',
       initials: 'TQ',
-      image: new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href
+      image: new URL('../images/the-qexle-website-design-and-development/da38e5210641019.67152a68b4960.png', import.meta.url).href,
+      category: 'web',
+      featured: true
     },
+    // Mobile Development Projects (Priority 2)
     {
-      id: 'bistro-coffee-shop',
-      title: 'Bistro Coffee Shop',
-      role: 'Graphic Designer',
-      description: 'Brand identity design for Bistro Coffee Shop in Anuradhapura, creating a logo that captures the welcoming and cozy atmosphere of the establishment.',
-      tags: ['Brand Identity', 'Logo Design', 'Graphic Design', 'Branding'],
-      accentColor: '#8B4513',
-      gradient: 'from-[#8B4513]/20 to-orange-500/20',
-      initials: 'BC',
-      image: new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href
-    },
-    {
-      id: 'coveragex',
-      title: 'CoverageX.com',
-      role: 'Lead Designer & Frontend Developer',
-      description: 'Redesigned CoverageX.com — I led the design and was one of the main frontend developers. Rebuilt the UI system in Figma and implemented screens with Nuxt.js, TypeScript and Tailwind; also created marketing emails via SendGrid to improve activation flows.',
-      tags: ['Figma', 'Nuxt.js', 'TypeScript', 'Tailwind CSS', 'SendGrid'],
-      accentColor: '#F4C542',
-      gradient: 'from-[#F4C542]/20 to-purple-500/20',
-      initials: 'CX',
-      image: 'https://images.unsplash.com/photo-1758611974287-8ca7147860a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBkZXNpZ24lMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzU5NTc2NTQwfDA&ixlib=rb-4.1.0&q=80&w=1080'
-    },
-    {
-      id: 'qexle',
-      title: 'The Qexle',
-      role: 'Founder & Lead Developer',
-      description: 'A digital product studio I founded to create exceptional web experiences. Managing full product lifecycle from concept to deployment, working with startups to build production-ready applications.',
-      tags: ['Product Design', 'React', 'Next.js', 'Full-Stack'],
-      accentColor: '#A855F7',
-      gradient: 'from-purple-500/20 to-blue-500/20',
-      initials: 'TQ',
-      image: 'https://images.unsplash.com/photo-1651563688824-a853587bfb2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwcHJvZHVjdCUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NTk2NTAwNjl8MA&ixlib=rb-4.1.0&q=80&w=1080'
-    },
-    {
-      id: 'ecommerce',
-      title: 'E-Commerce Platform',
+      id: 'greentips-plantation-management',
+      title: 'Greentips Plantation Management',
       role: 'UI/UX Designer & Developer',
-      description: 'Designed and developed a modern e-commerce platform with seamless checkout experience, real-time inventory management, and personalized product recommendations.',
-      tags: ['UI/UX', 'React', 'Node.js', 'MongoDB', 'Stripe'],
-      accentColor: '#10B981',
-      gradient: 'from-green-500/20 to-cyan-500/20',
-      initials: 'EC',
-      image: 'https://images.unsplash.com/photo-1664455340023-214c33a9d0bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBzaG9wcGluZyUyMGNhcnR8ZW58MXx8fHwxNzU5NjUwMDY5fDA&ixlib=rb-4.1.0&q=80&w=1080'
+      description: 'Mobile app streamlining operations for 250+ acre plantation with automated data collection, task tracking, and real-time management.',
+      tags: ['Android Studio', 'Firebase', 'Java', 'Kotlin'],
+      accentColor: '#16A34A',
+      gradient: 'from-green-600/20 to-lime-500/20',
+      initials: 'GT',
+      image: new URL('../images/mobile-uiux-design-greentips/1.png', import.meta.url).href,
+      category: 'mobile',
+      featured: true
     },
     {
-      id: 'fintech',
-      title: 'FinTech Dashboard',
-      role: 'Senior Product Designer',
-      description: 'Created an intuitive financial dashboard for tracking investments, analyzing market trends, and managing portfolios with real-time data visualization.',
-      tags: ['Product Design', 'Data Viz', 'React', 'TypeScript'],
-      accentColor: '#3B82F6',
-      gradient: 'from-blue-500/20 to-indigo-500/20',
-      initials: 'FT',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5hbmNpYWwlMjBkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MXx8fHwxNzU5NTYwNDI1fDA&ixlib=rb-4.1.0&q=80&w=1080'
+      id: 'landing-page-ui-nike',
+      title: 'Nike Shoes Landing Page Concept',
+      role: 'UI/UX Designer',
+      description: 'A landing page UI design concept for Nike shoes featuring bold hero visuals, strong typography, and conversion-focused CTAs. Emphasizes product storytelling and benefits.',
+      tags: ['Figma', 'Prototyping', 'UI Design', 'Responsive Grid'],
+      accentColor: '#FF6B35',
+      gradient: 'from-orange-500/20 to-red-500/20',
+      initials: 'NK',
+      image: new URL('../images/landing-page-ui-nike/418257146284501.62ad89bede8da.jpg', import.meta.url).href,
+      category: 'web',
+      featured: true
+    },
+    {
+      id: 'landing-page-wildlife',
+      title: 'Endemic Animals in Sri Lanka – Landing Page',
+      role: 'UI/UX Designer',
+      description: 'Interactive web interface showcasing Sri Lanka\'s rich biodiversity, focusing on endemic species like the Sri Lankan Leopard. Blends immersive visuals with informative content.',
+      tags: ['UI/UX Design', 'Figma', 'Wireframing', 'Visual Design'],
+      accentColor: '#059669',
+      gradient: 'from-green-600/20 to-emerald-500/20',
+      initials: 'WL',
+      image: new URL('../images/landing-page-wildlife/054fd3146507535.62b1c5409580e.jpg', import.meta.url).href,
+      category: 'web',
+      featured: true
     }
   ];
+
+  // Define category priority order (same as portfolio page)
+  const categoryOrder = {
+    'web': 1,      // Development projects first
+    'mobile': 2,   // Mobile development second
+  };
+
+  // Sort projects by category priority, then by featured status
+  const projects = allProjects
+    .filter(project => project.category === 'web' || project.category === 'mobile') // Only development and UI/UX
+    .sort((a, b) => {
+      // First sort by category priority
+      const categoryA = categoryOrder[a.category as keyof typeof categoryOrder] || 999;
+      const categoryB = categoryOrder[b.category as keyof typeof categoryOrder] || 999;
+      
+      if (categoryA !== categoryB) {
+        return categoryA - categoryB;
+      }
+      
+      // Within same category, featured projects come first
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      
+      return 0;
+    });
 
   useScroll({
     target: containerRef,
@@ -170,7 +199,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
                 <p className="text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1]">
-                  Featured Projects
+                  Development & UI/UX
                 </p>
               </div>
               
