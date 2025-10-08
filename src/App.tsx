@@ -12,13 +12,29 @@ export default function App() {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   useEffect(() => {
+    // Initialize page based on current URL
+    const initializePage = () => {
+      const path = window.location.pathname;
+      if (path === '/portfolio') {
+        setCurrentPage('portfolio');
+      } else if (path.startsWith('/project/')) {
+        setCurrentPage('project');
+        setSelectedProject(path.replace('/project/', ''));
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
     // Check if this is the first load
     const hasVisited = sessionStorage.getItem('hasVisited');
     if (hasVisited) {
       setShowPreloader(false);
       setIsFirstLoad(false);
+      initializePage(); // Initialize page immediately if not first load
     } else {
       sessionStorage.setItem('hasVisited', 'true');
+      // For first load, initialize page after preloader
+      setTimeout(initializePage, 100);
     }
   }, []);
 
@@ -59,6 +75,14 @@ export default function App() {
 
   const handlePreloaderComplete = () => {
     setShowPreloader(false);
+    // Initialize page after preloader completes
+    const path = window.location.pathname;
+    if (path === '/portfolio') {
+      setCurrentPage('portfolio');
+    } else if (path.startsWith('/project/')) {
+      setCurrentPage('project');
+      setSelectedProject(path.replace('/project/', ''));
+    }
   };
 
   return (
