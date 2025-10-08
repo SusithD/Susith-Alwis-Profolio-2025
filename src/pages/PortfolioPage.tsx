@@ -505,7 +505,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                     )}
 
                     {/* Content Section */}
-                    <div className="flex-1 p-8 md:p-12 flex flex-col justify-center space-y-6">
+                    <div className="flex-1 p-6 sm:p-8 lg:p-12 flex flex-col justify-center space-y-4 sm:space-y-6">
                       {/* Category Badge */}
                       <motion.div
                         initial={{ opacity: 0, x: isImageLeft ? -30 : 30 }}
@@ -530,7 +530,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.5 }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight group-hover:text-[#F4C542] transition-colors duration-500"
+                        className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight leading-tight group-hover:text-[#F4C542] transition-colors duration-500"
                       >
                         {project.title}
                       </motion.h3>
@@ -540,7 +540,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.6 }}
-                        className="text-white/70 text-lg font-medium tracking-wide"
+                        className="text-white/70 text-base sm:text-lg font-medium tracking-wide"
                       >
                         {project.role}
                       </motion.p>
@@ -550,7 +550,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.7 }}
-                        className="text-white/60 text-base leading-relaxed max-w-lg"
+                        className="text-white/60 text-sm sm:text-base leading-relaxed max-w-lg"
                       >
                         {project.description}
                       </motion.p>

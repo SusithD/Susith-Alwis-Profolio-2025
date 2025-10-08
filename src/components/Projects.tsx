@@ -268,12 +268,12 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                 viewport={{ once: true, margin: "-100px" }}
                 whileHover={{ y: -8 }}
                 onClick={() => onNavigateToProject('project', project.id)}
-                className="flex-shrink-0 w-[85vw] md:w-[600px] lg:w-[700px] group cursor-pointer my-2"
+                className="flex-shrink-0 w-[90vw] sm:w-[85vw] md:w-[600px] lg:w-[700px] group cursor-pointer my-2"
                 style={{ scrollSnapAlign: 'start' }}
               >
                 <div className="relative bg-white/5 rounded-3xl overflow-hidden border border-white/10 hover:border-[#F4C542]/50 transition-all duration-500 h-full backdrop-blur-sm">
                   {/* Card Content */}
-                  <div className="p-8 md:p-10 space-y-6">
+                  <div className="p-6 sm:p-8 md:p-10 space-y-4 sm:space-y-6">
                     {/* Role Badge */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -295,7 +295,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                       viewport={{ once: true }}
-                      className="text-4xl md:text-5xl lg:text-6xl tracking-tight group-hover:translate-x-2 transition-transform duration-300"
+                      className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight group-hover:translate-x-2 transition-transform duration-300"
                     >
                       {project.title}
                     </motion.h3>
@@ -306,7 +306,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
                       viewport={{ once: true }}
-                      className="text-lg text-white/70 leading-relaxed"
+                      className="text-base sm:text-lg text-white/70 leading-relaxed"
                     >
                       {project.description}
                     </motion.p>

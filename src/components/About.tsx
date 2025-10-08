@@ -96,7 +96,7 @@ export default function About() {
               </p>
             </motion.div>
             
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -175,7 +175,7 @@ export default function About() {
             viewport={{ once: true }}
             className="pt-8 border-t border-[#1a1a1a]/10"
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-sm">
               <div className="space-y-3">
                 <h4 className="text-[#1a1a1a]/40 uppercase tracking-wider text-xs">Frontend</h4>
                 <div className="space-y-1 text-[#1a1a1a]/60">

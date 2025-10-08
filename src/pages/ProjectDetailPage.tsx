@@ -1382,7 +1382,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
           <h1 className="text-4xl">Project not found</h1>
           <button
             onClick={onNavigateHome}
-            className="bg-[#F4C542] text-black px-6 py-3 rounded-full hover:bg-[#F4C542]/90 transition-all"
+            className="bg-[#F4C542] text-black px-4 sm:px-6 py-3 rounded-full hover:bg-[#F4C542]/90 transition-all"
           >
             Back to Home
           </button>
@@ -1403,7 +1403,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-24 pt-32">
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-4 sm:px-6 py-24 pt-32">
         <div className="max-w-7xl w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1474,7 +1474,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                     href={project.liveWebsite.startsWith('http') ? project.liveWebsite : `https://${project.liveWebsite}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group"
+                    className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-4 sm:px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0 9c-1.657 0-3-4.03-3-9s1.343-9 3-9m0 18c1.657 0 3-4.03 3-9s-1.343-9-3-9m-9 9a9 9 0 019-9" />
@@ -1488,7 +1488,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                     href={project.behanceLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group"
+                    className="inline-flex items-center gap-3 bg-[#1877f2] hover:bg-[#1877f2]/90 text-white px-4 sm:px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group"
                   >
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
@@ -1502,7 +1502,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group border border-white/10"
+                    className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white px-4 sm:px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group border border-white/10"
                   >
                     <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
                       <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.012c0 4.424 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.907-.62.069-.607.069-.607 1.003.07 1.53 1.031 1.53 1.031.892 1.53 2.341 1.087 2.91.832.091-.647.35-1.087.636-1.337-2.22-.253-4.555-1.112-4.555-4.945 0-1.092.39-1.987 1.03-2.688-.103-.253-.447-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.56 9.56 0 0 1 12 6.844c.852.004 1.71.115 2.51.337 1.909-1.296 2.748-1.026 2.748-1.026.546 1.378.202 2.397.1 2.65.64.701 1.028 1.596 1.028 2.688 0 3.842-2.339 4.69-4.566 4.939.36.31.68.92.68 1.852 0 1.336-.012 2.415-.012 2.744 0 .268.18.579.688.48A10.013 10.013 0 0 0 22 12.012C22 6.484 17.523 2 12 2Z" clipRule="evenodd" />
@@ -1519,7 +1519,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
 
       {/* Creative Grid Gallery - Colombo Kings */}
       {project.images && (
-        <section className="px-6 py-24 bg-[#1a1a1a]">
+        <section className="px-4 sm:px-6 py-24 bg-[#1a1a1a]">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -1572,7 +1572,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       )}
 
       {/* Hero Image */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -1592,7 +1592,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Overview Section */}
-      <section className="px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
@@ -1630,7 +1630,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Challenge & Solution */}
-      <section className="px-6 py-24 bg-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-[#1a1a1a]">
         <div className="max-w-7xl mx-auto space-y-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1657,7 +1657,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Impact */}
-      <section className="px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1688,7 +1688,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Process */}
-      <section className="px-6 py-24 bg-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-[#1a1a1a]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1725,7 +1725,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Key Features */}
-      <section className="px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1755,7 +1755,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Responsibilities */}
-      <section className="px-6 py-24 bg-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-[#1a1a1a]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1787,7 +1787,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* CTA Section */}
-      <section id="contact-project" className="px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
+      <section id="contact-project" className="px-4 sm:px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
