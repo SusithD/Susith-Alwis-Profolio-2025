@@ -5,12 +5,14 @@ import { useState } from 'react';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import Navigation from '../components/Navigation';
 
 interface PortfolioPageProps {
   onNavigateToProject: (page: 'project', projectId: string) => void;
+  onNavigateHome: () => void;
 }
 
-export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProps) {
+export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: PortfolioPageProps) {
   const [activeFilter, setActiveFilter] = useState('all');
   const ckCover = new URL('../images/logo-concept-colombo-kings/imgi_27_888ef0130936549.618ac232ec5e6.jpg', import.meta.url).href;
   const ktCover = new URL('../images/logo-concept-kandy-tuskers/imgi_30_ee4330130369959.617ede0e2b955.jpg', import.meta.url).href;
@@ -441,6 +443,13 @@ export default function PortfolioPage({ onNavigateToProject }: PortfolioPageProp
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
+      <Navigation 
+        currentPage="portfolio" 
+        onNavigate={(page) => {
+          if (page === 'home') onNavigateHome();
+        }}
+      />
+      
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         {/* Animated background */}

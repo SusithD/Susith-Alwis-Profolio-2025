@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
-import Navigation from './components/Navigation';
 import Preloader from './components/Preloader';
 import HomePage from './pages/HomePage';
 import PortfolioPage from './pages/PortfolioPage';
@@ -72,10 +71,20 @@ export default function App() {
       
       {!showPreloader && (
         <>
-          <Navigation currentPage={currentPage} onNavigate={navigateTo} />
           {currentPage === 'home' && <HomePage onNavigateToProject={navigateTo} />}
-          {currentPage === 'portfolio' && <PortfolioPage onNavigateToProject={navigateTo} />}
-          {currentPage === 'project' && <ProjectDetailPage projectId={selectedProject} onNavigateHome={() => navigateTo('home')} />}
+          {currentPage === 'portfolio' && (
+            <PortfolioPage 
+              onNavigateToProject={navigateTo} 
+              onNavigateHome={() => navigateTo('home')}
+            />
+          )}
+          {currentPage === 'project' && (
+            <ProjectDetailPage 
+              projectId={selectedProject} 
+              onNavigateHome={() => navigateTo('home')}
+              onNavigatePortfolio={() => navigateTo('portfolio')}
+            />
+          )}
         </>
       )}
     </div>

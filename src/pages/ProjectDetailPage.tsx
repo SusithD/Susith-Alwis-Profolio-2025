@@ -2,10 +2,13 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, Calendar, Users, Target } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import Navigation from '../components/Navigation';
+import Breadcrumb from '../components/Breadcrumb';
 
 interface ProjectDetailPageProps {
   projectId: string;
   onNavigateHome: () => void;
+  onNavigatePortfolio: () => void;
 }
 
 // Local images for Organic Beltline project - ALL 12 IMAGES
@@ -1369,7 +1372,7 @@ const projectData: Record<string, any> = {
   }
 };
 
-export default function ProjectDetailPage({ projectId, onNavigateHome }: ProjectDetailPageProps) {
+export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigatePortfolio }: ProjectDetailPageProps) {
   const project = projectData[projectId];
 
   if (!project) {
@@ -1389,9 +1392,18 @@ export default function ProjectDetailPage({ projectId, onNavigateHome }: Project
   }
 
   return (
-    <div className="bg-[#1a1a1a] text-white pt-20">
+    <div className="bg-[#1a1a1a] text-white">
+      <Navigation 
+        currentPage="project" 
+        onNavigate={(page) => {
+          if (page === 'home') onNavigateHome();
+          if (page === 'portfolio') onNavigatePortfolio();
+        }}
+        projectTitle={project.title}
+      />
+      
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-24">
+      <section className="min-h-screen flex items-center justify-center px-6 py-24 pt-32">
         <div className="max-w-7xl w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1399,6 +1411,15 @@ export default function ProjectDetailPage({ projectId, onNavigateHome }: Project
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
+            {/* Breadcrumb */}
+            <Breadcrumb 
+              items={[
+                { label: 'Home', onClick: onNavigateHome },
+                { label: 'Portfolio', onClick: onNavigatePortfolio },
+                { label: project.title, isActive: true }
+              ]}
+            />
+            
             <div className="inline-block bg-[#F4C542]/20 text-[#F4C542] px-4 py-2 rounded-full text-sm">
               {project.role}
             </div>

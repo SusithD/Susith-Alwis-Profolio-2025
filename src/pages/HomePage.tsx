@@ -1,3 +1,5 @@
+import React from 'react';
+import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Philosophy from '../components/Philosophy';
@@ -15,6 +17,12 @@ interface HomePageProps {
 export default function HomePage({ onNavigateToProject }: HomePageProps) {
   return (
     <>
+      <Navigation 
+        currentPage="home" 
+        onNavigate={(page) => {
+          if (page === 'portfolio') onNavigateToProject('portfolio');
+        }}
+      />
       <Hero />
       <About />
       <Philosophy />

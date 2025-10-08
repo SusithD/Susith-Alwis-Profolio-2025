@@ -1,3 +1,4 @@
+import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
@@ -5,9 +6,10 @@ import { motion } from 'motion/react';
 interface NavigationProps {
   currentPage: 'home' | 'portfolio' | 'project';
   onNavigate: (page: 'home' | 'portfolio' | 'project', projectId?: string) => void;
+  projectTitle?: string;
 }
 
-export default function Navigation({ currentPage, onNavigate }: NavigationProps) {
+export default function Navigation({ currentPage, onNavigate, projectTitle }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false);
   const [isLightSection, setIsLightSection] = useState(false);
 
@@ -67,13 +69,36 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
         className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300"
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <button
-            onClick={() => onNavigate('home')}
-            className="flex items-center gap-2 text-white hover:text-[#F4C542] transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Back to Home
-          </button>
+          <div className="flex items-center gap-8">
+            <button 
+              onClick={() => onNavigate('home')}
+              className="text-white hover:text-[#F4C542] transition-colors tracking-wide"
+            >
+              Susith Deshan
+            </button>
+            <div className="hidden md:flex items-center gap-1 bg-white/10 rounded-full px-2 py-2">
+              <button
+                onClick={() => onNavigate('home')}
+                className="px-4 py-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all text-sm"
+              >
+                Home
+              </button>
+              <button
+                className="px-4 py-1.5 rounded-full text-white bg-white/20 transition-all text-sm"
+              >
+                Portfolio
+              </button>
+              <button
+                onClick={() => {
+                  const element = document.getElementById('contact');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-4 py-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all text-sm"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
           <button
             onClick={() => {
               const element = document.getElementById('contact');
@@ -93,16 +118,37 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
       <motion.nav 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 ${navBg} backdrop-blur-md border-b ${borderColor} transition-all duration-300`}
+        className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300"
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <button
-            onClick={() => onNavigate('home')}
-            className={`flex items-center gap-2 ${textColor} ${textHover} transition-colors`}
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Back to Home
-          </button>
+          <div className="flex items-center gap-8">
+            <button 
+              onClick={() => onNavigate('home')}
+              className="text-white hover:text-[#F4C542] transition-colors tracking-wide"
+            >
+              Susith Deshan
+            </button>
+            <div className="hidden md:flex items-center gap-1 bg-white/10 rounded-full px-2 py-2">
+              <button
+                onClick={() => onNavigate('home')}
+                className="px-4 py-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all text-sm"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => onNavigate('portfolio')}
+                className="px-4 py-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all text-sm"
+              >
+                Portfolio
+              </button>
+              <button
+                onClick={() => scrollToSection('contact-project')}
+                className="px-4 py-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all text-sm"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
           <button
             onClick={() => scrollToSection('contact-project')}
             className="bg-[#F4C542] text-[#0a0a0a] px-6 py-2.5 rounded-full hover:bg-[#F4C542]/90 transition-all hover:scale-105"
