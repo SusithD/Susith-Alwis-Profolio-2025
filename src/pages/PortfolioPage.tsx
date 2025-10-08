@@ -17,23 +17,23 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
   const ckCover = new URL('../images/logo-concept-colombo-kings/imgi_27_888ef0130936549.618ac232ec5e6.jpg', import.meta.url).href;
   const ktCover = new URL('../images/logo-concept-kandy-tuskers/imgi_30_ee4330130369959.617ede0e2b955.jpg', import.meta.url).href;
   const bistroCover = new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href;
-  const qexleCover = new URL('../images/the-qexle-branding/imgi_10_28a1ab137769287.6210f6447ae00.jpg', import.meta.url).href;
+  const qexleCover = new URL('../images/the-qexle-branding/imgi_17_765024137769287.6210f64483f83.jpg', import.meta.url).href;
   const organicCover = new URL('../images/logo-organic-beltline/imgi_42_ed9ac1143551981.627c7bfc9b51c.jpg', import.meta.url).href;
   const noirCover = new URL('../images/logo-noir/imgi_29_471143143551429.627c7892a22b1.jpg', import.meta.url).href;
-  const kozhaCover = new URL('../images/logo-kozha-leather/imgi_16_d9e0ed144036805.6285223fef20c.jpg', import.meta.url).href;
-  const gyroctionCover = new URL('../images/logo-gyroction/efe0a7145776937.62a44786baedf.jpg', import.meta.url).href;
+  const kozhaCover = new URL('../images/logo-kozha-leather/imgi_37_1f6657144036805.6285223fee455.jpg', import.meta.url).href;
+  const gyroctionCover = new URL('../images/logo-gyroction/97fec5145776937.62a44786bb599.jpg', import.meta.url).href;
   const nikeCover = new URL('../images/landing-page-ui-nike/418257146284501.62ad89bede8da.jpg', import.meta.url).href;
   const wildlifeCover = new URL('../images/landing-page-wildlife/054fd3146507535.62b1c5409580e.jpg', import.meta.url).href;
   const foodieHutCover = new URL('../images/foodiehut-ui-design-and-development/ee7e75210104439.670bb1a9a3865.png', import.meta.url).href;
   const currencyCover = new URL('../images/fake-money-detector/383462735-8d2e6543-69c2-4b94-94d2-563a3cc1a2cd.png', import.meta.url).href;
-  const mentalHealthCover = new URL('../images/mental-health-project-development/391236591-ad36b207-9ccc-4b81-adcc-bfa1f0d206b2.png', import.meta.url).href;
-  const qexleWebsiteCover = new URL('../images/the-qexle-website-design-and-development/00c0ad210641019.67152a68b52a2.png', import.meta.url).href;
-  const autowaseCover = new URL('../images/logo-design-autoways/f54fe9149861095.62ef6fce07e79.jpg', import.meta.url).href;
-  const prestigeCover = new URL('../images/logo-design-prestige/7e7546184602991.6554de545c4c8.jpg', import.meta.url).href;
+  const mentalHealthCover = new URL('../images/mental-health-project-development/mental-health.jpg', import.meta.url).href;
+  const qexleWebsiteCover = new URL('../images/the-qexle-website-design-and-development/da38e5210641019.67152a68b4960.png', import.meta.url).href;
+  const autowaseCover = new URL('../images/logo-design-autoways/28eb6a149861095.62ef6fce0bd56.jpg', import.meta.url).href;
+  const prestigeCover = new URL('../images/logo-design-prestige/6ed130184602991.6554de5459067.jpg', import.meta.url).href;
   const sgsenseCover = new URL('../images/logo-design-sgsense/9faefb199290833.664f071a6bb10.png', import.meta.url).href;
-  const sgsenseWebCover = new URL('../images/website-uiux-design-sgsense/60ee3d199392491.66508adb8cf3a.png', import.meta.url).href;
+  const sgsenseWebCover = new URL('../images/website-uiux-design-sgsense/eb3149199392491.66508adb8ff04.png', import.meta.url).href;
   const greentipsCover = new URL('../images/mobile-uiux-design-greentips/1.png', import.meta.url).href;
-  const techStartupCover = new URL('../images/the-company-website-design-and-development/2bd054231259117.6886296544c63.png', import.meta.url).href;
+  const techStartupCover = new URL('../images/the-company-website-design-and-development/70da12231259117.68862965444bd.png', import.meta.url).href;
   
   const projects = [
     {
@@ -316,118 +316,6 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
       size: 'medium',
       image: ckCover
     },
-    {
-      id: 'coveragex',
-      title: 'CoverageX.com',
-      role: 'Lead Designer & Frontend Developer',
-      description: 'Redesigned CoverageX.com — I led the design and was one of the main frontend developers. Rebuilt the UI system in Figma and implemented screens with Nuxt.js, TypeScript and Tailwind.',
-      category: 'web',
-      tags: ['Figma', 'Nuxt.js', 'TypeScript', 'Tailwind CSS', 'SendGrid'],
-      accentColor: '#F4C542',
-      gradient: 'from-[#F4C542]/20 to-purple-500/20',
-      initials: 'CX',
-      featured: true,
-      size: 'large',
-      image: 'https://images.unsplash.com/photo-1758611974287-8ca7147860a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBkZXNpZ24lMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzU5NTc2NTQwfDA&ixlib=rb-4.1.0&q=80&w=1080'
-    },
-    {
-      id: 'qexle',
-      title: 'The Qexle',
-      role: 'Founder & Lead Developer',
-      description: 'A digital product studio I founded to create exceptional web experiences. Managing full product lifecycle from concept to deployment.',
-      category: 'web',
-      tags: ['Product Design', 'React', 'Next.js', 'Full-Stack'],
-      accentColor: '#A855F7',
-      gradient: 'from-purple-500/20 to-blue-500/20',
-      initials: 'TQ',
-      featured: true,
-      size: 'large',
-      image: 'https://images.unsplash.com/photo-1651563688824-a853587bfb2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwcHJvZHVjdCUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NTk2NTAwNjl8MA&ixlib=rb-4.1.0&q=80&w=1080'
-    },
-    {
-      id: 'ecommerce',
-      title: 'E-Commerce Platform',
-      role: 'UI/UX Designer & Developer',
-      description: 'Modern e-commerce platform with seamless checkout experience and personalized product recommendations.',
-      category: 'web',
-      tags: ['UI/UX', 'React', 'Node.js', 'MongoDB', 'Stripe'],
-      accentColor: '#10B981',
-      gradient: 'from-green-500/20 to-cyan-500/20',
-      initials: 'EC',
-      featured: false,
-      size: 'medium',
-      image: 'https://images.unsplash.com/photo-1664455340023-214c33a9d0bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBzaG9wcGluZyUyMGNhcnR8ZW58MXx8fHwxNzU5NjUwMDY5fDA&ixlib=rb-4.1.0&q=80&w=1080'
-    },
-    {
-      id: 'fintech',
-      title: 'FinTech Dashboard',
-      role: 'Senior Product Designer',
-      description: 'Intuitive financial dashboard for tracking investments and analyzing market trends with real-time data visualization.',
-      category: 'web',
-      tags: ['Product Design', 'Data Viz', 'React', 'TypeScript'],
-      accentColor: '#3B82F6',
-      gradient: 'from-blue-500/20 to-indigo-500/20',
-      initials: 'FT',
-      featured: false,
-      size: 'medium',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5hbmNpYWwlMjBkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MXx8fHwxNzU5NTYwNDI1fDA&ixlib=rb-4.1.0&q=80&w=1080'
-    },
-    {
-      id: 'mobile-app',
-      title: 'Health & Fitness App',
-      role: 'UI/UX Designer',
-      description: 'Mobile app design for tracking workouts, nutrition, and wellness goals with gamification.',
-      category: 'mobile',
-      tags: ['Mobile Design', 'Figma', 'Prototyping'],
-      accentColor: '#EF4444',
-      gradient: 'from-red-500/20 to-orange-500/20',
-      initials: 'HF',
-      featured: false,
-      size: 'small',
-      image: 'https://images.unsplash.com/photo-1580983703451-bf6bb44a9917?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBmaXRuZXNzJTIwYXBwfGVufDF8fHx8MTc1OTU3NjQ0Nnww&ixlib=rb-4.1.0&q=80&w=1080'
-    },
-    {
-      id: 'design-system',
-      title: 'Design System',
-      role: 'Design Systems Lead',
-      description: 'Comprehensive design system with reusable components, patterns, and guidelines for enterprise products.',
-      category: 'design',
-      tags: ['Design System', 'Figma', 'Documentation', 'Tokens'],
-      accentColor: '#8B5CF6',
-      gradient: 'from-violet-500/20 to-purple-500/20',
-      initials: 'DS',
-      featured: false,
-      size: 'medium',
-      image: 'https://images.unsplash.com/photo-1737918543118-9c9e074c60b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ24lMjBzeXN0ZW0lMjBjb21wb25lbnRzfGVufDF8fHx8MTc1OTYxNzM5Mnww&ixlib=rb-4.1.0&q=80&w=1080'
-    },
-    {
-      id: 'saas-platform',
-      title: 'SaaS Analytics Platform',
-      role: 'Product Designer & Developer',
-      description: 'Data analytics platform helping businesses make data-driven decisions with AI insights.',
-      category: 'web',
-      tags: ['SaaS', 'Analytics', 'React', 'D3.js', 'AI'],
-      accentColor: '#F59E0B',
-      gradient: 'from-amber-500/20 to-yellow-500/20',
-      initials: 'AP',
-      featured: false,
-      size: 'medium',
-      image: 'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzJTIwY2hhcnRzfGVufDF8fHx8MTc1OTYyOTY0Mnww&ixlib=rb-4.1.0&q=80&w=1080'
-    },
-    {
-      id: 'brand-identity',
-      title: 'Brand Identity System',
-      role: 'Brand Designer',
-      description: 'Complete brand identity including logo, color system, typography, and brand guidelines.',
-      category: 'design',
-      tags: ['Branding', 'Identity', 'Figma', 'Illustration'],
-      accentColor: '#EC4899',
-      gradient: 'from-pink-500/20 to-rose-500/20',
-      initials: 'BI',
-      featured: false,
-      size: 'small',
-      image: 'https://images.unsplash.com/photo-1633533447057-56ccf997f4fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFuZCUyMGlkZW50aXR5JTIwZGVzaWdufGVufDF8fHx8MTc1OTU4NTQwNnww&ixlib=rb-4.1.0&q=80&w=1080'
-    }
   ];
 
   const categories = [
