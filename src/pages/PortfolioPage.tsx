@@ -437,9 +437,33 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
     { id: 'design', label: 'Design', icon: Palette }
   ];
 
+  // Define category priority order
+  const categoryOrder = {
+    'web': 1,      // Development projects first
+    'mobile': 2,   // Mobile development second
+    'design': 3    // Logo design and branding last
+  };
+
+  // Sort projects by category priority, then by featured status
+  const sortedProjects = [...projects].sort((a, b) => {
+    // First sort by category priority
+    const categoryA = categoryOrder[a.category as keyof typeof categoryOrder] || 999;
+    const categoryB = categoryOrder[b.category as keyof typeof categoryOrder] || 999;
+    
+    if (categoryA !== categoryB) {
+      return categoryA - categoryB;
+    }
+    
+    // Within same category, featured projects come first
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    
+    return 0;
+  });
+
   const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(p => p.category === activeFilter);
+    ? sortedProjects 
+    : sortedProjects.filter(p => p.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
