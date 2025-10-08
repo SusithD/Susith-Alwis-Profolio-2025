@@ -1,5 +1,5 @@
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
 import { User } from 'lucide-react';
 
 export default function About() {
@@ -125,9 +125,9 @@ export default function About() {
                 <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center text-2xl">
                   2
                 </div>
-                <h3 className="text-xl">Frontend Development</h3>
+                <h3 className="text-xl">Full Stack Development</h3>
                 <p className="text-[#1a1a1a]/60">
-                  Production-ready interfaces with modern frameworks
+                  End-to-end solutions from frontend to backend systems
                 </p>
               </motion.div>
               
@@ -166,6 +166,61 @@ export default function About() {
               </motion.div>
             </div>
           </div>
+
+          {/* Tech Stack - Minimal */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="pt-8 border-t border-[#1a1a1a]/10"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+              <div className="space-y-3">
+                <h4 className="text-[#1a1a1a]/40 uppercase tracking-wider text-xs">Frontend</h4>
+                <div className="space-y-1 text-[#1a1a1a]/60">
+                  <p>React.js</p>
+                  <p>Next.js</p>
+                  <p>Vue.js</p>
+                  <p>Nuxt.js</p>
+                  <p>Tailwind</p>
+                  <p>Bootstrap</p>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <h4 className="text-[#1a1a1a]/40 uppercase tracking-wider text-xs">Backend</h4>
+                <div className="space-y-1 text-[#1a1a1a]/60">
+                  <p>Node.js</p>
+                  <p>Express.js</p>
+                  <p>Python</p>
+                  <p>Java</p>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <h4 className="text-[#1a1a1a]/40 uppercase tracking-wider text-xs">Design</h4>
+                <div className="space-y-1 text-[#1a1a1a]/60">
+                  <p>Figma</p>
+                  <p>Adobe XD</p>
+                  <p>Photoshop</p>
+                  <p>Illustrator</p>
+                  <p>Prototyping</p>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <h4 className="text-[#1a1a1a]/40 uppercase tracking-wider text-xs">DevOps & Cloud</h4>
+                <div className="space-y-1 text-[#1a1a1a]/60">
+                  <p>Git/GitHub</p>
+                  <p>Docker</p>
+                  <p>AWS</p>
+                  <p>Google Cloud</p>
+                  <p>Postman</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
