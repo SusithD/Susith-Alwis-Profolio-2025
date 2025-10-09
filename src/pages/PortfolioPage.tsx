@@ -455,13 +455,13 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
       </section>
 
       {/* Projects Grid - Bento Style */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
             {filteredProjects.map((project, index) => {
               const isImageLeft = index % 2 === 0; // Alternating: even = image left, odd = image right
@@ -476,8 +476,8 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                   onClick={() => onNavigateToProject('project', project.id)}
                   className="group cursor-pointer bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-[#F4C542]/30 transition-all duration-700 hover:shadow-2xl hover:shadow-[#F4C542]/10"
                 >
-                  {/* Two Column Layout */}
-                  <div className="flex min-h-[400px]">
+                  {/* Responsive Layout - Stack on mobile, side by side on larger screens */}
+                  <div className="flex flex-col md:flex-row min-h-[300px] md:min-h-[400px]">
                     {/* Conditional Image Section - Left */}
                     {isImageLeft && (
                       <div className="flex-1 relative overflow-hidden">
@@ -495,7 +495,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.15 + 0.4 }}
-                            className="absolute top-6 right-6 bg-[#F4C542] text-black px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg"
+                            className="absolute top-6 right-6 bg-[#F4C542] text-black px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg z-10"
                           >
                             <Sparkles className="w-3 h-3" />
                             FEATURED
@@ -505,7 +505,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                     )}
 
                     {/* Content Section */}
-                    <div className="flex-1 p-6 sm:p-8 lg:p-12 flex flex-col justify-center space-y-4 sm:space-y-6">
+                    <div className="flex-1 p-6 sm:p-8 lg:p-12 flex flex-col justify-center space-y-3 sm:space-y-6">
                       {/* Category Badge */}
                       <motion.div
                         initial={{ opacity: 0, x: isImageLeft ? -30 : 30 }}
@@ -550,7 +550,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.7 }}
-                        className="text-white/60 text-sm sm:text-base leading-relaxed max-w-lg"
+                        className="text-white/60 text-sm sm:text-base leading-relaxed max-w-lg line-clamp-3 sm:line-clamp-4"
                       >
                         {project.description}
                       </motion.p>
@@ -601,7 +601,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.15 + 0.4 }}
-                            className="absolute top-6 left-6 bg-[#F4C542] text-black px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg"
+                            className="absolute top-6 right-6 bg-[#F4C542] text-black px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg z-10"
                           >
                             <Sparkles className="w-3 h-3" />
                             FEATURED
@@ -638,19 +638,19 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
       </section>
 
       {/* CTA Section */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative bg-gradient-to-br from-[#F4C542]/20 to-purple-500/20 rounded-3xl p-12 md:p-16 text-center overflow-hidden border border-white/10"
+            className="relative bg-gradient-to-br from-[#F4C542]/20 to-purple-500/20 rounded-3xl p-6 sm:p-12 md:p-16 text-center overflow-hidden border border-white/10"
           >
             <div className="relative z-10 space-y-6">
-              <h2 className="text-4xl md:text-6xl tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
                 Have a project in mind?
               </h2>
-              <p className="text-xl text-white/70 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto">
                 Let's collaborate and create something exceptional together.
               </p>
               <motion.button
