@@ -638,42 +638,8 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 sm:px-6 pb-16 sm:pb-24">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative bg-gradient-to-br from-[#F4C542]/20 to-purple-500/20 rounded-3xl p-6 sm:p-12 md:p-16 text-center overflow-hidden border border-white/10"
-          >
-            <div className="relative z-10 space-y-6">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
-                Have a project in mind?
-              </h2>
-              <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto">
-                Let's collaborate and create something exceptional together.
-              </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const element = document.getElementById('contact');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="bg-[#F4C542] text-[#0a0a0a] px-8 py-4 rounded-full hover:bg-[#F4C542]/90 transition-all inline-flex items-center gap-2"
-              >
-                Get in Touch
-                <ArrowUpRight className="w-5 h-5" />
-              </motion.button>
-            </div>
-            
-            {/* Background decoration */}
-            <div className="absolute inset-0 opacity-30">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#F4C542]/20 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl" />
-            </div>
-          </motion.div>
-        </div>
+      <section className="px-4 sm:px-6 py-16 sm:py-24">
+        
       </section>
 
       {/* Contact Section */}
