@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'motion/react';
-import Preloader from './components/Preloader';
 import HomePage from './pages/HomePage';
 import PortfolioPage from './pages/PortfolioPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
@@ -8,8 +6,6 @@ import ProjectDetailPage from './pages/ProjectDetailPage';
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'portfolio' | 'project'>('home');
   const [selectedProject, setSelectedProject] = useState<string>('');
-  const [showPreloader, setShowPreloader] = useState(true);
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   useEffect(() => {
     // Initialize page based on current URL
@@ -25,17 +21,7 @@ export default function App() {
       }
     };
 
-    // Check if this is the first load
-    const hasVisited = sessionStorage.getItem('hasVisited');
-    if (hasVisited) {
-      setShowPreloader(false);
-      setIsFirstLoad(false);
-      initializePage(); // Initialize page immediately if not first load
-    } else {
-      sessionStorage.setItem('hasVisited', 'true');
-      // For first load, initialize page after preloader
-      setTimeout(initializePage, 100);
-    }
+    initializePage();
   }, []);
 
   useEffect(() => {
@@ -73,43 +59,21 @@ export default function App() {
     }
   };
 
-  const handlePreloaderComplete = () => {
-    setShowPreloader(false);
-    // Initialize page after preloader completes
-    const path = window.location.pathname;
-    if (path === '/portfolio') {
-      setCurrentPage('portfolio');
-    } else if (path.startsWith('/project/')) {
-      setCurrentPage('project');
-      setSelectedProject(path.replace('/project/', ''));
-    }
-  };
-
   return (
     <div className="size-full">
-      <AnimatePresence mode="wait">
-        {showPreloader && isFirstLoad && (
-          <Preloader onComplete={handlePreloaderComplete} />
-        )}
-      </AnimatePresence>
-      
-      {!showPreloader && (
-        <>
-          {currentPage === 'home' && <HomePage onNavigateToProject={navigateTo} />}
-          {currentPage === 'portfolio' && (
-            <PortfolioPage 
-              onNavigateToProject={navigateTo} 
-              onNavigateHome={() => navigateTo('home')}
-            />
-          )}
-          {currentPage === 'project' && (
-            <ProjectDetailPage 
-              projectId={selectedProject} 
-              onNavigateHome={() => navigateTo('home')}
-              onNavigatePortfolio={() => navigateTo('portfolio')}
-            />
-          )}
-        </>
+      {currentPage === 'home' && <HomePage onNavigateToProject={navigateTo} />}
+      {currentPage === 'portfolio' && (
+        <PortfolioPage 
+          onNavigateToProject={navigateTo} 
+          onNavigateHome={() => navigateTo('home')}
+        />
+      )}
+      {currentPage === 'project' && (
+        <ProjectDetailPage 
+          projectId={selectedProject} 
+          onNavigateHome={() => navigateTo('home')}
+          onNavigatePortfolio={() => navigateTo('portfolio')}
+        />
       )}
     </div>
   );
