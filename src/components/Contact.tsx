@@ -81,7 +81,7 @@ export default function Contact() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <motion.a
-                href="mailto:susith@example.com"
+                href="mailto:hello@susithdeshan.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-[#F4C542] text-black px-8 py-4 rounded-full hover:bg-[#F4C542]/90 transition-all flex items-center gap-2 text-lg w-full sm:w-auto justify-center"
