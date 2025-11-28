@@ -1457,7 +1457,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                   <Target className="w-4 h-4" />
                   <span className="text-sm">Role</span>
                 </div>
-                <p className="text-xl">Lead</p>
+                <p className="text-xl">{project.role}</p>
               </div>
             </div>
 
@@ -1819,9 +1819,13 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                 View More Projects
                 <ArrowUpRight className="w-5 h-5" />
               </button>
-              <button className="bg-[#F4C542] text-[#1a1a1a] px-8 py-4 rounded-full hover:bg-[#F4C542]/90 transition-all">
+              <a
+                href="mailto:hello@susithdeshan.com"
+                className="bg-[#F4C542] text-[#1a1a1a] px-8 py-4 rounded-full hover:bg-[#F4C542]/90 transition-all flex items-center gap-2 justify-center"
+              >
                 Get in Touch
-              </button>
+                <ArrowUpRight className="w-5 h-5" />
+              </a>
             </div>
           </motion.div>
         </div>
