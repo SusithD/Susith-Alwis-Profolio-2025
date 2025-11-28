@@ -82,7 +82,7 @@ export default function Footer() {
                     className="group relative inline-block"
                   >
                     <span className="relative">
-                      IAMSUSITHALWIS@GMAIL.COM
+                      hello@susithdeshan.com
                       <motion.span
                         className="absolute bottom-0 left-0 w-full h-1 bg-[#F4C542]"
                         initial={{ scaleX: 0, originX: 0 }}
