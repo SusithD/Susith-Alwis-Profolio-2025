@@ -207,7 +207,18 @@ export default function Experience() {
                   viewport={{ once: true }}
                   onMouseEnter={() => setActiveIndex(index)}
                   onMouseLeave={() => setActiveIndex(null)}
-                  className="relative pl-12 md:pl-44"
+                  onClick={() =>
+                    setActiveIndex((prev) => (prev === index ? null : index))
+                  }
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveIndex((prev) => (prev === index ? null : index));
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  className="relative pl-12 md:pl-44 outline-none focus-visible:ring-2 focus-visible:ring-[#F4C542] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1a1a] rounded-lg"
                 >
                   {/* Company label - left side */}
                   <div className="absolute left-0 md:left-0 top-0 w-28 text-right pr-6 hidden md:block">
@@ -311,7 +322,7 @@ export default function Experience() {
                         animate={{ opacity: 1 }}
                         className="text-xs text-white/20 mt-2 italic"
                       >
-                        Hover to see projects
+                        Tap or hover to see projects
                       </motion.div>
                     )}
                   </div>
@@ -377,7 +388,20 @@ export default function Experience() {
                   viewport={{ once: true }}
                   onMouseEnter={() => setActiveEduIndex(index)}
                   onMouseLeave={() => setActiveEduIndex(null)}
-                  className="relative pl-12 md:pl-44"
+                  onClick={() =>
+                    setActiveEduIndex((prev) => (prev === index ? null : index))
+                  }
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveEduIndex((prev) =>
+                        prev === index ? null : index
+                      );
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  className="relative pl-12 md:pl-44 outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1a1a] rounded-lg"
                 >
                   {/* Year label */}
                   <div className="absolute left-0 md:left-0 top-0 w-28 text-right pr-6 hidden md:block">
@@ -475,7 +499,7 @@ export default function Experience() {
                         animate={{ opacity: 1 }}
                         className="text-xs text-white/20 mt-2 italic"
                       >
-                        Hover to see coursework
+                        Tap or hover to see coursework
                       </motion.div>
                     )}
                   </div>
