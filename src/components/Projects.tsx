@@ -268,7 +268,16 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                 viewport={{ once: true, margin: "-100px" }}
                 whileHover={{ y: -8 }}
                 onClick={() => onNavigateToProject('project', project.id)}
-                className="flex-shrink-0 w-[90vw] sm:w-[85vw] md:w-[600px] lg:w-[700px] group cursor-pointer my-2"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onNavigateToProject('project', project.id);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`View case study: ${project.title}`}
+                className="flex-shrink-0 w-[90vw] sm:w-[85vw] md:w-[600px] lg:w-[700px] group cursor-pointer my-2 outline-none focus-visible:ring-2 focus-visible:ring-[#F4C542] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1a1a] rounded-3xl"
                 style={{ scrollSnapAlign: 'start' }}
               >
                 <div className="relative bg-white/5 rounded-3xl overflow-hidden border border-white/10 hover:border-[#F4C542]/50 transition-all duration-500 h-full backdrop-blur-sm">
@@ -361,6 +370,11 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: index * 0.1 + 0.7 }}
                       viewport={{ once: true }}
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onNavigateToProject('project', project.id);
+                      }}
                       className="flex items-center gap-2 hover:gap-4 transition-all duration-300"
                       style={{ color: project.accentColor }}
                     >
