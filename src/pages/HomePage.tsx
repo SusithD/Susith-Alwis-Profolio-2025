@@ -3,7 +3,6 @@ import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Philosophy from '../components/Philosophy';
-import Stats from '../components/Stats';
 import Projects from '../components/Projects';
 import Process from '../components/Process';
 import Experience from '../components/Experience';
@@ -26,7 +25,6 @@ export default function HomePage({ onNavigateToProject }: HomePageProps) {
       <Hero />
       <About />
       <Philosophy />
-      <Stats />
       <Projects onNavigateToProject={onNavigateToProject} />
       <Process />
       <Experience />
