@@ -321,6 +321,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
   const categories = [
     { id: 'all', label: 'All Projects', icon: Layers },
     { id: 'web', label: 'Web Design', icon: Code },
+    { id: 'ai', label: 'AI & ML', icon: Code },
     { id: 'mobile', label: 'Mobile', icon: Sparkles },
     { id: 'design', label: 'Design', icon: Palette }
   ];
@@ -328,8 +329,9 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
   // Define category priority order
   const categoryOrder = {
     'web': 1,      // Development projects first
-    'mobile': 2,   // Mobile development second
-    'design': 3    // Logo design and branding last
+    'ai': 2,       // AI / ML projects second
+    'mobile': 3,   // Mobile development third
+    'design': 4    // Logo design and branding last
   };
 
   // Sort projects by category priority, then by featured status
@@ -639,7 +641,40 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
 
       {/* CTA Section */}
       <section className="px-4 sm:px-6 py-16 sm:py-24">
-        
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
+              Have a project that fits this kind of work?
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto">
+              Whether it&apos;s a product redesign, marketing site, or mobile experience,
+              I can help from first sketches to production launch.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+              <button
+                onClick={() => {
+                  const el = document.getElementById('contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-[#F4C542] text-[#0a0a0a] px-8 py-3 rounded-full hover:bg-[#F4C542]/90 transition-all text-base md:text-lg"
+              >
+                Discuss a project
+              </button>
+              <a
+                href="mailto:hello@susithdeshan.com"
+                className="border border-white/20 text-white px-8 py-3 rounded-full hover:border-white/40 hover:bg-white/5 transition-all text-base md:text-lg"
+              >
+                Email directly
+              </a>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Contact Section */}
