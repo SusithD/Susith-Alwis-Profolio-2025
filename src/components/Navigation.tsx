@@ -16,21 +16,24 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
-    
+
     const handleScroll = () => {
       // Throttle scroll events
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         setScrolled(window.scrollY > 50);
-        
-        // Simple check: if scroll position is in about section range (roughly)
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        
-        // About section is typically the 2nd section
-        // Hero is ~100vh, About starts around 1 viewport
-        const isInAboutSection = scrollPosition > windowHeight * 0.8 && scrollPosition < windowHeight * 2;
-        setIsLightSection(isInAboutSection);
+
+        // Determine if nav is overlapping the light "about" section
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) {
+          const rect = aboutSection.getBoundingClientRect();
+          const navHeight = 72; // approximate nav height in px
+          const isOverAbout =
+            rect.top <= navHeight && rect.bottom >= navHeight;
+          setIsLightSection(isOverAbout);
+        } else {
+          setIsLightSection(false);
+        }
       }, 100);
     };
 
