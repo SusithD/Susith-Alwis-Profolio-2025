@@ -681,7 +681,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
       <Contact />
 
       {/* Footer */}
-      <Footer />
+      <Footer onNavigate={() => onNavigateHome()} />
     </div>
   );
 }
