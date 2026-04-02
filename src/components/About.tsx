@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { User } from 'lucide-react';
+import { User, Layers, Code2, Search, Rocket } from 'lucide-react';
 
 export default function About() {
   const ref = useRef<HTMLDivElement>(null);
@@ -105,15 +105,15 @@ export default function About() {
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-2xl p-6 border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/20 hover:shadow-lg transition-all duration-300 space-y-4"
               >
-                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center text-2xl">
-                  1
+                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center">
+                  <Layers className="w-7 h-7 text-[#1a1a1a]/60" />
                 </div>
                 <h3 className="text-xl">Design Systems</h3>
                 <p className="text-[#1a1a1a]/60">
                   Building scalable UI systems in Figma and code
                 </p>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -122,15 +122,15 @@ export default function About() {
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-2xl p-6 border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/20 hover:shadow-lg transition-all duration-300 space-y-4"
               >
-                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center text-2xl">
-                  2
+                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center">
+                  <Code2 className="w-7 h-7 text-[#1a1a1a]/60" />
                 </div>
                 <h3 className="text-xl">Full Stack Development</h3>
                 <p className="text-[#1a1a1a]/60">
                   End-to-end solutions from frontend to backend systems
                 </p>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -139,25 +139,25 @@ export default function About() {
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-2xl p-6 border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/20 hover:shadow-lg transition-all duration-300 space-y-4"
               >
-                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center text-2xl">
-                  3
+                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center">
+                  <Search className="w-7 h-7 text-[#1a1a1a]/60" />
                 </div>
                 <h3 className="text-xl">User Research</h3>
                 <p className="text-[#1a1a1a]/60">
                   Understanding needs through comprehensive analysis
                 </p>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-6 border border-[#F4C542]/30 hover:border-[#F4C542]/50 hover:shadow-lg transition-all duration-300 space-y-4"
+                className="bg-white rounded-2xl p-6 border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/20 hover:shadow-lg transition-all duration-300 space-y-4"
               >
-                <div className="w-16 h-16 rounded-full bg-[#F4C542] flex items-center justify-center text-2xl">
-                  4
+                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center">
+                  <Rocket className="w-7 h-7 text-[#1a1a1a]/60" />
                 </div>
                 <h3 className="text-xl">End-to-end Delivery</h3>
                 <p className="text-[#1a1a1a]/60">
