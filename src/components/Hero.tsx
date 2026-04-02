@@ -140,6 +140,27 @@ export default function Hero() {
             </p>
           </motion.div>
         </div>
+
+        {/* Scroll cue */}
+        <motion.button
+          onClick={() => {
+            const el = document.getElementById('about');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2, ease: [0.25, 0.4, 0.25, 1] }}
+          style={{ opacity: useTransform(scrollYProgress, [0, 0.15], [1, 0]) }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 hover:text-white/70 transition-colors cursor-pointer"
+          aria-label="Scroll down"
+        >
+          <span className="text-xs tracking-widest uppercase">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"
+          />
+        </motion.button>
       </motion.div>
 
       {/* Minimal background design */}
