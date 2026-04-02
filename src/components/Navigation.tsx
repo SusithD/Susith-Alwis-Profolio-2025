@@ -154,16 +154,6 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
                     if (element) element.scrollIntoView({ behavior: 'smooth' });
                     setMobileMenuOpen(false);
                   }}
-                  className="block w-full text-left text-white/80 hover:text-white py-3 px-4 rounded-lg hover:bg-white/10 transition-all"
-                >
-                  Contact
-                </button>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('contact');
-                    if (element) element.scrollIntoView({ behavior: 'smooth' });
-                    setMobileMenuOpen(false);
-                  }}
                   className="block w-full bg-[#F4C542] text-[#0a0a0a] py-3 px-4 rounded-lg hover:bg-[#F4C542]/90 transition-all mt-4 font-medium"
                 >
                   Let's Begin
@@ -257,15 +247,6 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
                   className="block w-full text-left text-white/80 hover:text-white py-3 px-4 rounded-lg hover:bg-white/10 transition-all"
                 >
                   Portfolio
-                </button>
-                <button
-                  onClick={() => {
-                    scrollToSection('contact-project');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="block w-full text-left text-white/80 hover:text-white py-3 px-4 rounded-lg hover:bg-white/10 transition-all"
-                >
-                  Contact
                 </button>
                 <button
                   onClick={() => {
@@ -394,15 +375,6 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
                 className={`block w-full text-left ${textColor} hover:text-[#F4C542] py-3 px-4 rounded-lg hover:bg-white/10 transition-all`}
               >
                 Experience
-              </button>
-              <button
-                onClick={() => {
-                  scrollToSection('contact');
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left ${textColor} hover:text-[#F4C542] py-3 px-4 rounded-lg hover:bg-white/10 transition-all`}
-              >
-                Contact
               </button>
               <button
                 onClick={() => {
