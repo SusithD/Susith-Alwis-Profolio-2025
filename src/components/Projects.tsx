@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll } from 'motion/react';
+import { motion } from 'motion/react';
 import { ArrowUpRight, ChevronLeft, ChevronRight, FolderOpen } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
@@ -122,11 +122,6 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
       
       return 0;
     });
-
-  useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
 
   const handleScroll = () => {
     if (scrollContainerRef.current) {
