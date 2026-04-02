@@ -1,18 +1,40 @@
 import { motion } from 'motion/react';
 import { Mail, Linkedin, Github, Dribbble, ArrowUpRight } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  onNavigate?: () => void;
+}
+
+export default function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleNavLink = (sectionId: string) => {
+    if (onNavigate) {
+      onNavigate();
+      // After navigating home, scroll to the section once the page renders
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      scrollToSection(sectionId);
+    }
+  };
 
   return (
     <footer className="bg-[#f5f5f0] text-[#1a1a1a] px-6 py-16 relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] opacity-30">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-          <path 
-            fill="#F4C542" 
-            d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.8C64.8,56.4,53.8,69,40.1,76.1C26.4,83.2,10,84.8,-5.8,83.2C-21.6,81.6,-36.8,76.8,-49.6,68.8C-62.4,60.8,-72.8,49.6,-79.8,36.2C-86.8,22.8,-90.4,7.2,-88.9,-7.8C-87.4,-22.8,-80.8,-37.2,-71.1,-49.4C-61.4,-61.6,-48.6,-71.6,-34.8,-78.9C-21,-86.2,-6.2,-90.8,6.8,-90.2C19.8,-89.6,30.6,-83.6,44.7,-76.4Z" 
-            transform="translate(100 100)" 
+          <path
+            fill="#F4C542"
+            d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.8C64.8,56.4,53.8,69,40.1,76.1C26.4,83.2,10,84.8,-5.8,83.2C-21.6,81.6,-36.8,76.8,-49.6,68.8C-62.4,60.8,-72.8,49.6,-79.8,36.2C-86.8,22.8,-90.4,7.2,-88.9,-7.8C-87.4,-22.8,-80.8,-37.2,-71.1,-49.4C-61.4,-61.6,-48.6,-71.6,-34.8,-78.9C-21,-86.2,-6.2,-90.8,6.8,-90.2C19.8,-89.6,30.6,-83.6,44.7,-76.4Z"
+            transform="translate(100 100)"
             opacity="0.1"
           />
         </svg>
@@ -41,14 +63,14 @@ export default function Footer() {
               {/* Navigation Links */}
               <div className="space-y-3">
                 {[
-                  { name: 'About', href: '#about' },
-                  { name: 'Projects', href: '#projects' },
-                  { name: 'Experience', href: '#experience' },
-                  { name: 'Contact', href: '#contact' }
+                  { name: 'About', sectionId: 'about' },
+                  { name: 'Projects', sectionId: 'projects' },
+                  { name: 'Experience', sectionId: 'experience' },
+                  { name: 'Contact', sectionId: 'contact' }
                 ].map((link, index) => (
-                  <motion.a
+                  <motion.button
                     key={link.name}
-                    href={link.href}
+                    onClick={() => handleNavLink(link.sectionId)}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -57,7 +79,7 @@ export default function Footer() {
                     className="block text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors"
                   >
                     {link.name}
-                  </motion.a>
+                  </motion.button>
                 ))}
               </div>
             </motion.div>
@@ -72,12 +94,12 @@ export default function Footer() {
             >
               <div className="space-y-4">
                 <p className="text-[#1a1a1a]/60 text-lg tracking-wide">GET IN TOUCH</p>
-                <motion.h2 
+                <motion.h2
                   className="text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <a 
+                  <a
                     href="mailto:hello@susithdeshan.com"
                     className="group relative inline-block"
                   >
@@ -98,9 +120,9 @@ export default function Footer() {
               {/* Social Icons */}
               <div className="flex gap-4">
                 {[
-                  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-                  { icon: Github, href: 'https://github.com', label: 'GitHub' },
-                  { icon: Dribbble, href: 'https://dribbble.com', label: 'Dribbble' },
+                  { icon: Linkedin, href: 'https://linkedin.com/in/susith-deshan', label: 'LinkedIn' },
+                  { icon: Github, href: 'https://github.com/susithdeshan', label: 'GitHub' },
+                  { icon: Dribbble, href: 'https://dribbble.com/susithdeshan', label: 'Dribbble' },
                   { icon: Mail, href: 'mailto:hello@susithdeshan.com', label: 'Email' }
                 ].map((social, index) => {
                   const Icon = social.icon;
@@ -108,8 +130,8 @@ export default function Footer() {
                     <motion.a
                       key={social.label}
                       href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={social.href.startsWith('mailto') ? undefined : '_blank'}
+                      rel={social.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
@@ -144,26 +166,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-[#1a1a1a]/60"
           >
-            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-              <p>© {currentYear} All rights reserved.</p>
-            </div>
-            
-            <div className="flex gap-6">
-              <motion.a
-                href="#"
-                whileHover={{ y: -2 }}
-                className="hover:text-[#1a1a1a] transition-colors"
-              >
-                Privacy Policy
-              </motion.a>
-              <motion.a
-                href="#"
-                whileHover={{ y: -2 }}
-                className="hover:text-[#1a1a1a] transition-colors"
-              >
-                Terms of Service
-              </motion.a>
-            </div>
+            <p>© {currentYear} Susith Deshan Alwis. All rights reserved.</p>
           </motion.div>
         </div>
       </div>
