@@ -1414,7 +1414,7 @@ export const homeProjects: ProjectListing[] = [
     image: techStartupImages[4], // 70da12
   },
   {
-    id: 'the-qexle-website-development',
+    id: 'qexle-website-development',
     title: 'The qexle Website Development',
     role: 'Web Developer',
     description: 'User-centric website showcasing branding, digital marketing, and web development services with optimized performance and SEO integration.',
