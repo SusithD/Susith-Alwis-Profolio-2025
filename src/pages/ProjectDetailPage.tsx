@@ -43,8 +43,9 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
         projectTitle={project.title}
       />
 
+      <main id="main-content">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-4 sm:px-6 py-24 pt-32">
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-24 pt-32">
         <div className="max-w-7xl w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -471,6 +472,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
           </motion.div>
         </div>
       </section>
+      </main>
     </div>
   );
 }
