@@ -3874,7 +3874,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"motion@npm:*":
+"motion@npm:^12.38.0":
   version: 12.38.0
   resolution: "motion@npm:12.38.0"
   dependencies:
@@ -4201,7 +4201,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:*"
     jsdom: "npm:^29.0.1"
     lucide-react: "npm:^0.487.0"
-    motion: "npm:*"
+    motion: "npm:^12.38.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     rollup: "npm:^4.0.0"
