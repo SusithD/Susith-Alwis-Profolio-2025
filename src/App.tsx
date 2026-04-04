@@ -1,80 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import HomePage from './pages/HomePage';
-import PortfolioPage from './pages/PortfolioPage';
-import ProjectDetailPage from './pages/ProjectDetailPage';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
+const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage'));
+
+type Page = 'home' | 'portfolio' | 'project';
+
+function parsePath(path: string): { page: Page; projectId: string } {
+  if (path === '/portfolio') return { page: 'portfolio', projectId: '' };
+  if (path.startsWith('/project/')) return { page: 'project', projectId: path.replace('/project/', '') };
+  return { page: 'home', projectId: '' };
+}
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'portfolio' | 'project'>('home');
-  const [selectedProject, setSelectedProject] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [selectedProject, setSelectedProject] = useState('');
 
-  useEffect(() => {
-    // Initialize page based on current URL
-    const initializePage = () => {
-      const path = window.location.pathname;
-      if (path === '/portfolio') {
-        setCurrentPage('portfolio');
-      } else if (path.startsWith('/project/')) {
-        setCurrentPage('project');
-        setSelectedProject(path.replace('/project/', ''));
-      } else {
-        setCurrentPage('home');
-      }
-    };
-
-    initializePage();
+  // Shared route parser used by both init and popstate
+  const syncFromUrl = useCallback(() => {
+    const { page, projectId } = parsePath(window.location.pathname);
+    setCurrentPage(page);
+    setSelectedProject(projectId);
   }, []);
 
+  useEffect(() => { syncFromUrl(); }, [syncFromUrl]);
+
   useEffect(() => {
-    // Handle browser back/forward
-    const handlePopState = () => {
-      const path = window.location.pathname;
-      if (path === '/') {
-        setCurrentPage('home');
-      } else if (path === '/portfolio') {
-        setCurrentPage('portfolio');
-      } else if (path.startsWith('/project/')) {
-        setCurrentPage('project');
-        setSelectedProject(path.replace('/project/', ''));
-      }
+    window.addEventListener('popstate', syncFromUrl);
+    return () => window.removeEventListener('popstate', syncFromUrl);
+  }, [syncFromUrl]);
+
+  const navigateTo = useCallback((page: Page, projectId?: string) => {
+    const urls: Record<Page, string> = {
+      home: '/',
+      portfolio: '/portfolio',
+      project: `/project/${projectId ?? ''}`,
     };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.history.pushState({}, '', urls[page]);
+    setCurrentPage(page);
+    if (projectId) setSelectedProject(projectId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-
-  const navigateTo = (page: 'home' | 'portfolio' | 'project', projectId?: string) => {
-    if (page === 'home') {
-      window.history.pushState({}, '', '/');
-      setCurrentPage('home');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (page === 'portfolio') {
-      window.history.pushState({}, '', '/portfolio');
-      setCurrentPage('portfolio');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (page === 'project' && projectId) {
-      window.history.pushState({}, '', `/project/${projectId}`);
-      setCurrentPage('project');
-      setSelectedProject(projectId);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
 
   return (
     <div className="size-full">
-      {currentPage === 'home' && <HomePage onNavigateToProject={navigateTo} />}
-      {currentPage === 'portfolio' && (
-        <PortfolioPage 
-          onNavigateToProject={navigateTo} 
-          onNavigateHome={() => navigateTo('home')}
-        />
-      )}
-      {currentPage === 'project' && (
-        <ProjectDetailPage 
-          projectId={selectedProject} 
-          onNavigateHome={() => navigateTo('home')}
-          onNavigatePortfolio={() => navigateTo('portfolio')}
-        />
-      )}
+      <Suspense fallback={<div className="min-h-screen bg-[#0a0a0a]" />}>
+        {currentPage === 'home' && <HomePage onNavigateToProject={navigateTo} />}
+        {currentPage === 'portfolio' && (
+          <PortfolioPage
+            onNavigateToProject={navigateTo}
+            onNavigateHome={() => navigateTo('home')}
+          />
+        )}
+        {currentPage === 'project' && (
+          <ProjectDetailPage
+            projectId={selectedProject}
+            onNavigateHome={() => navigateTo('home')}
+            onNavigatePortfolio={() => navigateTo('portfolio')}
+          />
+        )}
+      </Suspense>
     </div>
   );
 }

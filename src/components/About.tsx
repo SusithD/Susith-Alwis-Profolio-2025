@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { User, Layers, Code2, Search, Rocket } from 'lucide-react';
 

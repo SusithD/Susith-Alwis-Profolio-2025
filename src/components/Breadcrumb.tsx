@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -19,7 +19,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       className="flex items-center gap-2 text-sm"
     >
       {items.map((item, index) => (
-        <React.Fragment key={index}>
+        <Fragment key={item.label}>
           {index > 0 && (
             <ChevronRight className="w-4 h-4 text-white/40" />
           )}
@@ -45,7 +45,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
               {item.label}
             </span>
           )}
-        </React.Fragment>
+        </Fragment>
       ))}
     </motion.nav>
   );

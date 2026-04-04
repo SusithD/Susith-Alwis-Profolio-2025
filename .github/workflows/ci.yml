@@ -13,32 +13,33 @@ concurrency:
 
 jobs:
   build:
-    name: Build project
+    name: Lint, typecheck & build
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Cache npm
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --immutable
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Type check
+        run: npx tsc --noEmit
 
       - name: Build project
-        run: npm run build
+        run: yarn build
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
@@ -46,9 +47,3 @@ jobs:
           name: dist-${{ github.sha }}
           path: dist
           retention-days: 7
-
-      - name: Build status check
-        run: |
-          echo "✅ CI completed successfully"
-          echo "📦 Build artifact: dist-${{ github.sha }}"
-          echo "🔗 Commit: ${{ github.sha }}"
