@@ -25,7 +25,7 @@ export default function Philosophy() {
   ];
 
   return (
-    <section id="philosophy" ref={ref} className="min-h-screen bg-[#1a1a1a] text-white flex items-center justify-center px-6 py-24 relative overflow-hidden">
+    <section id="philosophy" ref={ref} className="min-h-screen bg-dark-alt text-white flex items-center justify-center px-6 py-24 relative overflow-hidden">
       <div className="absolute top-8 left-8 text-white/40 text-sm hidden md:block">
         2/5
       </div>
@@ -43,12 +43,12 @@ export default function Philosophy() {
             className="space-y-8"
           >
             <div className="flex items-center gap-4">
-              <Lightbulb className="w-8 h-8 text-[#F4C542]" />
+              <Lightbulb className="w-8 h-8 text-accent" />
               <motion.p 
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6 }}
-                className="text-[#F4C542] tracking-[0.3em] text-sm uppercase"
+                className="text-accent tracking-[0.3em] text-sm uppercase"
               >
                 Philosophy
               </motion.p>
@@ -102,7 +102,7 @@ export default function Philosophy() {
                 accent: false,
                 delay: 0.3
               }
-            ].map((item, _index) => (
+            ].map((item) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -110,7 +110,7 @@ export default function Philosophy() {
                 transition={{ duration: 0.6, delay: item.delay }}
                 viewport={{ once: true }}
                 className={`space-y-4 border-l-2 ${
-                  item.accent ? 'border-[#F4C542]' : 'border-white/20'
+                  item.accent ? 'border-accent' : 'border-white/20'
                 } pl-6`}
               >
                 <h3 className="text-2xl">{item.title}</h3>

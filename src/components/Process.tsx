@@ -39,10 +39,10 @@ export default function Process() {
   ];
 
   return (
-    <section id="process" ref={ref} className="min-h-screen bg-[#f5f5f0] text-[#1a1a1a] px-6 py-24 relative">
+    <section id="process" ref={ref} className="min-h-screen bg-light text-dark-alt px-6 py-24 relative">
       {/* Decorative section labels */}
-      <div className="absolute top-8 left-8 text-[#1a1a1a]/20 text-sm hidden md:block">5/5</div>
-      <div className="absolute top-8 right-8 text-[#1a1a1a]/20 text-sm hidden md:block">PROCESS</div>
+      <div className="absolute top-8 left-8 text-dark-alt/20 text-sm hidden md:block">5/5</div>
+      <div className="absolute top-8 right-8 text-dark-alt/20 text-sm hidden md:block">PROCESS</div>
       
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -55,12 +55,12 @@ export default function Process() {
           {/* Header */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <GitBranch className="w-8 h-8 text-[#F4C542]" />
+              <GitBranch className="w-8 h-8 text-accent" />
               <motion.p 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="text-[#F4C542] tracking-[0.3em] text-sm uppercase"
+                className="text-accent tracking-[0.3em] text-sm uppercase"
               >
                 My Process
               </motion.p>
@@ -73,7 +73,7 @@ export default function Process() {
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="h-1 w-32 bg-[#F4C542] origin-left"
+              className="h-1 w-32 bg-accent origin-left"
             />
           </div>
 
@@ -103,7 +103,7 @@ export default function Process() {
                       </span>
                       {/* Accent line */}
                       <motion.div
-                        className="absolute -bottom-4 left-0 h-1 bg-[#F4C542]"
+                        className="absolute -bottom-4 left-0 h-1 bg-accent"
                         initial={{ width: 0 }}
                         whileInView={{ width: '60px' }}
                         transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
@@ -131,7 +131,7 @@ export default function Process() {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
                       viewport={{ once: true }}
-                      className="text-xl text-[#1a1a1a]/70 leading-relaxed max-w-3xl"
+                      className="text-xl text-dark-alt/70 leading-relaxed max-w-3xl"
                     >
                       {step.description}
                     </motion.p>
@@ -152,7 +152,7 @@ export default function Process() {
                           transition={{ duration: 0.3, delay: index * 0.1 + 0.6 + i * 0.05 }}
                           viewport={{ once: true }}
                           whileHover={{ scale: 1.05, y: -2 }}
-                          className="px-4 py-2 bg-[#1a1a1a]/5 hover:bg-[#F4C542]/20 border border-[#1a1a1a]/10 hover:border-[#F4C542]/30 rounded-full text-sm transition-all duration-300 cursor-default"
+                          className="px-4 py-2 bg-dark-alt/5 hover:bg-accent/20 border border-dark-alt/10 hover:border-accent/30 rounded-full text-sm transition-all duration-300 cursor-default"
                         >
                           {highlight}
                         </motion.span>
@@ -164,7 +164,7 @@ export default function Process() {
                 {/* Connecting line (not for last item) */}
                 {index < steps.length - 1 && (
                   <motion.div
-                    className="hidden lg:block absolute left-12 top-full h-20 w-px bg-gradient-to-b from-[#1a1a1a]/10 to-transparent mt-10"
+                    className="hidden lg:block absolute left-12 top-full h-20 w-px bg-gradient-to-b from-dark-alt/10 to-transparent mt-10"
                     initial={{ scaleY: 0, originY: 0 }}
                     whileInView={{ scaleY: 1 }}
                     transition={{ duration: 0.6, delay: index * 0.1 + 0.7 }}
@@ -181,7 +181,7 @@ export default function Process() {
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
             viewport={{ once: true }}
-            className="h-px w-full bg-gradient-to-r from-transparent via-[#1a1a1a]/20 to-transparent"
+            className="h-px w-full bg-gradient-to-r from-transparent via-dark-alt/20 to-transparent"
           />
         </motion.div>
       </div>

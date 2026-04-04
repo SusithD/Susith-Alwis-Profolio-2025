@@ -12,14 +12,14 @@ export default function About() {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section ref={ref} id="about" className="min-h-screen bg-[#f5f5f0] text-[#1a1a1a] flex items-center justify-center px-6 py-24 relative overflow-hidden">
+    <section ref={ref} id="about" className="min-h-screen bg-light text-dark-alt flex items-center justify-center px-6 py-24 relative overflow-hidden">
       {/* Decorative section labels */}
-      <div className="absolute top-8 left-8 text-[#1a1a1a]/20 text-sm hidden md:block">1/5</div>
-      <div className="absolute top-8 right-8 text-[#1a1a1a]/20 text-sm hidden md:block">ABOUT</div>
+      <div className="absolute top-8 left-8 text-dark-alt/20 text-sm hidden md:block">1/5</div>
+      <div className="absolute top-8 right-8 text-dark-alt/20 text-sm hidden md:block">ABOUT</div>
       
       <motion.div
         style={{ y }}
-        className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F4C542]/5 rounded-full blur-[100px]"
+        className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px]"
       />
 
       <div className="max-w-7xl w-full relative z-10">
@@ -32,12 +32,12 @@ export default function About() {
         >
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <User className="w-8 h-8 text-[#F4C542]" />
+              <User className="w-8 h-8 text-accent" />
               <motion.p 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="text-[#F4C542] tracking-[0.3em] text-sm uppercase"
+                className="text-accent tracking-[0.3em] text-sm uppercase"
               >
                 About Me
               </motion.p>
@@ -69,12 +69,12 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <p className="text-2xl leading-relaxed text-[#1a1a1a]/80">
+              <p className="text-2xl leading-relaxed text-dark-alt/80">
                 I blend human-centered design with front-end engineering to deliver clear, usable products. Currently an{' '}
                 <span className="relative inline-block">
-                  <span className="text-[#1a1a1a]">Associate Software Engineer at CoverageX</span>
+                  <span className="text-dark-alt">Associate Software Engineer at CoverageX</span>
                   <motion.span 
-                    className="absolute bottom-0 left-0 h-0.5 bg-[#F4C542]"
+                    className="absolute bottom-0 left-0 h-0.5 bg-accent"
                     initial={{ width: 0 }}
                     whileInView={{ width: '100%' }}
                     transition={{ duration: 0.6, delay: 0.5 }}
@@ -83,9 +83,9 @@ export default function About() {
                 </span>
                 {' '}and founder of{' '}
                 <span className="relative inline-block">
-                  <span className="text-[#1a1a1a]">The Qexle</span>
+                  <span className="text-dark-alt">The Qexle</span>
                   <motion.span 
-                    className="absolute bottom-0 left-0 h-0.5 bg-[#F4C542]"
+                    className="absolute bottom-0 left-0 h-0.5 bg-accent"
                     initial={{ width: 0 }}
                     whileInView={{ width: '100%' }}
                     transition={{ duration: 0.6, delay: 0.7 }}
@@ -103,13 +103,13 @@ export default function About() {
                 transition={{ delay: 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-6 border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/20 hover:shadow-lg transition-all duration-300 space-y-4"
+                className="bg-white rounded-2xl p-6 border border-dark-alt/10 hover:border-dark-alt/20 hover:shadow-lg transition-all duration-300 space-y-4"
               >
-                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center">
-                  <Layers className="w-7 h-7 text-[#1a1a1a]/60" />
+                <div className="w-16 h-16 rounded-full bg-dark-alt/10 flex items-center justify-center">
+                  <Layers className="w-7 h-7 text-dark-alt/60" />
                 </div>
                 <h3 className="text-xl">Design Systems</h3>
-                <p className="text-[#1a1a1a]/60">
+                <p className="text-dark-alt/60">
                   Building scalable UI systems in Figma and code
                 </p>
               </motion.div>
@@ -120,13 +120,13 @@ export default function About() {
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-6 border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/20 hover:shadow-lg transition-all duration-300 space-y-4"
+                className="bg-white rounded-2xl p-6 border border-dark-alt/10 hover:border-dark-alt/20 hover:shadow-lg transition-all duration-300 space-y-4"
               >
-                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center">
-                  <Code2 className="w-7 h-7 text-[#1a1a1a]/60" />
+                <div className="w-16 h-16 rounded-full bg-dark-alt/10 flex items-center justify-center">
+                  <Code2 className="w-7 h-7 text-dark-alt/60" />
                 </div>
                 <h3 className="text-xl">Full Stack Development</h3>
-                <p className="text-[#1a1a1a]/60">
+                <p className="text-dark-alt/60">
                   End-to-end solutions from frontend to backend systems
                 </p>
               </motion.div>
@@ -137,13 +137,13 @@ export default function About() {
                 transition={{ delay: 0.3 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-6 border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/20 hover:shadow-lg transition-all duration-300 space-y-4"
+                className="bg-white rounded-2xl p-6 border border-dark-alt/10 hover:border-dark-alt/20 hover:shadow-lg transition-all duration-300 space-y-4"
               >
-                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center">
-                  <Search className="w-7 h-7 text-[#1a1a1a]/60" />
+                <div className="w-16 h-16 rounded-full bg-dark-alt/10 flex items-center justify-center">
+                  <Search className="w-7 h-7 text-dark-alt/60" />
                 </div>
                 <h3 className="text-xl">User Research</h3>
-                <p className="text-[#1a1a1a]/60">
+                <p className="text-dark-alt/60">
                   Understanding needs through comprehensive analysis
                 </p>
               </motion.div>
@@ -154,13 +154,13 @@ export default function About() {
                 transition={{ delay: 0.4 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-6 border border-[#1a1a1a]/10 hover:border-[#1a1a1a]/20 hover:shadow-lg transition-all duration-300 space-y-4"
+                className="bg-white rounded-2xl p-6 border border-dark-alt/10 hover:border-dark-alt/20 hover:shadow-lg transition-all duration-300 space-y-4"
               >
-                <div className="w-16 h-16 rounded-full bg-[#1a1a1a]/10 flex items-center justify-center">
-                  <Rocket className="w-7 h-7 text-[#1a1a1a]/60" />
+                <div className="w-16 h-16 rounded-full bg-dark-alt/10 flex items-center justify-center">
+                  <Rocket className="w-7 h-7 text-dark-alt/60" />
                 </div>
                 <h3 className="text-xl">End-to-end Delivery</h3>
-                <p className="text-[#1a1a1a]/60">
+                <p className="text-dark-alt/60">
                   From concept to production deployment
                 </p>
               </motion.div>
@@ -173,12 +173,12 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
-            className="pt-8 border-t border-[#1a1a1a]/10"
+            className="pt-8 border-t border-dark-alt/10"
           >
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-sm">
               <div className="space-y-3">
-                <h4 className="text-[#1a1a1a]/40 uppercase tracking-wider text-xs">Frontend</h4>
-                <div className="space-y-1 text-[#1a1a1a]/60">
+                <h4 className="text-dark-alt/40 uppercase tracking-wider text-xs">Frontend</h4>
+                <div className="space-y-1 text-dark-alt/60">
                   <p>React.js</p>
                   <p>Next.js</p>
                   <p>Vue.js</p>
@@ -189,8 +189,8 @@ export default function About() {
               </div>
               
               <div className="space-y-3">
-                <h4 className="text-[#1a1a1a]/40 uppercase tracking-wider text-xs">Backend</h4>
-                <div className="space-y-1 text-[#1a1a1a]/60">
+                <h4 className="text-dark-alt/40 uppercase tracking-wider text-xs">Backend</h4>
+                <div className="space-y-1 text-dark-alt/60">
                   <p>Node.js</p>
                   <p>Express.js</p>
                   <p>Python</p>
@@ -199,8 +199,8 @@ export default function About() {
               </div>
               
               <div className="space-y-3">
-                <h4 className="text-[#1a1a1a]/40 uppercase tracking-wider text-xs">Design</h4>
-                <div className="space-y-1 text-[#1a1a1a]/60">
+                <h4 className="text-dark-alt/40 uppercase tracking-wider text-xs">Design</h4>
+                <div className="space-y-1 text-dark-alt/60">
                   <p>Figma</p>
                   <p>Adobe XD</p>
                   <p>Photoshop</p>
@@ -210,8 +210,8 @@ export default function About() {
               </div>
               
               <div className="space-y-3">
-                <h4 className="text-[#1a1a1a]/40 uppercase tracking-wider text-xs">DevOps & Cloud</h4>
-                <div className="space-y-1 text-[#1a1a1a]/60">
+                <h4 className="text-dark-alt/40 uppercase tracking-wider text-xs">DevOps & Cloud</h4>
+                <div className="space-y-1 text-dark-alt/60">
                   <p>Git/GitHub</p>
                   <p>Docker</p>
                   <p>AWS</p>

@@ -18,12 +18,12 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-[#1a1a1a] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-dark-alt text-white flex items-center justify-center">
         <div className="text-center space-y-4">
           <h1 className="text-4xl">Project not found</h1>
           <button
             onClick={onNavigateHome}
-            className="bg-[#F4C542] text-black px-4 sm:px-6 py-3 rounded-full hover:bg-[#F4C542]/90 transition-all"
+            className="bg-accent text-black px-4 sm:px-6 py-3 rounded-full hover:bg-accent/90 transition-all"
           >
             Back to Home
           </button>
@@ -33,7 +33,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
   }
 
   return (
-    <div className="bg-[#1a1a1a] text-white">
+    <div className="bg-dark-alt text-white">
       <Navigation
         currentPage="project"
         onNavigate={(page) => {
@@ -62,7 +62,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
               ]}
             />
 
-            <div className="inline-block bg-[#F4C542]/20 text-[#F4C542] px-4 py-2 rounded-full text-sm">
+            <div className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm">
               {project.role}
             </div>
             <h1 className="text-6xl md:text-8xl tracking-tight">
@@ -161,7 +161,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
 
       {/* Creative Grid Gallery - Colombo Kings */}
       {project.images && (
-        <section className="px-4 sm:px-6 py-24 bg-[#1a1a1a]">
+        <section className="px-4 sm:px-6 py-24 bg-dark-alt">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -200,7 +200,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                         alt={`${project.title} design ${i + 1}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
                       <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <span className="text-white text-sm font-medium">View Details</span>
                       </div>
@@ -228,13 +228,13 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
               className="w-full h-full object-cover"
             />
             {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-alt via-transparent to-transparent opacity-60" />
           </motion.div>
         </div>
       </section>
 
       {/* Overview Section */}
-      <section className="px-4 sm:px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-light text-dark-alt">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
@@ -244,7 +244,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl mb-6">Overview</h2>
-              <p className="text-xl text-[#1a1a1a]/70 leading-relaxed">
+              <p className="text-xl text-dark-alt/70 leading-relaxed">
                 {project.description}
               </p>
             </motion.div>
@@ -259,8 +259,8 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
               <div>
                 <h3 className="text-2xl mb-4">Technologies</h3>
                 <div className="flex flex-wrap gap-3">
-                  {project.technologies.map((tech, _i) => (
-                    <span key={tech} className="px-4 py-2 bg-[#1a1a1a]/10 rounded-full">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="px-4 py-2 bg-dark-alt/10 rounded-full">
                       {tech}
                     </span>
                   ))}
@@ -272,7 +272,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Challenge & Solution */}
-      <section className="px-4 sm:px-6 py-24 bg-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-dark-alt">
         <div className="max-w-7xl mx-auto space-y-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -282,7 +282,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
             className="grid lg:grid-cols-2 gap-16"
           >
             <div>
-              <h2 className="text-4xl md:text-5xl mb-6 text-[#F4C542]">The Challenge</h2>
+              <h2 className="text-4xl md:text-5xl mb-6 text-accent">The Challenge</h2>
               <p className="text-xl text-white/70 leading-relaxed">
                 {project.challenge}
               </p>
@@ -299,7 +299,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Impact */}
-      <section className="px-4 sm:px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-light text-dark-alt">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -318,10 +318,10 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                   viewport={{ once: true }}
                   className="text-center space-y-2"
                 >
-                  <div className="text-5xl md:text-6xl text-[#F4C542]">
+                  <div className="text-5xl md:text-6xl text-accent">
                     {item.metric}
                   </div>
-                  <p className="text-[#1a1a1a]/60">{item.label}</p>
+                  <p className="text-dark-alt/60">{item.label}</p>
                 </motion.div>
               ))}
             </div>
@@ -330,7 +330,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Process */}
-      <section className="px-4 sm:px-6 py-24 bg-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-dark-alt">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -348,10 +348,10 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-[#F4C542]/50 transition-all"
+                  className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-accent/50 transition-all"
                 >
                   <div className="flex items-start gap-6">
-                    <div className="w-12 h-12 rounded-full bg-[#F4C542] text-[#1a1a1a] flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-accent text-dark-alt flex items-center justify-center flex-shrink-0">
                       {i + 1}
                     </div>
                     <div className="space-y-2">
@@ -367,7 +367,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Key Features */}
-      <section className="px-4 sm:px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-light text-dark-alt">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -387,7 +387,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                   viewport={{ once: true }}
                   className="flex items-start gap-4 bg-white rounded-2xl p-6"
                 >
-                  <div className="w-2 h-2 rounded-full bg-[#F4C542] mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></div>
                   <p className="text-lg">{feature}</p>
                 </motion.div>
               ))}
@@ -397,7 +397,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* Responsibilities */}
-      <section className="px-4 sm:px-6 py-24 bg-[#1a1a1a]">
+      <section className="px-4 sm:px-6 py-24 bg-dark-alt">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -417,8 +417,8 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
                   viewport={{ once: true }}
                   className="flex items-start gap-4"
                 >
-                  <div className="w-6 h-6 rounded-full border-2 border-[#F4C542] flex items-center justify-center flex-shrink-0 mt-1">
-                    <div className="w-2 h-2 rounded-full bg-[#F4C542]"></div>
+                  <div className="w-6 h-6 rounded-full border-2 border-accent flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-2 h-2 rounded-full bg-accent"></div>
                   </div>
                   <p className="text-lg text-white/70">{resp}</p>
                 </motion.div>
@@ -429,7 +429,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
       </section>
 
       {/* CTA Section */}
-      <section id="contact-project" className="px-4 sm:px-6 py-24 bg-[#f5f5f0] text-[#1a1a1a]">
+      <section id="contact-project" className="px-4 sm:px-6 py-24 bg-light text-dark-alt">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -439,7 +439,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
             className="space-y-8"
           >
             <h2 className="text-5xl md:text-7xl">Like what you see?</h2>
-            <p className="text-2xl text-[#1a1a1a]/60">
+            <p className="text-2xl text-dark-alt/60">
               Let&apos;s create something amazing together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -456,14 +456,14 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
               )}
               <button
                 onClick={onNavigateHome}
-                className="bg-[#1a1a1a] text-white px-8 py-4 rounded-full hover:bg-[#1a1a1a]/90 transition-all flex items-center gap-2 justify-center"
+                className="bg-dark-alt text-white px-8 py-4 rounded-full hover:bg-dark-alt/90 transition-all flex items-center gap-2 justify-center"
               >
                 View More Projects
                 <ArrowUpRight className="w-5 h-5" />
               </button>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="bg-[#F4C542] text-[#1a1a1a] px-8 py-4 rounded-full hover:bg-[#F4C542]/90 transition-all flex items-center gap-2 justify-center"
+                className="bg-accent text-dark-alt px-8 py-4 rounded-full hover:bg-accent/90 transition-all flex items-center gap-2 justify-center"
               >
                 Get in Touch
                 <ArrowUpRight className="w-5 h-5" />

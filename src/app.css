@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-accent: #F4C542;
+  --color-dark: #0a0a0a;
+  --color-dark-alt: #1a1a1a;
+  --color-light: #f5f5f0;
+}
+
+/* Hide scrollbar for horizontal scrolling sections */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

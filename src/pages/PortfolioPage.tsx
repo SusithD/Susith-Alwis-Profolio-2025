@@ -51,7 +51,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
   );
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-dark text-white">
       <Navigation
         currentPage="portfolio"
         onNavigate={(page) => {
@@ -65,7 +65,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
         {/* Animated background */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            className="absolute top-1/4 -left-1/4 w-96 h-96 bg-[#F4C542]/10 rounded-full blur-3xl"
+            className="absolute top-1/4 -left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.5, 0.3]
@@ -95,7 +95,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
               transition={{ delay: 0.2 }}
               className="inline-block"
             >
-              <span className="text-[#F4C542] text-lg tracking-wide">WORK SHOWCASE</span>
+              <span className="text-accent text-lg tracking-wide">WORK SHOWCASE</span>
             </motion.div>
 
             <h1 className="text-6xl md:text-8xl lg:text-9xl tracking-tight leading-[1.05]">
@@ -136,13 +136,13 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                   onClick={() => setActiveFilter(category.id)}
                   className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 ${
                     activeFilter === category.id
-                      ? 'bg-[#F4C542] text-[#0a0a0a]'
+                      ? 'bg-accent text-dark'
                       : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
                   {category.label}
-                  <span className={`text-sm ${activeFilter === category.id ? 'text-[#0a0a0a]/70' : 'text-white/40'}`}>
+                  <span className={`text-sm ${activeFilter === category.id ? 'text-dark/70' : 'text-white/40'}`}>
                     ({category.id === 'all' ? portfolioProjects.length : portfolioProjects.filter(p => p.category === category.id).length})
                   </span>
                 </motion.button>
@@ -178,7 +178,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: animDelay + 0.4 }}
-                      className="absolute top-6 right-6 bg-[#F4C542] text-black px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg z-10"
+                      className="absolute top-6 right-6 bg-accent text-black px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg z-10"
                     >
                       <Sparkles className="w-3 h-3" />
                       FEATURED
@@ -195,7 +195,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                   transition={{ duration: 0.8, delay: animDelay }}
                   whileHover={{ y: -8 }}
                   onClick={() => onNavigateToProject('project', project.id)}
-                  className="group cursor-pointer bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-[#F4C542]/30 transition-all duration-700 hover:shadow-2xl hover:shadow-[#F4C542]/10"
+                  className="group cursor-pointer bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-accent/30 transition-all duration-700 hover:shadow-2xl hover:shadow-accent/10"
                 >
                   <div className="flex flex-col md:flex-row min-h-[300px] md:min-h-[400px]">
                     {isImageLeft && imagePanel('r')}
@@ -224,7 +224,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: animDelay + 0.5 }}
-                        className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight leading-tight group-hover:text-[#F4C542] transition-colors duration-500"
+                        className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight leading-tight group-hover:text-accent transition-colors duration-500"
                       >
                         {project.title}
                       </motion.h3>
@@ -267,7 +267,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: animDelay + 0.9 }}
-                        className="flex items-center gap-3 text-white/80 group-hover:text-[#F4C542] transition-all duration-300 group-hover:gap-4 pt-4"
+                        className="flex items-center gap-3 text-white/80 group-hover:text-accent transition-all duration-300 group-hover:gap-4 pt-4"
                       >
                         <span className="text-base font-bold tracking-wide">VIEW PROJECT</span>
                         <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
@@ -325,7 +325,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                   const el = document.getElementById('contact');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-[#F4C542] text-[#0a0a0a] px-8 py-3 rounded-full hover:bg-[#F4C542]/90 transition-all text-base md:text-lg"
+                className="bg-accent text-dark px-8 py-3 rounded-full hover:bg-accent/90 transition-all text-base md:text-lg"
               >
                 Discuss a project
               </button>

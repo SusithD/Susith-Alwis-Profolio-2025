@@ -7,7 +7,7 @@ interface NotFoundPageProps {
 
 export default function NotFoundPage({ onNavigateHome }: NotFoundPageProps) {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-6">
+    <div className="min-h-screen bg-dark text-white flex items-center justify-center px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -16,7 +16,7 @@ export default function NotFoundPage({ onNavigateHome }: NotFoundPageProps) {
       >
         <div className="space-y-4">
           <h1 className="text-8xl md:text-9xl font-bold tracking-tight">
-            <span className="text-[#F4C542]">4</span>0<span className="text-[#F4C542]">4</span>
+            <span className="text-accent">4</span>0<span className="text-accent">4</span>
           </h1>
           <p className="text-2xl md:text-3xl text-white/70">
             Page not found
@@ -27,7 +27,7 @@ export default function NotFoundPage({ onNavigateHome }: NotFoundPageProps) {
         </div>
         <button
           onClick={onNavigateHome}
-          className="bg-[#F4C542] text-[#0a0a0a] px-8 py-3 rounded-full hover:bg-[#F4C542]/90 transition-all hover:scale-105 text-lg"
+          className="bg-accent text-dark px-8 py-3 rounded-full hover:bg-accent/90 transition-all hover:scale-105 text-lg"
         >
           Back to Home
         </button>

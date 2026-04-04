@@ -50,7 +50,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
     <section 
       id="projects" 
       ref={containerRef}
-      className="min-h-screen bg-[#1a1a1a] text-white px-6 py-24 relative overflow-hidden"
+      className="min-h-screen bg-dark-alt text-white px-6 py-24 relative overflow-hidden"
     >
       {/* Decorative section labels */}
       <div className="absolute top-8 left-8 text-white/20 text-sm hidden md:block z-20">3/5</div>
@@ -75,12 +75,12 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
             className="space-y-6"
           >
             <div className="flex items-center gap-4">
-              <FolderOpen className="w-8 h-8 text-[#F4C542]" />
+              <FolderOpen className="w-8 h-8 text-accent" />
               <motion.p 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="text-[#F4C542] tracking-[0.3em] text-sm uppercase"
+                className="text-accent tracking-[0.3em] text-sm uppercase"
               >
                 Selected Work
               </motion.p>
@@ -101,7 +101,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                   whileTap={{ scale: canScrollLeft ? 0.9 : 1 }}
                   className={`w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
                     canScrollLeft 
-                      ? 'border-[#F4C542] text-[#F4C542] hover:bg-[#F4C542] hover:text-[#1a1a1a]' 
+                      ? 'border-accent text-accent hover:bg-accent hover:text-dark-alt' 
                       : 'border-white/10 text-white/20 cursor-not-allowed'
                   }`}
                 >
@@ -114,7 +114,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                   whileTap={{ scale: canScrollRight ? 0.9 : 1 }}
                   className={`w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
                     canScrollRight 
-                      ? 'border-[#F4C542] text-[#F4C542] hover:bg-[#F4C542] hover:text-[#1a1a1a]' 
+                      ? 'border-accent text-accent hover:bg-accent hover:text-dark-alt' 
                       : 'border-white/10 text-white/20 cursor-not-allowed'
                   }`}
                 >
@@ -126,7 +126,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
             {/* Progress bar */}
             <div className="relative w-full h-1 bg-white/10 rounded-full overflow-hidden mt-8">
               <motion.div
-                className="absolute top-0 left-0 h-full bg-[#F4C542] rounded-full"
+                className="absolute top-0 left-0 h-full bg-accent rounded-full"
                 style={{ width: `${(scrollProgress * 100)}%` }}
                 transition={{ duration: 0.1 }}
               />
@@ -137,8 +137,8 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
         {/* Horizontal Scrolling Container */}
         <div className="relative max-w-7xl w-full mx-auto">
           {/* Gradient overlays for scroll hint - place behind cards */}
-          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/50 to-transparent z-0 pointer-events-none" />
-          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#1a1a1a] via-[#1a1a1a]/50 to-transparent z-0 pointer-events-none" />
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-dark-alt via-dark-alt/50 to-transparent z-0 pointer-events-none" />
+          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-dark-alt via-dark-alt/50 to-transparent z-0 pointer-events-none" />
 
           <div
             ref={scrollContainerRef}
@@ -166,10 +166,10 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                 role="button"
                 tabIndex={0}
                 aria-label={`View case study: ${project.title}`}
-                className="flex-shrink-0 w-[90vw] sm:w-[85vw] md:w-[600px] lg:w-[700px] group cursor-pointer my-2 outline-none focus-visible:ring-2 focus-visible:ring-[#F4C542] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1a1a] rounded-3xl"
+                className="flex-shrink-0 w-[90vw] sm:w-[85vw] md:w-[600px] lg:w-[700px] group cursor-pointer my-2 outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-dark-alt rounded-3xl"
                 style={{ scrollSnapAlign: 'start' }}
               >
-                <div className="relative bg-white/5 rounded-3xl overflow-hidden border border-white/10 hover:border-[#F4C542]/50 transition-all duration-500 h-full backdrop-blur-sm">
+                <div className="relative bg-white/5 rounded-3xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 h-full backdrop-blur-sm">
                   {/* Card Content */}
                   <div className="p-6 sm:p-8 md:p-10 space-y-4 sm:space-y-6">
                     {/* Role Badge */}
@@ -226,7 +226,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                       <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-multiply opacity-40`} />
                       {/* Overlay on hover */}
                       <motion.div
-                        className="absolute inset-0 bg-[#1a1a1a]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm"
+                        className="absolute inset-0 bg-dark-alt/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm"
                       >
                         <div className="flex items-center gap-2 text-white">
                           <span>View Case Study</span>
@@ -243,7 +243,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                       viewport={{ once: true }}
                       className="flex flex-wrap gap-3"
                     >
-                      {project.tags.map((tag, _i) => (
+                      {project.tags.map((tag) => (
                         <span
                           key={tag}
                           className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm transition-colors duration-300"
@@ -295,10 +295,10 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
               className="flex-shrink-0 w-[85vw] md:w-[600px] lg:w-[700px] group cursor-pointer my-2"
               style={{ scrollSnapAlign: 'start' }}
             >
-              <div className="relative bg-gradient-to-br from-[#F4C542]/20 to-purple-500/20 rounded-3xl overflow-hidden border-2 border-dashed border-white/20 hover:border-[#F4C542]/50 transition-all duration-500 backdrop-blur-sm h-full">
+              <div className="relative bg-gradient-to-br from-accent/20 to-purple-500/20 rounded-3xl overflow-hidden border-2 border-dashed border-white/20 hover:border-accent/50 transition-all duration-500 backdrop-blur-sm h-full">
                 <div className="h-full p-8 md:p-10 flex flex-col items-center justify-center text-center space-y-6">
-                  <div className="w-20 h-20 rounded-full bg-[#F4C542]/20 flex items-center justify-center">
-                    <ArrowUpRight className="w-10 h-10 text-[#F4C542]" />
+                  <div className="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center">
+                    <ArrowUpRight className="w-10 h-10 text-accent" />
                   </div>
                   <div className="space-y-4">
                     <h3 className="text-4xl md:text-5xl tracking-tight">
@@ -308,7 +308,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                       Explore the complete collection of my work
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 text-[#F4C542] group-hover:gap-4 transition-all duration-300">
+                  <div className="flex items-center gap-2 text-accent group-hover:gap-4 transition-all duration-300">
                     <span>See Portfolio</span>
                     <ArrowUpRight className="w-5 h-5" />
                   </div>

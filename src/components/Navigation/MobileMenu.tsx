@@ -21,7 +21,7 @@ export default function MobileMenu({
   items,
   ctaLabel,
   ctaOnClick,
-  navBg = 'bg-[#0a0a0a]/95',
+  navBg = 'bg-dark/95',
   borderColor = 'border-white/10',
 }: MobileMenuProps) {
   return (
@@ -51,7 +51,7 @@ export default function MobileMenu({
             ))}
             <button
               onClick={ctaOnClick}
-              className="block w-full bg-[#F4C542] text-[#0a0a0a] py-3 px-4 rounded-lg hover:bg-[#F4C542]/90 transition-all mt-4 font-medium"
+              className="block w-full bg-accent text-dark py-3 px-4 rounded-lg hover:bg-accent/90 transition-all mt-4 font-medium"
             >
               {ctaLabel}
             </button>

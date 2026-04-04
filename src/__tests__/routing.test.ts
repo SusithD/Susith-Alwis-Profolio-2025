@@ -23,8 +23,29 @@ describe('parsePath', () => {
     expect(parsePath('/contact')).toEqual({ page: 'notfound', projectId: '' });
   });
 
-  it('treats trailing slash as different route', () => {
-    expect(parsePath('/portfolio/')).toEqual({ page: 'notfound', projectId: '' });
+  it('normalises trailing slashes', () => {
+    expect(parsePath('/portfolio/')).toEqual({ page: 'portfolio', projectId: '' });
+    expect(parsePath('/project/organic-beltline/')).toEqual({
+      page: 'project',
+      projectId: 'organic-beltline',
+    });
+  });
+
+  it('strips query strings', () => {
+    expect(parsePath('/portfolio?sort=recent')).toEqual({ page: 'portfolio', projectId: '' });
+    expect(parsePath('/project/foo?bar=1')).toEqual({ page: 'project', projectId: 'foo' });
+  });
+
+  it('strips hash fragments', () => {
+    expect(parsePath('/portfolio#section')).toEqual({ page: 'portfolio', projectId: '' });
+  });
+
+  it('normalises case', () => {
+    expect(parsePath('/Portfolio')).toEqual({ page: 'portfolio', projectId: '' });
+    expect(parsePath('/Project/Organic-Beltline')).toEqual({
+      page: 'project',
+      projectId: 'organic-beltline',
+    });
   });
 
   it('parses project route with complex id', () => {

@@ -26,3 +26,6 @@ yarn-error.log*
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Lockfile from wrong package manager
+package-lock.json

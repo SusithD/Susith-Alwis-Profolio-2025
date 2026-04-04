@@ -16,7 +16,7 @@ export default function Footer({ onNavigate }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#f5f5f0] text-[#1a1a1a] px-6 py-16 relative overflow-hidden">
+    <footer className="bg-light text-dark-alt px-6 py-16 relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] opacity-30">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -44,7 +44,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               {/* Logo */}
               <div className="space-y-4">
                 <h3 className="text-3xl tracking-tight">{siteConfig.name}</h3>
-                <p className="text-[#1a1a1a]/60">
+                <p className="text-dark-alt/60">
                   UI/UX Designer &<br />Software Engineer
                 </p>
               </div>
@@ -65,7 +65,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ x: 5 }}
-                    className="block text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors"
+                    className="block text-dark-alt/60 hover:text-dark-alt transition-colors"
                   >
                     {link.name}
                   </motion.button>
@@ -82,7 +82,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               className="lg:col-span-2 space-y-8"
             >
               <div className="space-y-4">
-                <p className="text-[#1a1a1a]/60 text-lg tracking-wide">GET IN TOUCH</p>
+                <p className="text-dark-alt/60 text-lg tracking-wide">GET IN TOUCH</p>
                 <motion.h2
                   className="text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight"
                   whileHover={{ scale: 1.02 }}
@@ -95,7 +95,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                     <span className="relative">
                       {siteConfig.email}
                       <motion.span
-                        className="absolute bottom-0 left-0 w-full h-1 bg-[#F4C542]"
+                        className="absolute bottom-0 left-0 w-full h-1 bg-accent"
                         initial={{ scaleX: 0, originX: 0 }}
                         whileHover={{ scaleX: 1 }}
                         transition={{ duration: 0.3 }}
@@ -127,7 +127,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 rounded-full bg-[#1a1a1a] text-white flex items-center justify-center hover:bg-[#F4C542] hover:text-[#1a1a1a] transition-all duration-300"
+                      className="w-12 h-12 rounded-full bg-dark-alt text-white flex items-center justify-center hover:bg-accent hover:text-dark-alt transition-all duration-300"
                       aria-label={social.label}
                     >
                       <Icon className="w-5 h-5" />
@@ -144,7 +144,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
             viewport={{ once: true }}
-            className="h-px bg-[#1a1a1a]/10"
+            className="h-px bg-dark-alt/10"
           />
 
           {/* Bottom Section */}
@@ -153,7 +153,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-[#1a1a1a]/60"
+            className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-dark-alt/60"
           >
             <p>© {currentYear} {siteConfig.fullName}. All rights reserved.</p>
           </motion.div>

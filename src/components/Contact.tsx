@@ -4,7 +4,7 @@ import { siteConfig } from '../data/site-config';
 
 export default function Contact() {
   return (
-    <section id="contact" className="min-h-screen bg-[#1a1a1a] text-white px-6 py-24 flex items-center justify-center">
+    <section id="contact" className="min-h-screen bg-dark-alt text-white px-6 py-24 flex items-center justify-center">
       <div className="max-w-7xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -16,12 +16,12 @@ export default function Contact() {
           <div className="text-center space-y-8">
             {/* Icon header */}
             <div className="flex items-center justify-center gap-4 mb-6">
-              <MessageCircle className="w-8 h-8 text-[#F4C542]" />
+              <MessageCircle className="w-8 h-8 text-accent" />
               <motion.p 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="text-[#F4C542] tracking-[0.3em] text-sm uppercase"
+                className="text-accent tracking-[0.3em] text-sm uppercase"
               >
                 Get In Touch
               </motion.p>
@@ -34,7 +34,7 @@ export default function Contact() {
               viewport={{ once: true }}
               className="inline-block"
             >
-              <div className="w-24 h-24 rounded-full bg-[#F4C542] text-[#1a1a1a] flex items-center justify-center text-4xl mx-auto mb-8">
+              <div className="w-24 h-24 rounded-full bg-accent text-dark-alt flex items-center justify-center text-4xl mx-auto mb-8">
                 👋
               </div>
             </motion.div>
@@ -70,7 +70,7 @@ export default function Contact() {
                 whileInView={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
                 viewport={{ once: true }}
-                className="h-px w-32 bg-[#F4C542] origin-center mx-auto"
+                className="h-px w-32 bg-accent origin-center mx-auto"
               />
             </div>
             
@@ -85,7 +85,7 @@ export default function Contact() {
                 href={`mailto:${siteConfig.email}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#F4C542] text-black px-8 py-4 rounded-full hover:bg-[#F4C542]/90 transition-all flex items-center gap-2 text-lg w-full sm:w-auto justify-center"
+                className="bg-accent text-black px-8 py-4 rounded-full hover:bg-accent/90 transition-all flex items-center gap-2 text-lg w-full sm:w-auto justify-center"
               >
                 <Mail className="w-5 h-5" />
                 Send Me an Email

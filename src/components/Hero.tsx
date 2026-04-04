@@ -28,7 +28,7 @@ export default function Hero() {
     <section 
       ref={ref} 
       id="hero" 
-      className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-4 md:px-8 lg:px-12 pt-20 pb-12 relative overflow-hidden"
+      className="min-h-screen bg-dark text-white flex items-center justify-center px-4 md:px-8 lg:px-12 pt-20 pb-12 relative overflow-hidden"
     >
       {/* Main content container */}
       <motion.div 
@@ -122,7 +122,7 @@ export default function Hero() {
             <span>Software Engineer</span>
             <span className="hidden md:inline text-white/30">•</span>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#F4C542] rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
               <span>Available for opportunities</span>
             </div>
           </motion.div>
@@ -189,7 +189,7 @@ export default function Hero() {
 
         {/* Gradient orbs */}
         <motion.div
-          className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#F4C542]/5 rounded-full blur-3xl"
+          className="absolute top-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
@@ -209,7 +209,7 @@ export default function Hero() {
 
         {/* Floating accent lines */}
         <motion.div
-          className="absolute top-[20%] left-[10%] w-32 h-px bg-gradient-to-r from-transparent via-[#F4C542]/20 to-transparent"
+          className="absolute top-[20%] left-[10%] w-32 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent"
           animate={{
             x: [0, 50, 0],
             opacity: [0.3, 0.6, 0.3]

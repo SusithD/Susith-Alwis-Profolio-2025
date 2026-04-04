@@ -34,13 +34,13 @@ export default function App() {
 
   return (
     <div className="size-full">
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-[#F4C542] focus:text-[#0a0a0a] focus:px-4 focus:py-2 focus:rounded-full">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:bg-accent focus:text-dark focus:px-4 focus:py-2 focus:rounded-full">
         Skip to content
       </a>
       <ErrorBoundary>
         <Suspense fallback={
-          <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center" role="status" aria-label="Loading page">
-            <div className="w-8 h-8 border-2 border-[#F4C542] border-t-transparent rounded-full animate-spin" />
+          <div className="min-h-screen bg-dark flex items-center justify-center" role="status" aria-label="Loading page">
+            <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
           </div>
         }>
           {currentPage === 'home' && <HomePage onNavigateToProject={navigateTo} />}
