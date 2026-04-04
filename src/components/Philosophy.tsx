@@ -102,9 +102,9 @@ export default function Philosophy() {
                 accent: false,
                 delay: 0.3
               }
-            ].map((item, index) => (
+            ].map((item, _index) => (
               <motion.div
-                key={index}
+                key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: item.delay }}

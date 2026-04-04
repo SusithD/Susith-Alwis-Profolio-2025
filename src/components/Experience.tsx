@@ -36,7 +36,7 @@ export default function Experience() {
               </motion.p>
             </div>
             <h2 className="text-5xl md:text-7xl tracking-tight mb-6">
-              Where I've Worked
+              Where I&apos;ve Worked
             </h2>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -56,7 +56,7 @@ export default function Experience() {
             <div className="space-y-12">
               {experiences.map((exp, index) => (
                 <motion.div
-                  key={index}
+                  key={exp.company}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -105,8 +105,8 @@ export default function Experience() {
 
                     {/* Roles */}
                     <div className="mb-4">
-                      {exp.roles.map((role, roleIndex) => (
-                        <div key={roleIndex} className="mb-2">
+                      {exp.roles.map((role, _roleIndex) => (
+                        <div key={role.title} className="mb-2">
                           <div className="flex flex-wrap items-center gap-3">
                             <h3 className="text-xl md:text-2xl text-white">
                               {role.title}
@@ -132,7 +132,7 @@ export default function Experience() {
                     <div className="flex flex-wrap gap-2 mb-4">
                       {exp.tags.map((tag, i) => (
                         <motion.span
-                          key={i}
+                          key={tag}
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: index * 0.1 + i * 0.05 }}
@@ -155,8 +155,8 @@ export default function Experience() {
                       className="overflow-hidden"
                     >
                       <div className="space-y-3 pt-2 pb-4 border-t border-white/10 mt-4">
-                        {exp.projects.map((project, i) => (
-                          <div key={i} className="space-y-1">
+                        {exp.projects.map((project, _i) => (
+                          <div key={project.name} className="space-y-1">
                             <div className="flex items-start gap-3">
                               <div className="w-1.5 h-1.5 rounded-full bg-[#F4C542] mt-2 flex-shrink-0" />
                               <div>
@@ -237,7 +237,7 @@ export default function Experience() {
             <div className="space-y-12">
               {education.map((edu, index) => (
                 <motion.div
-                  key={index}
+                  key={edu.institution}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -311,7 +311,7 @@ export default function Experience() {
                     <div className="flex flex-wrap gap-2 mb-4">
                       {edu.tags.map((tag, i) => (
                         <motion.span
-                          key={i}
+                          key={tag}
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: i * 0.05 }}
@@ -336,8 +336,8 @@ export default function Experience() {
                       <div className="pt-2 pb-4 border-t border-white/10 mt-4">
                         <p className="text-xs text-white/40 mb-3 uppercase tracking-wider">Relevant Coursework</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                          {edu.coursework.map((course, i) => (
-                            <div key={i} className="flex items-start gap-2">
+                          {edu.coursework.map((course, _i) => (
+                            <div key={course} className="flex items-start gap-2">
                               <div className="w-1 h-1 rounded-full bg-purple-400 mt-2 flex-shrink-0" />
                               <p className="text-sm text-white/50 leading-relaxed">
                                 {course}

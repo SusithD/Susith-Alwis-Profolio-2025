@@ -12,7 +12,7 @@ interface NavigationProps {
   projectTitle?: string;
 }
 
-export default function Navigation({ currentPage, onNavigate, projectTitle }: NavigationProps) {
+export default function Navigation({ currentPage, onNavigate, projectTitle: _projectTitle }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false);
   const [isLightSection, setIsLightSection] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -91,7 +91,7 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
             onClick={contactClick}
             className="hidden sm:block bg-[#F4C542] text-[#0a0a0a] px-4 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-[#F4C542]/90 transition-all hover:scale-105 text-sm sm:text-base"
           >
-            Let's Begin
+            Let&apos;s Begin
           </button>
 
           <button
@@ -158,7 +158,7 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
             onClick={contactClick}
             className="hidden sm:block bg-[#F4C542] text-[#0a0a0a] px-4 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-[#F4C542]/90 transition-all hover:scale-105 text-sm sm:text-base"
           >
-            Let's Begin
+            Let&apos;s Begin
           </button>
 
           <button
@@ -237,7 +237,7 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
           onClick={() => scrollToSection('contact')}
           className="hidden sm:block bg-[#F4C542] text-[#0a0a0a] px-4 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-[#F4C542]/90 transition-all hover:scale-105 text-sm sm:text-base"
         >
-          Let's Begin
+          Let&apos;s Begin
         </button>
 
         <button

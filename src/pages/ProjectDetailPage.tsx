@@ -258,8 +258,8 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
               <div>
                 <h3 className="text-2xl mb-4">Technologies</h3>
                 <div className="flex flex-wrap gap-3">
-                  {project.technologies.map((tech, i) => (
-                    <span key={i} className="px-4 py-2 bg-[#1a1a1a]/10 rounded-full">
+                  {project.technologies.map((tech, _i) => (
+                    <span key={tech} className="px-4 py-2 bg-[#1a1a1a]/10 rounded-full">
                       {tech}
                     </span>
                   ))}
@@ -310,7 +310,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {project.impact.map((item, i) => (
                 <motion.div
-                  key={i}
+                  key={item.label}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
@@ -342,7 +342,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
             <div className="space-y-6">
               {project.process.map((step, i) => (
                 <motion.div
-                  key={i}
+                  key={step.phase}
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -379,7 +379,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
             <div className="grid md:grid-cols-2 gap-6">
               {project.keyFeatures.map((feature, i) => (
                 <motion.div
-                  key={i}
+                  key={feature}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
@@ -409,7 +409,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
             <div className="grid md:grid-cols-2 gap-6">
               {project.responsibilities.map((resp, i) => (
                 <motion.div
-                  key={i}
+                  key={resp}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
@@ -439,7 +439,7 @@ export default function ProjectDetailPage({ projectId, onNavigateHome, onNavigat
           >
             <h2 className="text-5xl md:text-7xl">Like what you see?</h2>
             <p className="text-2xl text-[#1a1a1a]/60">
-              Let's create something amazing together.
+              Let&apos;s create something amazing together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {project.behanceLink && (

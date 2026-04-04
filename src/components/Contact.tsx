@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, Linkedin, Github, Twitter, MessageCircle } from 'lucide-react';
+import { Mail, Linkedin, MessageCircle } from 'lucide-react';
 import { siteConfig } from '../data/site-config';
 
 export default function Contact() {
@@ -61,7 +61,7 @@ export default function Contact() {
                 viewport={{ once: true }}
                 className="text-2xl md:text-3xl text-white/70 max-w-3xl mx-auto"
               >
-                Tell me about it — I'll reply within 48 hours.
+                Tell me about it — I&apos;ll reply within 48 hours.
               </motion.p>
               
               {/* Yellow accent line */}

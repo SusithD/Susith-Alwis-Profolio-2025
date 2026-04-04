@@ -15,20 +15,17 @@ export default function Testimonials() {
     {
       quote: "Susith's ability to bridge design and development is exceptional. He delivered a product that exceeded our expectations in both aesthetics and functionality.",
       author: "Sarah Johnson",
-      role: "Product Manager, CoverageX",
-      image: null
+      role: "Product Manager, CoverageX"
     },
     {
       quote: "Working with Susith was a game-changer for our startup. His design system approach saved us months of development time and gave us a cohesive brand identity.",
       author: "Michael Chen",
-      role: "CEO, TechStart Inc.",
-      image: null
+      role: "CEO, TechStart Inc."
     },
     {
       quote: "Rare to find someone who understands both user experience and technical implementation at such a deep level. Highly recommend for any product development needs.",
       author: "Emily Rodriguez",
-      role: "Design Lead, Innovation Labs",
-      image: null
+      role: "Design Lead, Innovation Labs"
     }
   ];
 
@@ -57,7 +54,7 @@ export default function Testimonials() {
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
-                key={index}
+                key={testimonial.author}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -68,7 +65,7 @@ export default function Testimonials() {
                   <div className="space-y-6">
                     <Quote className="w-12 h-12 text-[#F4C542]/30" />
                     <p className="text-lg leading-relaxed text-[#1a1a1a]/80">
-                      "{testimonial.quote}"
+                      {`\u201c${testimonial.quote}\u201d`}
                     </p>
                   </div>
                   

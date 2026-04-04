@@ -1,13 +1,9 @@
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { useRef } from 'react';
 import { GitBranch } from 'lucide-react';
 
 export default function Process() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
 
   const steps = [
     {
@@ -150,7 +146,7 @@ export default function Process() {
                     >
                       {step.highlights.map((highlight, i) => (
                         <motion.span
-                          key={i}
+                          key={highlight}
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: index * 0.1 + 0.6 + i * 0.05 }}

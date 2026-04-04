@@ -243,9 +243,9 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
                       viewport={{ once: true }}
                       className="flex flex-wrap gap-3"
                     >
-                      {project.tags.map((tag, i) => (
+                      {project.tags.map((tag, _i) => (
                         <span
-                          key={i}
+                          key={tag}
                           className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm transition-colors duration-300"
                         >
                           {tag}

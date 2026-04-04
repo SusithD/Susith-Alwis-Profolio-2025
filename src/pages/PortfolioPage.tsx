@@ -14,9 +14,10 @@ interface PortfolioPageProps {
 }
 
 export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: PortfolioPageProps) {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState<'all' | 'web' | 'ai' | 'mobile' | 'design'>('all');
 
-  const categories = [
+  type FilterCategory = 'all' | 'web' | 'ai' | 'mobile' | 'design';
+  const categories: { id: FilterCategory; label: string; icon: typeof Layers }[] = [
     { id: 'all', label: 'All Projects', icon: Layers },
     { id: 'web', label: 'Web Design', icon: Code },
     { id: 'ai', label: 'AI & ML', icon: Code },
@@ -262,9 +263,9 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         transition={{ delay: index * 0.15 + 0.8 }}
                         className="flex flex-wrap gap-2"
                       >
-                        {project.tags.slice(0, 4).map((tag, i) => (
+                        {project.tags.slice(0, 4).map((tag, _i) => (
                           <span
-                            key={i}
+                            key={tag}
                             className="px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-full text-xs font-medium backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/20"
                           >
                             {tag}
