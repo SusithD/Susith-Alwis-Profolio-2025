@@ -1,11 +1,12 @@
-import React from 'react';
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, Sparkles, Code, Palette, Layers } from 'lucide-react';
-import { useState } from 'react';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import Navigation from '../components/Navigation';
+import { portfolioProjects } from '../data/projects';
+import { siteConfig } from '../data/site-config';
 
 interface PortfolioPageProps {
   onNavigateToProject: (page: 'project', projectId: string) => void;
@@ -14,309 +15,6 @@ interface PortfolioPageProps {
 
 export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: PortfolioPageProps) {
   const [activeFilter, setActiveFilter] = useState('all');
-  const ckCover = new URL('../images/logo-concept-colombo-kings/imgi_27_888ef0130936549.618ac232ec5e6.jpg', import.meta.url).href;
-  const ktCover = new URL('../images/logo-concept-kandy-tuskers/imgi_30_ee4330130369959.617ede0e2b955.jpg', import.meta.url).href;
-  const bistroCover = new URL('../images/logo-bistro-coffee-shop/imgi_29_3b8942135068517.61e10c014bc0f.jpg', import.meta.url).href;
-  const qexleCover = new URL('../images/the-qexle-branding/imgi_17_765024137769287.6210f64483f83.jpg', import.meta.url).href;
-  const organicCover = new URL('../images/logo-organic-beltline/imgi_42_ed9ac1143551981.627c7bfc9b51c.jpg', import.meta.url).href;
-  const noirCover = new URL('../images/logo-noir/imgi_29_471143143551429.627c7892a22b1.jpg', import.meta.url).href;
-  const kozhaCover = new URL('../images/logo-kozha-leather/imgi_37_1f6657144036805.6285223fee455.jpg', import.meta.url).href;
-  const gyroctionCover = new URL('../images/logo-gyroction/97fec5145776937.62a44786bb599.jpg', import.meta.url).href;
-  const nikeCover = new URL('../images/landing-page-ui-nike/418257146284501.62ad89bede8da.jpg', import.meta.url).href;
-  const wildlifeCover = new URL('../images/landing-page-wildlife/054fd3146507535.62b1c5409580e.jpg', import.meta.url).href;
-  const foodieHutCover = new URL('../images/foodiehut-ui-design-and-development/ee7e75210104439.670bb1a9a3865.png', import.meta.url).href;
-  const currencyCover = new URL('../images/fake-money-detector/383462735-8d2e6543-69c2-4b94-94d2-563a3cc1a2cd.png', import.meta.url).href;
-  const mentalHealthCover = new URL('../images/mental-health-project-development/mental-health.jpg', import.meta.url).href;
-  const qexleWebsiteCover = new URL('../images/the-qexle-website-design-and-development/da38e5210641019.67152a68b4960.png', import.meta.url).href;
-  const autowaseCover = new URL('../images/logo-design-autoways/28eb6a149861095.62ef6fce0bd56.jpg', import.meta.url).href;
-  const prestigeCover = new URL('../images/logo-design-prestige/6ed130184602991.6554de5459067.jpg', import.meta.url).href;
-  const sgsenseCover = new URL('../images/logo-design-sgsense/9faefb199290833.664f071a6bb10.png', import.meta.url).href;
-  const sgsenseWebCover = new URL('../images/website-uiux-design-sgsense/eb3149199392491.66508adb8ff04.png', import.meta.url).href;
-  const greentipsCover = new URL('../images/mobile-uiux-design-greentips/1.png', import.meta.url).href;
-  const techStartupCover = new URL('../images/the-company-website-design-and-development/70da12231259117.68862965444bd.png', import.meta.url).href;
-  
-  const projects = [
-    {
-      id: 'organic-beltline',
-      title: 'Logo Design for Organic Beltline',
-      role: 'Graphic Designer',
-      description: 'Brand identity design for Organic Beltline, focusing on representing the company\'s organic values through visual elements. Feb 2022.',
-      category: 'design',
-      tags: ['Brand Identity', 'Logo Design', 'Organic Design', 'Visual Identity'],
-      accentColor: '#22C55E',
-      gradient: 'from-green-500/20 to-emerald-500/20',
-      initials: 'OB',
-      featured: true,
-      size: 'large',
-      image: organicCover
-    },
-    {
-      id: 'noir-interior-design',
-      title: 'Logo Design for NOIR Interior Design Company',
-      role: 'Graphic Designer',
-      description: 'Creation of a professional virtual identity for NOIR, an Interior Design Company, through distinctive logo design. Feb 2022.',
-      category: 'design',
-      tags: ['Brand Identity', 'Logo Design', 'Interior Design', 'Professional Branding'],
-      accentColor: '#000000',
-      gradient: 'from-gray-900/20 to-gray-700/20',
-      initials: 'NR',
-      featured: true,
-      size: 'large',
-      image: noirCover
-    },
-    {
-      id: 'kozha-leather-collections',
-      title: 'Logo Design for Kozha Leather Collections',
-      role: 'Graphic Designer',
-      description: 'Development of a professional brand identity for Kozha Leather Collections through strategic logo design, conveying quality and craftsmanship. Mar 2022.',
-      category: 'design',
-      tags: ['Brand Identity', 'Logo Design', 'Leather Goods', 'Craftsmanship'],
-      accentColor: '#8B4513',
-      gradient: 'from-amber-700/20 to-yellow-600/20',
-      initials: 'KL',
-      featured: true,
-      size: 'large',
-      image: kozhaCover
-    },
-    {
-      id: 'gyroction',
-      title: 'Logo Design for Gyroction',
-      role: 'Graphic Designer',
-      description: "Brand identity design for Gyroction, creating a distinctive and memorable logo that represents the company's values and services. Jun 2022.",
-      category: 'design',
-      tags: ['Brand Identity', 'Logo Design', 'Corporate Identity'],
-      accentColor: '#2563EB',
-      gradient: 'from-blue-600/20 to-cyan-500/20',
-      initials: 'GY',
-      featured: true,
-      size: 'large',
-      image: gyroctionCover
-    },
-    {
-      id: 'landing-page-ui-nike',
-      title: 'Nike Shoes Landing Page Concept',
-      role: 'Graphic Designer',
-      description: 'A landing page UI design concept for Nike shoes with bold visuals, clear hierarchy, and conversion-focused CTAs.',
-      category: 'web',
-      tags: ['Landing Page', 'UI/UX', 'Concept', 'Web Design'],
-      accentColor: '#111111',
-      gradient: 'from-gray-800/20 to-zinc-600/20',
-      initials: 'NK',
-      featured: true,
-      size: 'large',
-      image: nikeCover
-    },
-    {
-      id: 'landing-page-wildlife',
-      title: 'Endemic Animals in Sri Lanka – Landing Page',
-      role: 'UI/UX Designer',
-      description: 'Interactive landing page concept highlighting Sri Lanka\'s endemic wildlife with immersive visuals and educational content. Jun–Sep 2024.',
-      category: 'web',
-      tags: ['Landing Page', 'UI/UX', 'Academic Project', 'Visual Design'],
-      accentColor: '#16A34A',
-      gradient: 'from-green-600/20 to-emerald-500/20',
-      initials: 'WL',
-      featured: true,
-      size: 'large',
-      image: wildlifeCover
-    },
-    {
-      id: 'foodiehut',
-      title: 'FoodieHut - Android Application',
-      role: 'UI Designer & Backend Developer',
-      description: 'Android app connecting users to exclusive promotions, online ordering, and branch navigation. Aug–Sep 2024.',
-      category: 'mobile',
-      tags: ['Android', 'UI/UX', 'Figma', 'Academic Project'],
-      accentColor: '#F97316',
-      gradient: 'from-orange-500/20 to-amber-400/20',
-      initials: 'FH',
-      featured: true,
-      size: 'large',
-      image: foodieHutCover
-    },
-    {
-      id: 'currency-note-recognition',
-      title: 'Sri Lankan Currency Note Recognition System',
-      role: 'Developer',
-      description: 'Flask-based AI system for authenticating Sri Lankan currency with security feature detection and educational descriptions. Nov 2024.',
-      category: 'ai',
-      tags: ['Machine Learning', 'Deep Learning', 'Flask', 'OpenCV', 'TensorFlow', 'PyTorch'],
-      accentColor: '#0EA5E9',
-      gradient: 'from-cyan-500/20 to-blue-500/20',
-      initials: 'CR',
-      featured: true,
-      size: 'large',
-      image: currencyCover
-    },
-    {
-      id: 'mental-health-platform',
-      title: 'Mental Health App',
-      role: 'Developer',
-      description: 'Secure platform for mental well-being with activity tracking, assessments, and professional communication. Nov 2024.',
-      category: 'web',
-      tags: ['Node.js', 'REST APIs', 'JWT', 'React'],
-      accentColor: '#7C3AED',
-      gradient: 'from-violet-600/20 to-fuchsia-500/20',
-      initials: 'MH',
-      featured: true,
-      size: 'large',
-      image: mentalHealthCover
-    },
-    {
-      id: 'qexle-website-development',
-      title: 'The qexle Website Development',
-      role: 'Web Developer',
-      description: 'User-centric website showcasing branding, digital marketing, and web development services with optimized performance and SEO. Jul–Dec 2024.',
-      category: 'web',
-      tags: ['WordPress', 'Web Development', 'UI/UX', 'SEO'],
-      accentColor: '#1E40AF',
-      gradient: 'from-blue-600/20 to-indigo-500/20',
-      initials: 'QW',
-      featured: true,
-      size: 'large',
-      image: qexleWebsiteCover
-    },
-    {
-      id: 'autowase-logo-design',
-      title: 'Logo Design for Autowase Pvt Ltd',
-      role: 'Graphic Designer',
-      description: 'Comprehensive branding project developing distinctive visual identity with full brand mockups across digital and stationery materials. Mar 2023.',
-      category: 'design',
-      tags: ['Graphic Design', 'Figma', 'Branding', 'Mockup Design'],
-      accentColor: '#DC2626',
-      gradient: 'from-red-600/20 to-orange-500/20',
-      initials: 'AW',
-      featured: true,
-      size: 'large',
-      image: autowaseCover
-    },
-    {
-      id: 'prestige-logo-design',
-      title: 'Logo Design for Prestige Clothing',
-      role: 'Graphic Designer',
-      description: 'Complete brand identity blending elegance and sophistication for premium fashion, capturing luxury and timeless style. Aug 2023.',
-      category: 'design',
-      tags: ['Graphic Design', 'Branding', 'Figma', 'Mockup Design'],
-      accentColor: '#7C2D12',
-      gradient: 'from-amber-800/20 to-yellow-600/20',
-      initials: 'PC',
-      featured: true,
-      size: 'large',
-      image: prestigeCover
-    },
-    {
-      id: 'sgsense-logo-design',
-      title: 'SGSENSE Branding & Logo Design',
-      role: 'Graphic Designer',
-      description: 'Comprehensive branding for Australian precision measurement company emphasizing innovation, reliability, and technological excellence. Dec 2023.',
-      category: 'design',
-      tags: ['Graphic Design', 'Branding', 'Adobe Illustrator', 'Adobe Photoshop', 'Figma'],
-      accentColor: '#0F172A',
-      gradient: 'from-slate-800/20 to-gray-600/20',
-      initials: 'SG',
-      featured: true,
-      size: 'large',
-      image: sgsenseCover
-    },
-    {
-      id: 'sgsense-web-application',
-      title: 'SGSENSE Web Application',
-      role: 'Web Designer and Developer',
-      description: 'Collaborative project enhancing user experience and operational efficiency for Australian Force and Torque Measurement leader. Jan–Dec 2024.',
-      category: 'web',
-      tags: ['Web Development', 'UI/UX Design', 'Figma', 'Wireframing', 'Prototyping'],
-      accentColor: '#059669',
-      gradient: 'from-emerald-600/20 to-teal-500/20',
-      initials: 'SW',
-      featured: true,
-      size: 'large',
-      image: sgsenseWebCover
-    },
-    {
-      id: 'greentips-plantation-management',
-      title: 'Plantation Field Management System Mobile Application',
-      role: 'UI/UX Designer & Developer',
-      description: 'Mobile app streamlining operations for 250+ acre plantation with automated data collection, task tracking, and real-time management. Oct 2024–Present.',
-      category: 'mobile',
-      tags: ['Figma', 'Prototyping', 'UX/UI Design', 'Java', 'Kotlin', 'Android Studio', 'Firebase'],
-      accentColor: '#16A34A',
-      gradient: 'from-green-600/20 to-lime-500/20',
-      initials: 'GT',
-      featured: true,
-      size: 'large',
-      image: greentipsCover
-    },
-    {
-      id: 'tech-startup-landing-page',
-      title: 'Tech Startup Landing Page',
-      role: 'UI/UX Designer & Front-End Developer',
-      description: 'Fully responsive tech startup landing page designed in Figma and developed using Nuxt.js (Vue 3) and Tailwind CSS v4. May 2024.',
-      category: 'web',
-      tags: ['Figma', 'UI/UX Design', 'Nuxt.js (Vue 3)', 'Tailwind CSS v4', 'Responsive Design', 'Vercel'],
-      accentColor: '#3B82F6',
-      gradient: 'from-blue-500/20 to-cyan-400/20',
-      initials: 'TS',
-      featured: true,
-      size: 'large',
-      image: techStartupCover
-    },
-    {
-      id: 'qexle-rebranding',
-      title: 'Rebranding Logo of The qexle',
-      role: 'Graphic Designer',
-      description: 'A rebranding project for The qexle team, incorporating minimalistic design principles and strategic color choices to enhance brand recognition. Feb 2022.',
-      category: 'design',
-      tags: ['Rebranding', 'Logo Design', 'Brand Identity', 'Minimalistic Design'],
-      accentColor: '#1E40AF',
-      gradient: 'from-blue-600/20 to-blue-400/20',
-      initials: 'TQ',
-      featured: true,
-      size: 'large',
-      image: qexleCover
-    },
-    {
-      id: 'bistro-coffee-shop',
-      title: 'Logo Design for Bistro Coffee Shop',
-      role: 'Graphic Designer',
-      description: 'Brand identity design for Bistro Coffee Shop in Anuradhapura, creating a logo that captures the welcoming and cozy atmosphere. Jan 2022.',
-      category: 'design',
-      tags: ['Brand Identity', 'Logo Design', 'Graphic Design', 'Branding'],
-      accentColor: '#8B4513',
-      gradient: 'from-[#8B4513]/20 to-orange-500/20',
-      initials: 'BC',
-      featured: true,
-      size: 'large',
-      image: bistroCover
-    },
-    {
-      id: 'kandy-tuskers-logo-concept',
-      title: 'Logo Redesign Concept for Kandy Tuskers',
-      role: 'Graphic Designer',
-      description: 'A conceptual logo redesign for Kandy Tuskers, a Sri Lankan franchise professional T20 cricket team in the LPL. Apr–May 2021.',
-      category: 'design',
-      tags: ['Branding', 'Logo Design', 'Sports Identity'],
-      accentColor: '#F59E0B',
-      gradient: 'from-amber-500/20 to-yellow-500/20',
-      initials: 'KT',
-      featured: false,
-      size: 'medium',
-      image: ktCover
-    },
-    {
-      id: 'colombo-kings-logo-concept',
-      title: 'Logo Redesign Concept for Colombo Kings',
-      role: 'Graphic Designer',
-      description: 'A conceptual logo redesign for Colombo Kings, a franchise Twenty20 cricket team in the Lanka Premier League. Apr 2021.',
-      category: 'design',
-      tags: ['Branding', 'Logo Design', 'Sports Identity'],
-      accentColor: '#DC2626',
-      gradient: 'from-red-500/20 to-orange-500/20',
-      initials: 'CK',
-      featured: false,
-      size: 'medium',
-      image: ckCover
-    },
-  ];
 
   const categories = [
     { id: 'all', label: 'All Projects', icon: Layers },
@@ -335,35 +33,35 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
   };
 
   // Sort projects by category priority, then by featured status
-  const sortedProjects = [...projects].sort((a, b) => {
+  const sortedProjects = [...portfolioProjects].sort((a, b) => {
     // First sort by category priority
     const categoryA = categoryOrder[a.category as keyof typeof categoryOrder] || 999;
     const categoryB = categoryOrder[b.category as keyof typeof categoryOrder] || 999;
-    
+
     if (categoryA !== categoryB) {
       return categoryA - categoryB;
     }
-    
+
     // Within same category, featured projects come first
     if (a.featured && !b.featured) return -1;
     if (!a.featured && b.featured) return 1;
-    
+
     return 0;
   });
 
-  const filteredProjects = activeFilter === 'all' 
-    ? sortedProjects 
+  const filteredProjects = activeFilter === 'all'
+    ? sortedProjects
     : sortedProjects.filter(p => p.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
-      <Navigation 
-        currentPage="portfolio" 
+      <Navigation
+        currentPage="portfolio"
         onNavigate={(page) => {
           if (page === 'home') onNavigateHome();
         }}
       />
-      
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         {/* Animated background */}
@@ -401,19 +99,19 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
             >
               <span className="text-[#F4C542] text-lg tracking-wide">WORK SHOWCASE</span>
             </motion.div>
-            
+
             <h1 className="text-6xl md:text-8xl lg:text-9xl tracking-tight leading-[1.05]">
               Selected<br />
               <span className="text-white/40">Projects</span>
             </h1>
-            
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
               className="text-xl md:text-2xl text-white/60 max-w-2xl leading-relaxed"
             >
-              A collection of design and development work spanning web applications, 
+              A collection of design and development work spanning web applications,
               mobile experiences, and design systems.
             </motion.p>
           </motion.div>
@@ -447,7 +145,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                   <Icon className="w-4 h-4" />
                   {category.label}
                   <span className={`text-sm ${activeFilter === category.id ? 'text-[#0a0a0a]/70' : 'text-white/40'}`}>
-                    ({category.id === 'all' ? projects.length : projects.filter(p => p.category === category.id).length})
+                    ({category.id === 'all' ? portfolioProjects.length : portfolioProjects.filter(p => p.category === category.id).length})
                   </span>
                 </motion.button>
               );
@@ -459,7 +157,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
       {/* Projects Grid - Bento Style */}
       <section className="px-4 sm:px-6 pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -467,7 +165,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
           >
             {filteredProjects.map((project, index) => {
               const isImageLeft = index % 2 === 0; // Alternating: even = image left, odd = image right
-              
+
               return (
                 <motion.div
                   key={project.id}
@@ -490,7 +188,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         />
                         {/* Image overlay */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20 group-hover:to-black/10 transition-all duration-500" />
-                        
+
                         {/* Featured Badge on Image */}
                         {project.featured && (
                           <motion.div
@@ -514,13 +212,13 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.15 + 0.3 }}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold backdrop-blur-md border w-fit"
-                        style={{ 
+                        style={{
                           backgroundColor: `${project.accentColor}15`,
                           borderColor: `${project.accentColor}40`,
-                          color: project.accentColor 
+                          color: project.accentColor
                         }}
                       >
-                        <div 
+                        <div
                           className="w-2 h-2 rounded-full"
                           style={{ backgroundColor: project.accentColor }}
                         />
@@ -528,7 +226,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                       </motion.div>
 
                       {/* Title */}
-                      <motion.h3 
+                      <motion.h3
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.5 }}
@@ -538,7 +236,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                       </motion.h3>
 
                       {/* Role */}
-                      <motion.p 
+                      <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.6 }}
@@ -548,7 +246,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                       </motion.p>
 
                       {/* Description */}
-                      <motion.p 
+                      <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.7 }}
@@ -558,7 +256,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                       </motion.p>
 
                       {/* Tags */}
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.8 }}
@@ -575,7 +273,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                       </motion.div>
 
                       {/* CTA */}
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.15 + 0.9 }}
@@ -596,7 +294,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         />
                         {/* Image overlay */}
                         <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/20 group-hover:to-black/10 transition-all duration-500" />
-                        
+
                         {/* Featured Badge on Image */}
                         {project.featured && (
                           <motion.div
@@ -667,7 +365,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                 Discuss a project
               </button>
               <a
-                href="mailto:hello@susithdeshan.com"
+                href={`mailto:${siteConfig.email}`}
                 className="border border-white/20 text-white px-8 py-3 rounded-full hover:border-white/40 hover:bg-white/5 transition-all text-base md:text-lg"
               >
                 Email directly
