@@ -1,5 +1,7 @@
 import { motion } from 'motion/react';
 import { Mail, Linkedin, Github, Dribbble, ArrowUpRight } from 'lucide-react';
+import { siteConfig } from '../data/site-config';
+import { useScrollToSection } from '../hooks/useScrollToSection';
 
 interface FooterProps {
   onNavigate?: () => void;
@@ -7,23 +9,10 @@ interface FooterProps {
 
 export default function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { scrollAfterNavigation } = useScrollToSection();
 
   const handleNavLink = (sectionId: string) => {
-    if (onNavigate) {
-      onNavigate();
-      // After navigating home, scroll to the section once the page renders
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else {
-      scrollToSection(sectionId);
-    }
+    scrollAfterNavigation(sectionId, onNavigate);
   };
 
   return (
@@ -54,7 +43,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             >
               {/* Logo */}
               <div className="space-y-4">
-                <h3 className="text-3xl tracking-tight">Susith Deshan</h3>
+                <h3 className="text-3xl tracking-tight">{siteConfig.name}</h3>
                 <p className="text-[#1a1a1a]/60">
                   UI/UX Designer &<br />Software Engineer
                 </p>
@@ -100,11 +89,11 @@ export default function Footer({ onNavigate }: FooterProps) {
                   transition={{ duration: 0.2 }}
                 >
                   <a
-                    href="mailto:hello@susithdeshan.com"
+                    href={`mailto:${siteConfig.email}`}
                     className="group relative inline-block"
                   >
                     <span className="relative">
-                      hello@susithdeshan.com
+                      {siteConfig.email}
                       <motion.span
                         className="absolute bottom-0 left-0 w-full h-1 bg-[#F4C542]"
                         initial={{ scaleX: 0, originX: 0 }}
@@ -120,10 +109,10 @@ export default function Footer({ onNavigate }: FooterProps) {
               {/* Social Icons */}
               <div className="flex gap-4">
                 {[
-                  { icon: Linkedin, href: 'https://linkedin.com/in/susith-deshan', label: 'LinkedIn' },
-                  { icon: Github, href: 'https://github.com/susithdeshan', label: 'GitHub' },
-                  { icon: Dribbble, href: 'https://dribbble.com/susithdeshan', label: 'Dribbble' },
-                  { icon: Mail, href: 'mailto:hello@susithdeshan.com', label: 'Email' }
+                  { icon: Linkedin, href: siteConfig.social.linkedin, label: 'LinkedIn' },
+                  { icon: Github, href: siteConfig.social.github, label: 'GitHub' },
+                  { icon: Dribbble, href: siteConfig.social.dribbble, label: 'Dribbble' },
+                  { icon: Mail, href: `mailto:${siteConfig.email}`, label: 'Email' }
                 ].map((social, index) => {
                   const Icon = social.icon;
                   return (
@@ -166,7 +155,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-[#1a1a1a]/60"
           >
-            <p>© {currentYear} Susith Deshan Alwis. All rights reserved.</p>
+            <p>© {currentYear} {siteConfig.fullName}. All rights reserved.</p>
           </motion.div>
         </div>
       </div>

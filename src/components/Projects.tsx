@@ -1,7 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, ChevronLeft, ChevronRight, FolderOpen } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { homeProjects } from '../data/projects';
 
 interface ProjectsProps {
   onNavigateToProject: (page: 'portfolio' | 'project', projectId?: string) => void;
@@ -14,114 +15,7 @@ export default function Projects({ onNavigateToProject }: ProjectsProps) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Development and UI/UX projects only - matching portfolio page order
-  const allProjects = [
-    // Web Development Projects (Priority 1)
-    {
-      id: 'sgsense-web-application',
-      title: 'SGSENSE Web Application',
-      role: 'Web Designer and Developer',
-      description: 'Enhanced user experience for SGSENSE, an Australian leader in Force and Torque Measurement solutions. Created comprehensive digital platform with improved navigation and product catalog.',
-      tags: ['Web Development', 'UI/UX', 'Product Catalog', 'Performance'],
-      accentColor: '#3B82F6',
-      gradient: 'from-blue-500/20 to-cyan-500/20',
-      initials: 'SG',
-      image: new URL('../images/website-uiux-design-sgsense/eb3149199392491.66508adb8ff04.png', import.meta.url).href,
-      category: 'web',
-      featured: true
-    },
-    {
-      id: 'tech-startup-landing-page',
-      title: 'Tech Startup Landing Page',
-      role: 'UI/UX Designer & Front-End Developer',
-      description: 'Fully responsive tech startup landing page designed in Figma and developed using Nuxt.js (Vue 3) and Tailwind CSS v4. Explores modern UI/UX principles and responsive design.',
-      tags: ['Nuxt.js (Vue 3)', 'Tailwind CSS v4', 'Responsive Design', 'Figma'],
-      accentColor: '#3B82F6',
-      gradient: 'from-blue-500/20 to-cyan-400/20',
-      initials: 'TS',
-      image: new URL('../images/the-company-website-design-and-development/70da12231259117.68862965444bd.png', import.meta.url).href,
-      category: 'web',
-      featured: true
-    },
-    {
-      id: 'the-qexle-website-development',
-      title: 'The qexle Website Development',
-      role: 'Web Developer',
-      description: 'User-centric website showcasing branding, digital marketing, and web development services with optimized performance and SEO integration.',
-      tags: ['WordPress', 'Web Development', 'SEO', 'Performance'],
-      accentColor: '#1E40AF',
-      gradient: 'from-blue-600/20 to-blue-400/20',
-      initials: 'TQ',
-      image: new URL('../images/the-qexle-website-design-and-development/da38e5210641019.67152a68b4960.png', import.meta.url).href,
-      category: 'web',
-      featured: true
-    },
-    // Mobile Development Projects (Priority 2)
-    {
-      id: 'greentips-plantation-management',
-      title: 'Greentips Plantation Management',
-      role: 'UI/UX Designer & Developer',
-      description: 'Mobile app streamlining operations for 250+ acre plantation with automated data collection, task tracking, and real-time management.',
-      tags: ['Android Studio', 'Firebase', 'Java', 'Kotlin'],
-      accentColor: '#16A34A',
-      gradient: 'from-green-600/20 to-lime-500/20',
-      initials: 'GT',
-      image: new URL('../images/mobile-uiux-design-greentips/1.png', import.meta.url).href,
-      category: 'mobile',
-      featured: true
-    },
-    {
-      id: 'landing-page-ui-nike',
-      title: 'Nike Shoes Landing Page Concept',
-      role: 'UI/UX Designer',
-      description: 'A landing page UI design concept for Nike shoes featuring bold hero visuals, strong typography, and conversion-focused CTAs. Emphasizes product storytelling and benefits.',
-      tags: ['Figma', 'Prototyping', 'UI Design', 'Responsive Grid'],
-      accentColor: '#FF6B35',
-      gradient: 'from-orange-500/20 to-red-500/20',
-      initials: 'NK',
-      image: new URL('../images/landing-page-ui-nike/418257146284501.62ad89bede8da.jpg', import.meta.url).href,
-      category: 'web',
-      featured: true
-    },
-    {
-      id: 'landing-page-wildlife',
-      title: 'Endemic Animals in Sri Lanka – Landing Page',
-      role: 'UI/UX Designer',
-      description: 'Interactive web interface showcasing Sri Lanka\'s rich biodiversity, focusing on endemic species like the Sri Lankan Leopard. Blends immersive visuals with informative content.',
-      tags: ['UI/UX Design', 'Figma', 'Wireframing', 'Visual Design'],
-      accentColor: '#059669',
-      gradient: 'from-green-600/20 to-emerald-500/20',
-      initials: 'WL',
-      image: new URL('../images/landing-page-wildlife/054fd3146507535.62b1c5409580e.jpg', import.meta.url).href,
-      category: 'web',
-      featured: true
-    }
-  ];
-
-  // Define category priority order (same as portfolio page)
-  const categoryOrder = {
-    'web': 1,      // Development projects first
-    'mobile': 2,   // Mobile development second
-  };
-
-  // Sort projects by category priority, then by featured status
-  const projects = allProjects
-    .filter(project => project.category === 'web' || project.category === 'mobile') // Only development and UI/UX
-    .sort((a, b) => {
-      // First sort by category priority
-      const categoryA = categoryOrder[a.category as keyof typeof categoryOrder] || 999;
-      const categoryB = categoryOrder[b.category as keyof typeof categoryOrder] || 999;
-      
-      if (categoryA !== categoryB) {
-        return categoryA - categoryB;
-      }
-      
-      // Within same category, featured projects come first
-      if (a.featured && !b.featured) return -1;
-      if (!a.featured && b.featured) return 1;
-      
-      return 0;
-    });
+  const projects = homeProjects;
 
   const handleScroll = () => {
     if (scrollContainerRef.current) {
