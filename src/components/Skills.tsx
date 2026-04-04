@@ -135,7 +135,14 @@ export default function Skills() {
                           </div>
                           
                           {/* Progress bar */}
-                          <div className="h-1.5 bg-[#1a1a1a]/5 rounded-full overflow-hidden">
+                          <div
+                            className="h-1.5 bg-[#1a1a1a]/5 rounded-full overflow-hidden"
+                            role="progressbar"
+                            aria-valuenow={skill.level}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            aria-label={`${skill.name} proficiency: ${skill.level}%`}
+                          >
                             <motion.div
                               className="h-full rounded-full"
                               style={{ backgroundColor: category.color }}

@@ -1,7 +1,10 @@
-import React from 'react';
-import { ArrowLeft, Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { Menu, X } from 'lucide-react';
+import { useState, useCallback } from 'react';
+import { motion } from 'motion/react';
+import { useScrollToSection } from '../hooks/useScrollToSection';
+import { useThrottledScroll } from '../hooks/useThrottledScroll';
+import { siteConfig } from '../data/site-config';
+import MobileMenu from './Navigation/MobileMenu';
 
 interface NavigationProps {
   currentPage: 'home' | 'portfolio' | 'project';
@@ -13,51 +16,32 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
   const [scrolled, setScrolled] = useState(false);
   const [isLightSection, setIsLightSection] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { scrollToSection } = useScrollToSection();
 
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+  useThrottledScroll(
+    useCallback(() => {
+      setScrolled(window.scrollY > 50);
 
-    const handleScroll = () => {
-      // Throttle scroll events
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setScrolled(window.scrollY > 50);
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        const rect = aboutSection.getBoundingClientRect();
+        const navHeight = 72;
+        const isOverAbout = rect.top <= navHeight && rect.bottom >= navHeight;
+        setIsLightSection(isOverAbout);
+      } else {
+        setIsLightSection(false);
+      }
+    }, []),
+    100
+  );
 
-        // Determine if nav is overlapping the light "about" section
-        const aboutSection = document.getElementById('about');
-        if (aboutSection) {
-          const rect = aboutSection.getBoundingClientRect();
-          const navHeight = 72; // approximate nav height in px
-          const isOverAbout =
-            rect.top <= navHeight && rect.bottom >= navHeight;
-          setIsLightSection(isOverAbout);
-        } else {
-          setIsLightSection(false);
-        }
-      }, 100);
-    };
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Dynamic colors based on section
-  const navBg = isLightSection 
+  // Dynamic colors based on section (used by home page nav)
+  const navBg = isLightSection
     ? scrolled ? 'bg-white/90' : 'bg-white/50'
     : scrolled ? 'bg-[#0a0a0a]/90' : 'bg-[#0a0a0a]/50';
-  
+
   const textColor = isLightSection ? 'text-[#1a1a1a]' : 'text-white';
   const textHover = 'hover:text-[#F4C542]';
   const borderColor = isLightSection ? 'border-[#1a1a1a]/10' : 'border-white/10';
@@ -66,19 +50,21 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
   const pillTextColor = isLightSection ? 'text-[#1a1a1a]/80 hover:text-[#1a1a1a]' : 'text-white/80 hover:text-white';
 
   if (currentPage === 'portfolio') {
+    const contactClick = () => scrollToSection('contact');
+
     return (
-      <motion.nav 
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4 sm:gap-8">
-            <button 
+            <button
               onClick={() => onNavigate('home')}
               className="text-white hover:text-[#F4C542] transition-colors tracking-wide text-sm sm:text-base"
             >
-              Susith Deshan
+              {siteConfig.name}
             </button>
             <div className="hidden md:flex items-center gap-1 bg-white/10 rounded-full px-2 py-2">
               <button
@@ -93,29 +79,21 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
                 Portfolio
               </button>
               <button
-                onClick={() => {
-                  const element = document.getElementById('contact');
-                  if (element) element.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={contactClick}
                 className="px-4 py-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all text-sm"
               >
                 Contact
               </button>
             </div>
           </div>
-          
-          {/* Desktop CTA */}
+
           <button
-            onClick={() => {
-              const element = document.getElementById('contact');
-              if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={contactClick}
             className="hidden sm:block bg-[#F4C542] text-[#0a0a0a] px-4 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-[#F4C542]/90 transition-all hover:scale-105 text-sm sm:text-base"
           >
             Let's Begin
           </button>
-          
-          {/* Mobile Menu Button */}
+
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-white hover:text-[#F4C542] transition-colors p-2"
@@ -123,63 +101,36 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-        
-        {/* Mobile Menu - Portfolio */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md border-t border-white/10"
-            >
-              <div className="px-4 py-6 space-y-4">
-                <button
-                  onClick={() => {
-                    onNavigate('home');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="block w-full text-left text-white/80 hover:text-white py-3 px-4 rounded-lg hover:bg-white/10 transition-all"
-                >
-                  Home
-                </button>
-                <button
-                  className="block w-full text-left text-white bg-white/20 py-3 px-4 rounded-lg"
-                >
-                  Portfolio
-                </button>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('contact');
-                    if (element) element.scrollIntoView({ behavior: 'smooth' });
-                    setMobileMenuOpen(false);
-                  }}
-                  className="block w-full bg-[#F4C542] text-[#0a0a0a] py-3 px-4 rounded-lg hover:bg-[#F4C542]/90 transition-all mt-4 font-medium"
-                >
-                  Let's Begin
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
+        <MobileMenu
+          isOpen={mobileMenuOpen}
+          items={[
+            { label: 'Home', onClick: () => { onNavigate('home'); closeMobileMenu(); } },
+            { label: 'Portfolio', onClick: () => {}, isActive: true },
+          ]}
+          ctaLabel="Let's Begin"
+          ctaOnClick={() => { contactClick(); closeMobileMenu(); }}
+        />
       </motion.nav>
     );
   }
 
   if (currentPage === 'project') {
+    const contactClick = () => scrollToSection('contact-project');
+
     return (
-      <motion.nav 
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4 sm:gap-8">
-            <button 
+            <button
               onClick={() => onNavigate('home')}
               className="text-white hover:text-[#F4C542] transition-colors tracking-wide text-sm sm:text-base"
             >
-              Susith Deshan
+              {siteConfig.name}
             </button>
             <div className="hidden md:flex items-center gap-1 bg-white/10 rounded-full px-2 py-2">
               <button
@@ -195,23 +146,21 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
                 Portfolio
               </button>
               <button
-                onClick={() => scrollToSection('contact-project')}
+                onClick={contactClick}
                 className="px-4 py-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all text-sm"
               >
                 Contact
               </button>
             </div>
           </div>
-          
-          {/* Desktop CTA */}
+
           <button
-            onClick={() => scrollToSection('contact-project')}
+            onClick={contactClick}
             className="hidden sm:block bg-[#F4C542] text-[#0a0a0a] px-4 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-[#F4C542]/90 transition-all hover:scale-105 text-sm sm:text-base"
           >
             Let's Begin
           </button>
-          
-          {/* Mobile Menu Button */}
+
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-white hover:text-[#F4C542] transition-colors p-2"
@@ -219,65 +168,36 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-        
-        {/* Mobile Menu - Project */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md border-t border-white/10"
-            >
-              <div className="px-4 py-6 space-y-4">
-                <button
-                  onClick={() => {
-                    onNavigate('home');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="block w-full text-left text-white/80 hover:text-white py-3 px-4 rounded-lg hover:bg-white/10 transition-all"
-                >
-                  Home
-                </button>
-                <button
-                  onClick={() => {
-                    onNavigate('portfolio');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="block w-full text-left text-white/80 hover:text-white py-3 px-4 rounded-lg hover:bg-white/10 transition-all"
-                >
-                  Portfolio
-                </button>
-                <button
-                  onClick={() => {
-                    scrollToSection('contact-project');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="block w-full bg-[#F4C542] text-[#0a0a0a] py-3 px-4 rounded-lg hover:bg-[#F4C542]/90 transition-all mt-4 font-medium"
-                >
-                  Let's Begin
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
+        <MobileMenu
+          isOpen={mobileMenuOpen}
+          items={[
+            { label: 'Home', onClick: () => { onNavigate('home'); closeMobileMenu(); } },
+            { label: 'Portfolio', onClick: () => { onNavigate('portfolio'); closeMobileMenu(); } },
+          ]}
+          ctaLabel="Let's Begin"
+          ctaOnClick={() => { contactClick(); closeMobileMenu(); }}
+        />
       </motion.nav>
     );
   }
 
+  // Home page
+  const homeTextClass = `${textColor} hover:text-[#F4C542]`;
+
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 ${navBg} backdrop-blur-md border-b ${borderColor} transition-all duration-300`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4 sm:gap-8">
-          <button 
+          <button
             onClick={() => scrollToSection('hero')}
             className={`${textColor} ${textHover} transition-colors tracking-wide text-sm sm:text-base`}
           >
-            Susith Deshan
+            {siteConfig.name}
           </button>
           <div className={`hidden md:flex items-center gap-1 ${pillBg} rounded-full px-2 py-2`}>
             <button
@@ -312,16 +232,14 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
             </button>
           </div>
         </div>
-        
-        {/* Desktop CTA */}
+
         <button
           onClick={() => scrollToSection('contact')}
           className="hidden sm:block bg-[#F4C542] text-[#0a0a0a] px-4 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-[#F4C542]/90 transition-all hover:scale-105 text-sm sm:text-base"
         >
           Let's Begin
         </button>
-        
-        {/* Mobile Menu Button */}
+
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className={`md:hidden ${textColor} ${textHover} transition-colors p-2`}
@@ -329,66 +247,20 @@ export default function Navigation({ currentPage, onNavigate, projectTitle }: Na
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
-      
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className={`md:hidden ${navBg} backdrop-blur-md border-t ${borderColor}`}
-          >
-            <div className="px-4 py-6 space-y-4">
-              <button
-                onClick={() => {
-                  scrollToSection('about');
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left ${textColor} hover:text-[#F4C542] py-3 px-4 rounded-lg hover:bg-white/10 transition-all`}
-              >
-                About
-              </button>
-              <button
-                onClick={() => {
-                  scrollToSection('philosophy');
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left ${textColor} hover:text-[#F4C542] py-3 px-4 rounded-lg hover:bg-white/10 transition-all`}
-              >
-                Philosophy
-              </button>
-              <button
-                onClick={() => {
-                  onNavigate('portfolio');
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left ${textColor} hover:text-[#F4C542] py-3 px-4 rounded-lg hover:bg-white/10 transition-all`}
-              >
-                Portfolio
-              </button>
-              <button
-                onClick={() => {
-                  scrollToSection('experience');
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left ${textColor} hover:text-[#F4C542] py-3 px-4 rounded-lg hover:bg-white/10 transition-all`}
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => {
-                  scrollToSection('contact');
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full bg-[#F4C542] text-[#0a0a0a] py-3 px-4 rounded-lg hover:bg-[#F4C542]/90 transition-all mt-4 font-medium"
-              >
-                Let's Begin
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        navBg={navBg}
+        borderColor={borderColor}
+        items={[
+          { label: 'About', onClick: () => { scrollToSection('about'); closeMobileMenu(); }, className: homeTextClass },
+          { label: 'Philosophy', onClick: () => { scrollToSection('philosophy'); closeMobileMenu(); }, className: homeTextClass },
+          { label: 'Portfolio', onClick: () => { onNavigate('portfolio'); closeMobileMenu(); }, className: homeTextClass },
+          { label: 'Experience', onClick: () => { scrollToSection('experience'); closeMobileMenu(); }, className: homeTextClass },
+        ]}
+        ctaLabel="Let's Begin"
+        ctaOnClick={() => { scrollToSection('contact'); closeMobileMenu(); }}
+      />
     </motion.nav>
   );
 }

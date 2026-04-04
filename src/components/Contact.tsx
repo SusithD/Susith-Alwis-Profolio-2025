@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Mail, Linkedin, Github, Twitter, MessageCircle } from 'lucide-react';
+import { siteConfig } from '../data/site-config';
 
 export default function Contact() {
   return (
@@ -81,7 +82,7 @@ export default function Contact() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <motion.a
-                href="mailto:hello@susithdeshan.com"
+                href={`mailto:${siteConfig.email}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-[#F4C542] text-black px-8 py-4 rounded-full hover:bg-[#F4C542]/90 transition-all flex items-center gap-2 text-lg w-full sm:w-auto justify-center"
@@ -90,7 +91,7 @@ export default function Contact() {
                 Send Me an Email
               </motion.a>
               <motion.a
-                href="https://linkedin.com"
+                href={siteConfig.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
