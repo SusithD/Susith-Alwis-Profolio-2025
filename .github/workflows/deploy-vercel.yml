@@ -67,17 +67,20 @@ jobs:
           echo "🔗 Commit SHA: ${{ github.event.inputs.commit_sha || github.sha }}"
           echo "👤 Triggered by: ${{ github.actor }}"
           
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --immutable
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Set deployment arguments
         id: deployment-args

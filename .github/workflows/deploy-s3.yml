@@ -152,17 +152,20 @@ jobs:
           ref: ${{ needs.check-comment.outputs.pr-head-sha || github.sha }}
           fetch-depth: 0
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --immutable
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
