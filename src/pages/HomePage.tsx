@@ -15,12 +15,13 @@ interface HomePageProps {
 export default function HomePage({ onNavigateToProject }: HomePageProps) {
   return (
     <>
-      <Navigation 
-        currentPage="home" 
+      <Navigation
+        currentPage="home"
         onNavigate={(page) => {
           if (page === 'portfolio') onNavigateToProject('portfolio');
         }}
       />
+      <main id="main-content">
       <Hero />
       <About />
       <Philosophy />
@@ -28,6 +29,7 @@ export default function HomePage({ onNavigateToProject }: HomePageProps) {
       <Process />
       <Experience />
       <Contact />
+      </main>
       <Footer />
     </>
   );

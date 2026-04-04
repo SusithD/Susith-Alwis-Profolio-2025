@@ -97,6 +97,8 @@ export default function Navigation({ currentPage, onNavigate, projectTitle: _pro
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-white hover:text-[#F4C542] transition-colors p-2"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -164,6 +166,8 @@ export default function Navigation({ currentPage, onNavigate, projectTitle: _pro
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-white hover:text-[#F4C542] transition-colors p-2"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -243,6 +247,8 @@ export default function Navigation({ currentPage, onNavigate, projectTitle: _pro
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className={`md:hidden ${textColor} ${textHover} transition-colors p-2`}
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>

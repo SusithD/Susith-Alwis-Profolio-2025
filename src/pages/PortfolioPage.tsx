@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, Sparkles, Code, Palette, Layers } from 'lucide-react';
 import Contact from '../components/Contact';
@@ -13,46 +13,42 @@ interface PortfolioPageProps {
   onNavigateHome: () => void;
 }
 
+type FilterCategory = 'all' | 'web' | 'ai' | 'mobile' | 'design';
+
+const categories: { id: FilterCategory; label: string; icon: typeof Layers }[] = [
+  { id: 'all', label: 'All Projects', icon: Layers },
+  { id: 'web', label: 'Web Design', icon: Code },
+  { id: 'ai', label: 'AI & ML', icon: Code },
+  { id: 'mobile', label: 'Mobile', icon: Sparkles },
+  { id: 'design', label: 'Design', icon: Palette }
+];
+
+const categoryOrder: Record<string, number> = {
+  web: 1,
+  ai: 2,
+  mobile: 3,
+  design: 4,
+};
+
 export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: PortfolioPageProps) {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'web' | 'ai' | 'mobile' | 'design'>('all');
+  const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
 
-  type FilterCategory = 'all' | 'web' | 'ai' | 'mobile' | 'design';
-  const categories: { id: FilterCategory; label: string; icon: typeof Layers }[] = [
-    { id: 'all', label: 'All Projects', icon: Layers },
-    { id: 'web', label: 'Web Design', icon: Code },
-    { id: 'ai', label: 'AI & ML', icon: Code },
-    { id: 'mobile', label: 'Mobile', icon: Sparkles },
-    { id: 'design', label: 'Design', icon: Palette }
-  ];
+  const sortedProjects = useMemo(
+    () =>
+      [...portfolioProjects].sort((a, b) => {
+        const catDiff = (categoryOrder[a.category] ?? 999) - (categoryOrder[b.category] ?? 999);
+        if (catDiff !== 0) return catDiff;
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        return 0;
+      }),
+    []
+  );
 
-  // Define category priority order
-  const categoryOrder = {
-    'web': 1,      // Development projects first
-    'ai': 2,       // AI / ML projects second
-    'mobile': 3,   // Mobile development third
-    'design': 4    // Logo design and branding last
-  };
-
-  // Sort projects by category priority, then by featured status
-  const sortedProjects = [...portfolioProjects].sort((a, b) => {
-    // First sort by category priority
-    const categoryA = categoryOrder[a.category as keyof typeof categoryOrder] || 999;
-    const categoryB = categoryOrder[b.category as keyof typeof categoryOrder] || 999;
-
-    if (categoryA !== categoryB) {
-      return categoryA - categoryB;
-    }
-
-    // Within same category, featured projects come first
-    if (a.featured && !b.featured) return -1;
-    if (!a.featured && b.featured) return 1;
-
-    return 0;
-  });
-
-  const filteredProjects = activeFilter === 'all'
-    ? sortedProjects
-    : sortedProjects.filter(p => p.category === activeFilter);
+  const filteredProjects = useMemo(
+    () => activeFilter === 'all' ? sortedProjects : sortedProjects.filter(p => p.category === activeFilter),
+    [activeFilter, sortedProjects]
+  );
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -63,6 +59,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
         }}
       />
 
+      <main id="main-content">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         {/* Animated background */}
@@ -165,53 +162,50 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
             className="space-y-6 sm:space-y-8"
           >
             {filteredProjects.map((project, index) => {
-              const isImageLeft = index % 2 === 0; // Alternating: even = image left, odd = image right
+              const isImageLeft = index % 2 === 0;
+              const animDelay = index * 0.15;
+
+              const imagePanel = (gradientDir: 'r' | 'l') => (
+                <div className="flex-1 relative overflow-hidden">
+                  <ImageWithFallback
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-${gradientDir} from-transparent to-black/20 group-hover:to-black/10 transition-all duration-500`} />
+                  {project.featured && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: animDelay + 0.4 }}
+                      className="absolute top-6 right-6 bg-[#F4C542] text-black px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg z-10"
+                    >
+                      <Sparkles className="w-3 h-3" />
+                      FEATURED
+                    </motion.div>
+                  )}
+                </div>
+              );
 
               return (
-                <motion.div
+                <motion.article
                   key={project.id}
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.15 }}
+                  transition={{ duration: 0.8, delay: animDelay }}
                   whileHover={{ y: -8 }}
                   onClick={() => onNavigateToProject('project', project.id)}
                   className="group cursor-pointer bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-[#F4C542]/30 transition-all duration-700 hover:shadow-2xl hover:shadow-[#F4C542]/10"
                 >
-                  {/* Responsive Layout - Stack on mobile, side by side on larger screens */}
                   <div className="flex flex-col md:flex-row min-h-[300px] md:min-h-[400px]">
-                    {/* Conditional Image Section - Left */}
-                    {isImageLeft && (
-                      <div className="flex-1 relative overflow-hidden">
-                        <ImageWithFallback
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                        {/* Image overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20 group-hover:to-black/10 transition-all duration-500" />
-
-                        {/* Featured Badge on Image */}
-                        {project.featured && (
-                          <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.15 + 0.4 }}
-                            className="absolute top-6 right-6 bg-[#F4C542] text-black px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg z-10"
-                          >
-                            <Sparkles className="w-3 h-3" />
-                            FEATURED
-                          </motion.div>
-                        )}
-                      </div>
-                    )}
+                    {isImageLeft && imagePanel('r')}
 
                     {/* Content Section */}
                     <div className="flex-1 p-6 sm:p-8 lg:p-12 flex flex-col justify-center space-y-3 sm:space-y-6">
-                      {/* Category Badge */}
                       <motion.div
                         initial={{ opacity: 0, x: isImageLeft ? -30 : 30 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.15 + 0.3 }}
+                        transition={{ delay: animDelay + 0.3 }}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold backdrop-blur-md border w-fit"
                         style={{
                           backgroundColor: `${project.accentColor}15`,
@@ -226,44 +220,40 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         {project.category.toUpperCase()}
                       </motion.div>
 
-                      {/* Title */}
                       <motion.h3
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.15 + 0.5 }}
+                        transition={{ delay: animDelay + 0.5 }}
                         className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight leading-tight group-hover:text-[#F4C542] transition-colors duration-500"
                       >
                         {project.title}
                       </motion.h3>
 
-                      {/* Role */}
                       <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.15 + 0.6 }}
+                        transition={{ delay: animDelay + 0.6 }}
                         className="text-white/70 text-base sm:text-lg font-medium tracking-wide"
                       >
                         {project.role}
                       </motion.p>
 
-                      {/* Description */}
                       <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.15 + 0.7 }}
+                        transition={{ delay: animDelay + 0.7 }}
                         className="text-white/60 text-sm sm:text-base leading-relaxed max-w-lg line-clamp-3 sm:line-clamp-4"
                       >
                         {project.description}
                       </motion.p>
 
-                      {/* Tags */}
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.15 + 0.8 }}
+                        transition={{ delay: animDelay + 0.8 }}
                         className="flex flex-wrap gap-2"
                       >
-                        {project.tags.slice(0, 4).map((tag, _i) => (
+                        {project.tags.slice(0, 4).map((tag) => (
                           <span
                             key={tag}
                             className="px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-full text-xs font-medium backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/20"
@@ -273,11 +263,10 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                         ))}
                       </motion.div>
 
-                      {/* CTA */}
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.15 + 0.9 }}
+                        transition={{ delay: animDelay + 0.9 }}
                         className="flex items-center gap-3 text-white/80 group-hover:text-[#F4C542] transition-all duration-300 group-hover:gap-4 pt-4"
                       >
                         <span className="text-base font-bold tracking-wide">VIEW PROJECT</span>
@@ -285,34 +274,9 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                       </motion.div>
                     </div>
 
-                    {/* Conditional Image Section - Right */}
-                    {!isImageLeft && (
-                      <div className="flex-1 relative overflow-hidden">
-                        <ImageWithFallback
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                        {/* Image overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/20 group-hover:to-black/10 transition-all duration-500" />
-
-                        {/* Featured Badge on Image */}
-                        {project.featured && (
-                          <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.15 + 0.4 }}
-                            className="absolute top-6 right-6 bg-[#F4C542] text-black px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg z-10"
-                          >
-                            <Sparkles className="w-3 h-3" />
-                            FEATURED
-                          </motion.div>
-                        )}
-                      </div>
-                    )}
+                    {!isImageLeft && imagePanel('l')}
                   </div>
 
-                  {/* Bottom accent line */}
                   <motion.div
                     className="absolute bottom-0 left-0 h-1 rounded-b-3xl"
                     style={{ backgroundColor: project.accentColor }}
@@ -320,7 +284,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
                     whileHover={{ width: '100%' }}
                     transition={{ duration: 0.8, ease: 'easeOut' }}
                   />
-                </motion.div>
+                </motion.article>
               );
             })}
           </motion.div>
@@ -378,6 +342,7 @@ export default function PortfolioPage({ onNavigateToProject, onNavigateHome }: P
 
       {/* Contact Section */}
       <Contact />
+      </main>
 
       {/* Footer */}
       <Footer onNavigate={() => onNavigateHome()} />
